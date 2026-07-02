@@ -2,1680 +2,1197 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>전략물자 수출허가 안내</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-  :root {
-    --bg: #f6f7f9;
-    --surface: #ffffff;
-    --surface-2: #eef3f1;
-    --ink: #17202a;
-    --muted: #667085;
-    --line: #d9e0e6;
-    --line-strong: #b9c4cf;
-    --green: #087f5b;
-    --green-soft: #e8f5ef;
-    --blue: #2457c5;
-    --blue-soft: #edf3ff;
-    --red: #b42318;
-    --red-soft: #fff0ed;
-    --amber: #a15c07;
-    --amber-soft: #fff5df;
-    --gray-soft: #f2f4f7;
-    --focus: #0f766e;
-    --shadow: 0 12px 32px rgba(16, 24, 40, 0.08);
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Segoe UI", "Malgun Gothic", Arial, sans-serif;
-    line-height: 1.55;
-  }
-
-  button,
-  input,
-  select,
-  textarea {
-    font: inherit;
-  }
-
-  button {
-    cursor: pointer;
-  }
-
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: rgba(255, 255, 255, 0.94);
-    border-bottom: 1px solid var(--line);
-    backdrop-filter: blur(12px);
-  }
-
-  .topbar-inner {
-    width: min(1120px, calc(100% - 32px));
-    margin: 0 auto;
-    min-height: 68px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-  }
-
-  .brand-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    background: #132d46;
-    color: #fff;
-    font-weight: 800;
-    letter-spacing: 0;
-  }
-
-  .brand {
-    min-width: 190px;
-  }
-
-  .brand-title {
-    font-weight: 800;
-    letter-spacing: 0;
-  }
-
-  .brand-sub {
-    margin-top: 2px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-
-  .step-nav {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 8px 0;
-  }
-
-  .step-button {
-    border: 1px solid var(--line);
-    background: var(--surface);
-    color: var(--ink);
-    border-radius: 999px;
-    padding: 8px 12px;
-    white-space: nowrap;
-    min-height: 38px;
-    font-size: 13px;
-  }
-
-  .step-button.active {
-    border-color: rgba(8, 127, 91, 0.45);
-    background: var(--green-soft);
-    color: var(--green);
-    font-weight: 700;
-  }
-
-  .wrap {
-    width: min(1120px, calc(100% - 32px));
-    margin: 0 auto;
-    padding: 28px 0 72px;
-  }
-
-  .intro {
-    margin: 0 0 22px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--surface);
-    box-shadow: var(--shadow);
-  }
-
-  .intro summary {
-    min-height: 52px;
-    display: flex;
-    align-items: center;
-    padding: 0 18px;
-    font-weight: 800;
-    cursor: pointer;
-  }
-
-  .intro-content {
-    border-top: 1px solid var(--line);
-    padding: 16px 18px 18px;
-    color: var(--muted);
-  }
-
-  .intro-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .intro-point {
-    border-left: 4px solid var(--green);
-    background: var(--surface-2);
-    padding: 12px;
-    border-radius: 6px;
-  }
-
-  .intro-point strong {
-    display: block;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-
-  .section {
-    scroll-margin-top: 92px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    margin: 18px 0;
-    box-shadow: var(--shadow);
-  }
-
-  .section-head {
-    padding: 20px 22px 16px;
-    border-bottom: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .section-kicker {
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  h1,
-  h2,
-  h3,
-  p {
-    margin-top: 0;
-  }
-
-  h1 {
-    font-size: 28px;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  h2 {
-    font-size: 20px;
-    margin: 2px 0 6px;
-  }
-
-  h3 {
-    font-size: 16px;
-    margin: 0;
-  }
-
-  .section-desc {
-    color: var(--muted);
-    margin: 0;
-  }
-
-  .section-body {
-    padding: 22px;
-  }
-
-  .grid {
-    display: grid;
-    gap: 14px;
-  }
-
-  .grid.two {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .grid.three {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .field label,
-  .field-label {
-    display: block;
-    margin-bottom: 7px;
-    color: #344054;
-    font-size: 13px;
-    font-weight: 800;
-  }
-
-  .req::after {
-    content: " *";
-    color: var(--red);
-  }
-
-  input[type="text"],
-  select,
-  textarea {
-    width: 100%;
-    min-height: 44px;
-    border: 1px solid var(--line-strong);
-    border-radius: 8px;
-    color: var(--ink);
-    background: var(--surface);
-    padding: 10px 12px;
-    outline: none;
-  }
-
-  textarea {
-    min-height: 132px;
-    resize: vertical;
-  }
-
-  input:focus,
-  select:focus,
-  textarea:focus {
-    border-color: var(--focus);
-    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
-  }
-
-  .hint {
-    margin-top: 7px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-
-  .actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 16px;
-  }
-
-  .btn {
-    min-height: 42px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 9px 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    font-weight: 800;
-    letter-spacing: 0;
-  }
-
-  .btn.primary {
-    background: var(--green);
-    color: #fff;
-  }
-
-  .btn.secondary {
-    background: var(--blue);
-    color: #fff;
-  }
-
-  .btn.ghost {
-    background: var(--surface);
-    color: var(--ink);
-    border-color: var(--line-strong);
-  }
-
-  .btn.danger {
-    background: var(--red-soft);
-    border-color: rgba(180, 35, 24, 0.28);
-    color: var(--red);
-  }
-
-  .btn.small {
-    min-height: 36px;
-    padding: 7px 10px;
-    font-size: 13px;
-  }
-
-  .btn:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  .alert {
-    border-radius: 8px;
-    padding: 13px 14px;
-    margin: 14px 0 0;
-    border: 1px solid var(--line);
-  }
-
-  .alert.info {
-    background: var(--blue-soft);
-    color: #1d3f8d;
-    border-color: #bfd1ff;
-  }
-
-  .alert.ok {
-    background: var(--green-soft);
-    color: var(--green);
-    border-color: #b6e3d0;
-  }
-
-  .alert.warn {
-    background: var(--amber-soft);
-    color: var(--amber);
-    border-color: #ffd68c;
-  }
-
-  .alert.block {
-    background: var(--red-soft);
-    color: var(--red);
-    border-color: #ffc4bc;
-  }
-
-  .item-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    margin: 18px 0 12px;
-  }
-
-  .item-list {
-    display: grid;
-    gap: 12px;
-  }
-
-  .item-card {
-    border: 1px solid var(--line);
-    background: #fbfcfd;
-    border-radius: 8px;
-    padding: 16px;
-  }
-
-  .item-card-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .item-index {
-    min-width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: #dceee8;
-    color: var(--green);
-    font-weight: 900;
-  }
-
-  .item-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 900;
-  }
-
-  .db-status {
-    margin-top: 12px;
-    display: grid;
-    gap: 8px;
-  }
-
-  .status-line {
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 13px;
-    border: 1px solid var(--line);
-    background: var(--surface);
-  }
-
-  .status-line.good {
-    background: var(--green-soft);
-    border-color: #b6e3d0;
-    color: var(--green);
-  }
-
-  .status-line.bad {
-    background: var(--red-soft);
-    border-color: #ffc4bc;
-    color: var(--red);
-  }
-
-  .status-line.neutral {
-    background: var(--gray-soft);
-    color: #475467;
-  }
-
-  .batch-box {
-    border: 1px dashed var(--line-strong);
-    background: #fbfcfd;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 18px;
-  }
-
-  .batch-box.collapsed .batch-body {
-    display: none;
-  }
-
-  .batch-title {
-    width: 100%;
-    border: 0;
-    background: transparent;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--ink);
-    font-weight: 900;
-    padding: 0;
-    text-align: left;
-  }
-
-  .result-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-
-  .metric {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 12px;
-    background: #fbfcfd;
-  }
-
-  .metric b {
-    display: block;
-    font-size: 24px;
-    line-height: 1.1;
-  }
-
-  .metric span {
-    color: var(--muted);
-    font-size: 12px;
-  }
-
-  .table-wrap {
-    overflow-x: auto;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--surface);
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 820px;
-  }
-
-  th,
-  td {
-    border-bottom: 1px solid var(--line);
-    padding: 11px 12px;
-    text-align: left;
-    vertical-align: top;
-    font-size: 13px;
-  }
-
-  th {
-    color: #344054;
-    background: #f7f9fb;
-    font-weight: 900;
-  }
-
-  tr:last-child td {
-    border-bottom: 0;
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    border-radius: 999px;
-    padding: 3px 9px;
-    font-size: 12px;
-    font-weight: 900;
-    white-space: nowrap;
-  }
-
-  .badge.green {
-    color: var(--green);
-    background: var(--green-soft);
-  }
-
-  .badge.blue {
-    color: var(--blue);
-    background: var(--blue-soft);
-  }
-
-  .badge.red {
-    color: var(--red);
-    background: var(--red-soft);
-  }
-
-  .badge.amber {
-    color: var(--amber);
-    background: var(--amber-soft);
-  }
-
-  .question-list {
-    display: grid;
-    gap: 10px;
-  }
-
-  .question {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-    align-items: center;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 12px;
-    background: #fbfcfd;
-  }
-
-  .question strong {
-    display: block;
-    margin-bottom: 3px;
-  }
-
-  .question p {
-    color: var(--muted);
-    margin-bottom: 0;
-    font-size: 13px;
-  }
-
-  .toggle-group {
-    display: flex;
-    border: 1px solid var(--line-strong);
-    border-radius: 8px;
-    overflow: hidden;
-    flex: 0 0 auto;
-  }
-
-  .toggle-group label {
-    min-width: 54px;
-    min-height: 38px;
-    display: grid;
-    place-items: center;
-    padding: 0 10px;
-    font-weight: 900;
-    cursor: pointer;
-    color: #475467;
-    background: var(--surface);
-  }
-
-  .toggle-group input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .toggle-group input:checked + span {
-    color: #fff;
-    background: var(--green);
-  }
-
-  .toggle-group span {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-    min-height: 38px;
-    padding: 0 10px;
-  }
-
-  .copy-area {
-    white-space: pre-wrap;
-    background: #111827;
-    color: #e5e7eb;
-    border-radius: 8px;
-    padding: 16px;
-    min-height: 220px;
-    overflow: auto;
-    font-family: Consolas, "Malgun Gothic", monospace;
-    font-size: 13px;
-  }
-
-  .doc-list {
-    display: grid;
-    gap: 10px;
-  }
-
-  .doc-card {
-    border-left: 4px solid var(--blue);
-    background: var(--blue-soft);
-    border-radius: 8px;
-    padding: 13px 14px;
-  }
-
-  .doc-card strong {
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  .doc-card ul {
-    margin: 8px 0 0 18px;
-    padding: 0;
-  }
-
-  .doc-card li {
-    margin: 4px 0;
-  }
-
-  .muted {
-    color: var(--muted);
-  }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  @media (max-width: 900px) {
-    .topbar-inner {
-      align-items: flex-start;
-      flex-direction: column;
-      padding: 12px 0;
-      gap: 8px;
-    }
-
-    .step-nav {
-      width: 100%;
-      margin-left: 0;
-    }
-
-    .intro-grid,
-    .grid.two,
-    .grid.three,
-    .result-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .section-head {
-      display: block;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .wrap,
-    .topbar-inner {
-      width: min(100% - 20px, 1120px);
-    }
-
-    h1 {
-      font-size: 23px;
-    }
-
-    .section-body,
-    .section-head {
-      padding-left: 14px;
-      padding-right: 14px;
-    }
-
-    .item-card {
-      padding: 13px;
-    }
-
-    .item-card-head,
-    .item-toolbar,
-    .question {
-      align-items: stretch;
-      flex-direction: column;
-      display: flex;
-    }
-
-    .btn,
-    .step-button {
-      min-height: 44px;
-    }
-
-    .actions .btn,
-    .item-card-head .btn {
-      width: 100%;
-    }
-
-    .toggle-group {
-      width: 100%;
-    }
-
-    .toggle-group label {
-      flex: 1;
-    }
-  }
-
-  @media print {
-    body {
-      background: #fff;
-    }
-
-    .topbar,
-    .intro,
-    .actions,
-    .batch-box,
-    .item-toolbar,
-    .btn {
-      display: none !important;
-    }
-
-    .wrap {
-      width: 100%;
-      padding: 0;
-    }
-
-    .section {
-      border: 0;
-      box-shadow: none;
-      page-break-inside: avoid;
-    }
-
-    .copy-area {
-      color: #111;
-      background: #fff;
-      border: 1px solid #bbb;
-    }
-  }
+  :root{
+    --ink:#15243d;--ink-soft:#2d3e5c;--paper:#f4f1e9;--paper-2:#faf8f2;
+    --line:#d9d2c2;--line-strong:#c4bba6;--copper:#9a6a32;--copper-soft:#b98a4d;
+    --blue:#1f5b8f;--blue-bg:#e7eef5;--amber:#9a6b16;--amber-bg:#f6edd6;
+    --red:#9c2b25;--red-bg:#f4e2df;--green:#2f6b3c;--muted:#6c6354;
+    --shadow:0 1px 2px rgba(21,36,61,.06),0 8px 24px rgba(21,36,61,.08);--radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);background:radial-gradient(1200px 600px at 80% -10%,rgba(154,106,50,.07),transparent 60%),radial-gradient(900px 500px at -10% 10%,rgba(31,91,143,.06),transparent 55%),var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .serif{font-family:"Noto Serif KR",serif}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px 90px}
+
+  header.top{border-bottom:1px solid var(--line-strong);background:linear-gradient(180deg,rgba(255,255,255,.5),transparent);backdrop-filter:blur(4px);position:sticky;top:0;z-index:30}
+  .top-inner{max-width:960px;margin:0 auto;padding:16px 22px;display:flex;align-items:center;gap:14px}
+  .seal{width:40px;height:40px;border-radius:50%;flex:none;border:1.5px solid var(--copper);display:grid;place-items:center;color:var(--copper);font-weight:700;font-size:13px;box-shadow:inset 0 0 0 3px var(--paper-2);font-family:"Noto Serif KR",serif}
+  .top h1{font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .top .sub{font-size:12px;color:var(--muted);margin-top:1px}
+  .lock-btn{margin-left:auto;border:1px solid var(--line-strong);background:var(--paper-2);color:var(--ink-soft);border-radius:999px;padding:7px 14px;font-size:12.5px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit;transition:.15s}
+  .lock-btn:hover{border-color:var(--copper);color:var(--copper)}
+
+  .hero{padding:38px 0 8px}
+  .hero .eyebrow{font-size:12.5px;letter-spacing:.18em;color:var(--copper);font-weight:600;text-transform:uppercase}
+  .hero h2{font-size:28px;font-weight:700;margin:10px 0 8px;letter-spacing:-.02em;line-height:1.25}
+  .hero p{color:var(--ink-soft);font-size:15px;max-width:680px}
+
+  .stepper{display:flex;gap:7px;margin:28px 0 24px;flex-wrap:wrap}
+  .step-pill{display:flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;border:1px solid var(--line-strong);background:var(--paper-2);font-size:12.5px;color:var(--muted);transition:.2s;cursor:pointer;user-select:none}
+  .step-pill .n{width:20px;height:20px;border-radius:50%;background:var(--line-strong);color:#fff;display:grid;place-items:center;font-size:11.5px;font-weight:700;flex:none}
+  .step-pill.active{border-color:var(--ink);color:var(--ink);background:#fff;box-shadow:var(--shadow)}
+  .step-pill.active .n{background:var(--ink)}
+  .step-pill.done .n{background:var(--copper)}
+  .step-pill.done{color:var(--ink-soft);border-color:var(--copper-soft)}
+
+  .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);margin-bottom:22px}
+  .panel-h{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+  .panel-h .badge-n{font-family:"Noto Serif KR",serif;color:var(--copper);font-weight:700;font-size:14px}
+  .panel-h h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .panel .lead{color:var(--muted);font-size:13.5px;margin-bottom:20px}
+
+  /* fields */
+  .field{margin-bottom:16px;max-width:460px}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
+  .field input{width:100%;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;font-family:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  .field input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(21,36,61,.08)}
+  .field .hint{font-size:11.5px;color:var(--muted);margin-top:5px}
+  .field textarea{width:100%;min-height:124px;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;font-family:inherit;font-size:14px;line-height:1.6;background:#fff;color:var(--ink);resize:vertical}
+  .field textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(21,36,61,.08)}
+  .item-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:16px 0 12px}
+  .item-tools .left{font-size:13px;color:var(--muted)}
+  .item-tools .right{display:flex;gap:8px;flex-wrap:wrap}
+  .batch-box{border:1px dashed var(--line-strong);background:#fff;border-radius:12px;padding:16px;margin-bottom:16px}
+  .batch-box details summary{cursor:pointer;font-weight:700;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .batch-box details summary::-webkit-details-marker{display:none}
+  .batch-body{margin-top:14px}
+  .item-list{display:grid;gap:12px}
+  .item-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .item-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .item-card-title{display:flex;align-items:center;gap:9px;font-weight:700}
+  .item-num{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;flex:none}
+  .item-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .item-card .field{max-width:none;margin-bottom:0}
+  .item-card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .mini-btn{font-size:12.5px;padding:8px 12px;border-radius:8px}
+  .db-line{font-size:12.5px;margin-top:10px;border-radius:9px;border:1px solid var(--line);background:var(--paper);padding:9px 11px;color:var(--ink-soft)}
+  .db-line.good{background:#e6efe7;color:var(--green);border-color:#bfd9c2}
+  .db-line.warn{background:var(--amber-bg);color:var(--amber);border-color:#e4d2a6}
+  .db-line.bad{background:var(--red-bg);color:var(--red);border-color:#e3bdb8}
+  .item-summary{width:100%;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;margin-top:6px}
+  .item-summary table{width:100%;border-collapse:collapse;font-size:12.5px}
+  .item-summary th,.item-summary td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .item-summary th{background:var(--paper);color:var(--muted);font-weight:700}
+  .item-summary tr:last-child td{border-bottom:0}
+
+  .combo{position:relative;max-width:460px}
+  .combo input{width:100%;padding:13px 15px;border:1px solid var(--line-strong);border-radius:10px;font-family:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  .combo input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(21,36,61,.08)}
+  .combo-list{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line-strong);border-radius:10px;max-height:300px;overflow:auto;z-index:20;box-shadow:var(--shadow);display:none}
+  .combo-list.open{display:block}
+  .combo-opt{padding:10px 15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:14px;border-bottom:1px solid var(--paper)}
+  .combo-opt:last-child{border-bottom:none}
+  .combo-opt:hover,.combo-opt.kb{background:var(--paper)}
+  .combo-opt .rg{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;white-space:nowrap}
+  .combo-opt.custom{color:var(--copper);font-weight:600}
+  .combo-empty{padding:14px 15px;color:var(--muted);font-size:13px}
+  .rg-가{background:var(--blue-bg);color:var(--blue)}.rg-나의1{background:var(--amber-bg);color:var(--amber)}.rg-나의2{background:var(--red-bg);color:var(--red)}
+
+  .region-result{margin-top:20px;display:none}
+  .region-result.show{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .region-banner{border-radius:12px;padding:18px 20px;border:1px solid;display:flex;gap:16px;align-items:flex-start}
+  .region-banner .rb-ico{font-size:24px;line-height:1;flex:none;margin-top:2px}
+  .region-banner h4{font-size:17px;margin-bottom:3px}
+  .region-banner p{font-size:13px;line-height:1.55}
+  .rb-가{background:var(--blue-bg);border-color:#bcd0e3;color:#163a59}
+  .rb-나의1{background:var(--amber-bg);border-color:#e4d2a6;color:#5e470f}
+  .rb-나의2{background:var(--red-bg);border-color:#e3bdb8;color:#5e201c}
+
+  .notice{margin-top:14px;border-left:3px solid var(--copper);background:#fff;border-radius:0 8px 8px 0;padding:12px 16px;font-size:12.8px;color:var(--ink-soft)}
+  .notice b{color:var(--copper)}
+  .notice.warn{border-color:var(--red)}.notice.warn b{color:var(--red)}
+
+  /* option cards (exemption / permit type) */
+  .opt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(max-width:640px){.opt-grid{grid-template-columns:1fr}}
+  .opt-card{text-align:left;border:1px solid var(--line-strong);background:#fff;border-radius:12px;padding:16px;cursor:pointer;transition:.16s;font-family:inherit;color:inherit;position:relative;overflow:hidden}
+  .opt-card::before{content:"";position:absolute;left:0;top:0;height:100%;width:4px;background:var(--copper);transform:scaleY(0);transform-origin:top;transition:.2s}
+  .opt-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--copper-soft)}
+  .opt-card.sel{border-color:var(--ink);box-shadow:var(--shadow)}
+  .opt-card.sel::before{transform:scaleY(1)}
+  .opt-card .ho{font-family:"Noto Serif KR",serif;color:var(--copper);font-size:12.5px;font-weight:700;margin-bottom:4px}
+  .opt-card h4{font-size:15px;font-weight:700;margin-bottom:6px}
+  .opt-card p{font-size:12.3px;color:var(--muted);line-height:1.5}
+  .opt-none{grid-column:1/-1;border-style:dashed}
+
+  .doc-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+  .doc-meta .m{font-size:12.5px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 13px}
+  .doc-meta .m b{color:var(--copper)}
+
+  .doc{border:1px solid var(--line);background:#fff;border-radius:12px;padding:16px 18px;margin-bottom:12px}
+  .doc.na{opacity:.55}
+  .doc-top{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .doc-name{font-size:15px;font-weight:700;flex:1;min-width:180px}
+  .doc-name .seq{color:var(--copper);font-family:"Noto Serif KR",serif;margin-right:7px}
+  .status{font-size:11.5px;font-weight:700;border-radius:7px;padding:4px 10px;white-space:nowrap}
+  .st-required{background:#e6efe7;color:var(--green)}
+  .st-conditional{background:var(--amber-bg);color:var(--amber)}
+  .st-postsubmit{background:var(--blue-bg);color:var(--blue)}
+  .st-asneeded{background:#eee9df;color:#7a7261}
+  .st-na{background:#ece8df;color:#8c8576}
+  .st-ok{background:#e6efe7;color:var(--green)}
+  .doc-note{font-size:12.8px;color:var(--muted);margin-top:8px;line-height:1.55}
+  .dl-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+  .dl{font-size:12.3px;font-weight:600;text-decoration:none;border-radius:8px;padding:7px 13px;display:inline-flex;align-items:center;gap:6px;transition:.15s;border:1px solid transparent;cursor:pointer}
+  .dl-form{background:var(--ink);color:#fff}.dl-form:hover{background:var(--ink-soft)}
+  .dl-ex{background:#fff;color:var(--copper);border-color:var(--copper-soft)}.dl-ex:hover{background:var(--amber-bg)}
+  .dl .ic{font-size:11px;opacity:.85}
+
+  .blocked-banner{border-radius:12px;padding:24px;border:1px solid #e3bdb8;background:var(--red-bg);color:#5e201c;text-align:center}
+  .blocked-banner .bx{font-size:34px;margin-bottom:8px}
+  .blocked-banner h4{font-size:20px;margin-bottom:8px}
+  .blocked-banner p{font-size:13.5px;line-height:1.6;max-width:560px;margin:0 auto}
+
+  .footer-note{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.6}
+  .footer-note a{color:var(--copper)}
+  .nav-row{display:flex;justify-content:space-between;margin-top:22px;gap:10px}
+  .btn{font-family:inherit;font-size:13.5px;border-radius:10px;padding:11px 20px;cursor:pointer;border:1px solid var(--line-strong);background:#fff;color:var(--ink-soft);transition:.15s;font-weight:600}
+  .btn:hover{border-color:var(--ink)}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}.btn.primary:hover{background:var(--ink-soft)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .hidden{display:none !important}
+
+  .help{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:1px solid var(--copper-soft);background:#fff;color:var(--copper);font-size:10px;font-weight:700;cursor:pointer;margin-left:4px;vertical-align:middle;line-height:1;padding:0;font-family:inherit}
+  .help:hover{background:var(--amber-bg)}
+  .tip{position:fixed;display:none;max-width:260px;background:var(--ink);color:#fff;padding:10px 12px;border-radius:8px;font-size:12px;line-height:1.5;box-shadow:0 10px 28px rgba(0,0,0,.28);z-index:60}
+  .tip b{color:#fff}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .legend .lg{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 10px}
+  .legend .lg .status{font-size:10.5px;padding:2px 7px}
+  .gloss-item{padding:12px 0;border-bottom:1px solid var(--line)}
+  .gloss-item:last-child{border-bottom:none}
+  .gloss-item .gt{font-size:13.5px;font-weight:700;color:var(--ink)}
+  .gloss-item .gd{font-size:12.5px;color:var(--ink-soft);margin-top:3px;line-height:1.55}
+  .head-btns{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .head-btns .lock-btn{margin-left:0}
+  .lock-btn.faq{border-color:var(--copper);color:var(--copper);font-weight:600}
+  .lock-btn.faq:hover{background:var(--amber-bg)}
+
+  /* FAQ 모달 목록 */
+  .faq-list details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:9px 0}
+  .faq-list summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:13.8px}
+  .faq-list summary::marker{color:var(--copper)}
+  .faq-list p{margin:8px 0 0;color:var(--ink-soft);font-size:13.2px;line-height:1.6}
+  .faq-list p b{color:var(--copper)}
+  .modal.wide{max-width:820px}
+
+  /* 인트로 패널 — 제도 한눈에 보기 */
+  .intro{border:1px solid var(--copper-soft);background:linear-gradient(180deg,#fff,var(--paper-2));border-radius:var(--radius);box-shadow:var(--shadow);margin:26px 0 6px;overflow:hidden}
+  .intro>summary{list-style:none;cursor:pointer;padding:18px 24px;display:flex;align-items:center;gap:12px;user-select:none}
+  .intro>summary::-webkit-details-marker{display:none}
+  .intro>summary .iico{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--copper);display:grid;place-items:center;font-size:16px;flex:none;background:#fff}
+  .intro>summary h3{font-size:17px;letter-spacing:-.01em}
+  .intro>summary .isub{font-size:12px;color:var(--muted);margin-top:1px}
+  .intro>summary .ichev{margin-left:auto;color:var(--copper);font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .intro>summary .ichev::after{content:"▾";transition:.2s;font-size:14px}
+  .intro:not([open])>summary .ichev::after{transform:rotate(-90deg)}
+  .intro-body{padding:4px 24px 24px;border-top:1px dashed var(--line)}
+  .intro-sec{margin-top:22px}
+  .intro-sec>h4{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .intro-sec>h4 .tagno{font-family:"Noto Serif KR",serif;color:var(--copper);font-size:12px;font-weight:700}
+  .intro-def{font-size:14px;color:var(--ink-soft);line-height:1.7;background:#fff;border:1px solid var(--line);border-left:4px solid var(--copper);border-radius:0 10px 10px 0;padding:14px 18px}
+  .intro-def b{color:var(--ink)}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+  .flow .fstep{flex:1 1 150px;min-width:140px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 13px}
+  .flow .fstep .fn{width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11.5px;font-weight:700;display:grid;place-items:center;margin-bottom:8px}
+  .flow .fstep b{display:block;font-size:13px;margin-bottom:3px}
+  .flow .fstep span{font-size:11.8px;color:var(--muted);line-height:1.5;display:block}
+  .flow .farr{align-self:center;color:var(--copper);font-weight:700;flex:none}
+  @media(max-width:640px){.flow{flex-direction:column}.flow .farr{transform:rotate(90deg);align-self:flex-start;margin-left:18px}}
+  .ptype-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  @media(max-width:720px){.ptype-grid{grid-template-columns:1fr}}
+  .ptype{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 15px}
+  .ptype .pt{font-size:13.5px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .ptype p{font-size:12.2px;color:var(--muted);line-height:1.55}
+  .pchip{font-size:10.5px;font-weight:700;border-radius:6px;padding:2px 7px;white-space:nowrap}
+  .region-tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:12.6px}
+  .region-tbl th,.region-tbl td{padding:10px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .region-tbl tr:last-child td{border-bottom:none}
+  .region-tbl th{background:var(--paper);font-size:11.8px;color:var(--muted);font-weight:700;white-space:nowrap}
+  .region-tbl td:first-child{white-space:nowrap}
+  .region-tbl .rg{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;white-space:nowrap}
+  .auth-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(max-width:640px){.auth-grid{grid-template-columns:1fr}}
+  .auth{background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:12.6px}
+  .auth b{display:block;font-size:13.2px;margin-bottom:3px}
+  .auth span{color:var(--muted);line-height:1.5}
+  .intro-cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .intro-cta .links{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+
+  .action-card{border:1px solid var(--line-strong);background:linear-gradient(180deg,#fff,var(--paper-2));border-radius:12px;padding:18px 20px;margin-top:18px}
+  .action-card h4{font-size:15.5px;margin-bottom:14px;display:flex;align-items:center;gap:7px;font-weight:700}
+  .steps{margin:0;padding:0;list-style:none;counter-reset:st}
+  .steps li{position:relative;padding-left:34px;margin-bottom:13px}
+  .steps li:last-child{margin-bottom:0}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+  .steps li b{display:block;font-size:13.5px;color:var(--ink);margin-bottom:1px}
+  .steps li span{font-size:12.3px;color:var(--muted);line-height:1.5}
+  .infobar{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .infobar .ib{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 13px;font-size:12.8px;font-weight:600;color:var(--ink)}
+  .infobar .ib b{color:var(--copper);display:block;font-size:10.5px;margin-bottom:2px;font-weight:700;letter-spacing:.02em}
+
+  .result-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+  .print-only{display:none}
+  #toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 20px;border-radius:999px;font-size:13px;box-shadow:0 10px 28px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.25s;z-index:70}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media print{
+    header.top,.stepper,.hero,.intro,#panel1,#panel2,#panel3,#panel4,.nav-row,.result-actions,.help,.overlay,#tip,#toast{display:none !important}
+    body{background:#fff}
+    .wrap{padding:0;max-width:none}
+    #panel5{box-shadow:none;border:none;margin:0;padding:0;background:#fff}
+    .print-only{display:block !important}
+    .action-card,.doc,.notice,.region-banner,.blocked-banner{break-inside:avoid;box-shadow:none}
+    .action-card{background:#fff}
+    .dl{border:1px solid #999 !important;color:#000 !important;background:#fff !important}
+    .doc-meta .m,.infobar .ib{background:#fff}
+  }
+
+  .overlay{position:fixed;inset:0;background:rgba(21,36,61,.45);backdrop-filter:blur(3px);z-index:50;display:none;align-items:flex-start;justify-content:center;padding:50px 16px;overflow:auto}
+  .overlay.open{display:flex}
+  .modal{background:var(--paper-2);border-radius:16px;max-width:680px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.3);border:1px solid var(--line-strong)}
+  .modal-h{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+  .modal-h h3{font-size:17px}.modal-x{border:none;background:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1}
+  .modal-b{padding:22px 24px}
+  @media(max-width:720px){.item-grid{grid-template-columns:1fr}.item-card-head,.item-tools{align-items:stretch;flex-direction:column}.item-tools .right,.item-card-actions{display:grid;grid-template-columns:1fr}.item-card-actions .btn,.item-tools .btn{width:100%}.item-summary{overflow-x:auto}.item-summary table{min-width:620px}}
 </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="brand-mark" aria-hidden="true">EX</div>
-    <div class="brand">
-      <div class="brand-title">전략물자 수출허가 안내</div>
-      <div class="brand-sub">국가 · 품목 · 허가면제 · 서류 안내</div>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="seal serif">전략</div>
+    <div>
+      <h1>전략물자 수출허가 안내</h1>
+      <div class="sub">국가 · 품목(통제번호) · 허가면제 · 허가유형별 안내</div>
     </div>
-    <nav class="step-nav" aria-label="진행 단계">
-      <button type="button" class="step-button active" data-target="countrySection">1. 수출국가</button>
-      <button type="button" class="step-button" data-target="itemSection">2. 수출품목</button>
-      <button type="button" class="step-button" data-target="exemptionSection">3. 허가면제 검토</button>
-      <button type="button" class="step-button" data-target="resultSection">4. 결과</button>
-    </nav>
+    <div class="head-btns">
+      <button class="lock-btn faq" id="faqBtn">❓ FAQ</button>
+      <button class="lock-btn" id="glossBtn">📖 용어 설명</button>
+    </div>
   </div>
 </header>
 
-<main class="wrap">
-  <details class="intro">
-    <summary>처음이신가요?</summary>
-    <div class="intro-content">
-      <div class="intro-grid">
-        <div class="intro-point">
-          <strong>어디로 수출하는지</strong>
-          국가와 지역에 따라 수출허가 가능 여부와 제재 확인 수준이 달라집니다.
-        </div>
-        <div class="intro-point">
-          <strong>무엇을 수출하는지</strong>
-          모델명, 품목명, 전략물자 통제번호를 기준으로 허가 필요성을 검토합니다.
-        </div>
-        <div class="intro-point">
-          <strong>면제가 가능한지</strong>
-          거래 목적과 품목 특성에 따라 허가면제 가능성을 별도로 확인합니다.
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Strategic Goods Export Permit</div>
+    <h2 class="serif">수출국가와 품목(통제번호)을 입력하면<br>허가면제 여부와 필요 서류를 안내합니다</h2>
+    <p>수출국가 → 수출품목 → 허가면제 검토 → (필요 시) 허가유형 순으로 진행합니다. 본 자료는 전략물자수출입고시 및 YESTRADE 공개자료 기반의 사내 참고용입니다.</p>
+  </section>
+
+  <!-- INTRO : 제도 한눈에 보기 -->
+  <details class="intro" id="introPanel">
+    <summary>
+      <span class="iico">🧭</span>
+      <span>
+        <h3 class="serif">처음이신가요? — 전략물자 수출허가 제도 한눈에 보기</h3>
+        <span class="isub">전략물자가 무엇인지, 어떤 절차로 허가를 받는지 3분 안에 파악할 수 있습니다.</span>
+      </span>
+      <span class="ichev">펼치기 / 접기</span>
+    </summary>
+    <div class="intro-body">
+
+      <div class="intro-sec">
+        <h4><span class="tagno">①</span>전략물자란? <button class="help" data-help="전략물자">?</button></h4>
+        <div class="intro-def">
+          <b>전략물자</b>는 국제평화·안전 유지와 국가안보를 위해 <b>수출할 때 정부 허가가 필요한 물품·소프트웨어·기술</b>입니다
+          (대외무역법 제19조, 전략물자수출입고시). 무기류만이 아니라 <b>암호기능이 있는 스마트폰·통신장비, 반도체, 공작기계</b> 같은
+          일반 산업제품(이중용도품목)도 다수 포함되며, 해당 품목에는 <b>통제번호(예: 5A002.a.2.)</b>가 부여됩니다.
+          전략물자가 아니어도 대량파괴무기 등으로 전용될 우려가 있으면 <b>상황허가(캐치올)</b> 대상이 될 수 있습니다.
         </div>
       </div>
+
+      <div class="intro-sec">
+        <h4><span class="tagno">②</span>전체 절차 흐름</h4>
+        <div class="flow">
+          <div class="fstep"><span class="fn">1</span><b>판정</b><span>내 품목이 전략물자인지, 통제번호가 무엇인지 확인 (자가판정·전문판정)</span></div>
+          <span class="farr">→</span>
+          <div class="fstep"><span class="fn">2</span><b>허가 신청 / 면제 검토</b><span>개별·포괄 수출허가 신청, 또는 허가면제(제26조) 해당 여부 검토</span></div>
+          <span class="farr">→</span>
+          <div class="fstep"><span class="fn">3</span><b>심사</b><span>허가기관 심사 — 접수일로부터 15일 이내 (기술심사 등 제외)</span></div>
+          <span class="farr">→</span>
+          <div class="fstep"><span class="fn">4</span><b>수출</b><span>허가서 수령 후 허가 범위(품목·수량·최종사용자) 내에서 수출</span></div>
+          <span class="farr">→</span>
+          <div class="fstep"><span class="fn">5</span><b>사후관리</b><span>면제 수출은 사전신고·사후거래보고, 조건부 서류는 사후 제출</span></div>
+        </div>
+        <div class="notice" style="margin-top:12px"><b>이 화면의 역할</b> &nbsp;아래 1~5단계를 따라가면 <b>2번(허가 신청 / 면제 검토)</b>에 필요한 서류와 절차를 안내받을 수 있습니다. 판정이 아직이라면 2단계에서 ‘모르겠어요’를 선택하세요.</div>
+      </div>
+
+      <div class="intro-sec">
+        <h4><span class="tagno">③</span>허가의 세 가지 종류</h4>
+        <div class="ptype-grid">
+          <div class="ptype">
+            <div class="pt">개별수출허가 <button class="help" data-help="개별수출허가">?</button><span class="pchip" style="background:var(--blue-bg);color:var(--blue)">가장 일반적</span></div>
+            <p>확인된 수량의 전략물자를 <b>건별로</b> 허가받는 기본 유형입니다. 대부분의 수출이 여기에 해당합니다.</p>
+          </div>
+          <div class="ptype">
+            <div class="pt">포괄수출허가 <button class="help" data-help="사용자포괄수출허가">?</button><span class="pchip" style="background:var(--amber-bg);color:var(--amber)">CP 지정기업</span></div>
+            <p>자율준수무역거래자(CP)가 구매자·목적지·최종수하인을 지정해 <b>일정 기간 반복 수출</b>을 허가받는 유형입니다.</p>
+          </div>
+          <div class="ptype">
+            <div class="pt">상황허가 (캐치올) <button class="help" data-help="상황허가">?</button><span class="pchip" style="background:var(--red-bg);color:var(--red)">비전략물자</span></div>
+            <p>전략물자가 <b>아니어도</b> 대량파괴무기 등으로 전용될 우려가 있으면 받아야 하는 허가입니다. 의심 거래는 통상팀에 문의하세요.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-sec">
+        <h4><span class="tagno">④</span>수출국가에 따라 달라져요 — 지역 구분</h4>
+        <table class="region-tbl">
+          <tr><th>구분</th><th>대상 국가</th><th>서류·허가</th></tr>
+          <tr><td><span class="rg rg-가">가 지역</span></td><td>4대 국제수출통제체제에 모두 가입한 29개국 (미국·일본·독일 등)</td><td>신뢰도가 높아 일부 서류가 신청 시 생략됩니다.</td></tr>
+          <tr><td><span class="rg rg-나의1">나의1 지역</span></td><td>가·나의2 지역을 제외한 그 밖의 모든 국가 (중국·베트남·인도 등)</td><td>원칙적으로 전체 서류 제출이 필요합니다.</td></tr>
+          <tr><td><span class="rg rg-나의2">나의2 지역</span></td><td>UN 무기금수 등 우려대상 13개국 (북한·이란·시리아 등)</td><td>서류·허가 면제가 제한되고 심사가 엄격합니다.</td></tr>
+        </table>
+        <div class="notice warn" style="margin-top:12px"><b>러시아·벨라루스</b> &nbsp;전략물자 수출이 원칙적으로 <b>금지</b>됩니다. 1단계에서 선택하면 곧바로 안내됩니다.</div>
+      </div>
+
+      <div class="intro-sec">
+        <h4><span class="tagno">⑤</span>허가기관 — 품목에 따라 다릅니다</h4>
+        <div class="auth-grid">
+          <div class="auth"><b>산업통상자원부</b><span>이중용도품목 (일반 산업·IT 제품 대부분)</span></div>
+          <div class="auth"><b>원자력안전위원회</b><span>원자력 전용품목 (통제번호 0 계열)</span></div>
+          <div class="auth"><b>방위사업청</b><span>군용물자품목 (ML 계열)</span></div>
+          <div class="auth"><b>통일부</b><span>북한 반출 (반출승인)</span></div>
+        </div>
+      </div>
+
+      <div class="intro-cta">
+        <button class="btn primary" id="introStart">바로 시작하기 → 1단계 수출국가 입력</button>
+        <div class="links">
+          <a class="dl dl-ex" href="https://www.yestrade.go.kr/export-permissions/guide/overview" target="_blank" rel="noopener"><span class="ic">↗</span>YESTRADE 제도 안내</a>
+          <a class="dl dl-ex" href="https://www.law.go.kr/행정규칙/전략물자수출입고시" target="_blank" rel="noopener"><span class="ic">↗</span>고시 원문</a>
+        </div>
+      </div>
+
     </div>
   </details>
 
-  <section class="section" id="countrySection" data-step="1">
-    <div class="section-head">
-      <div>
-        <div class="section-kicker">Step 1</div>
-        <h1>수출국가와 지역 판정</h1>
-        <p class="section-desc">도착 국가 또는 최종사용자가 소재한 국가를 기준으로 기본 제한 여부를 확인합니다.</p>
-      </div>
+  <div class="stepper">
+    <div class="step-pill active" data-step="1"><span class="n">1</span> 수출국가</div>
+    <div class="step-pill" data-step="2"><span class="n">2</span> 수출품목</div>
+    <div class="step-pill" data-step="3"><span class="n">3</span> 허가면제 검토</div>
+    <div class="step-pill" data-step="4"><span class="n">4</span> 허가유형</div>
+    <div class="step-pill" data-step="5"><span class="n">5</span> 안내결과</div>
+  </div>
+
+  <!-- STEP 1 : COUNTRY -->
+  <section class="panel" id="panel1">
+    <div class="panel-h"><span class="badge-n">01</span><h3>수출 대상 국가</h3></div>
+    <p class="lead">목적지 국가 기준으로 <b>가 / 나의1 / 나의2 지역</b>을 자동 판정합니다. 목록에 없는 국가(예: 버뮤다)는 입력 후 직접 선택하면 나의1 지역으로 처리됩니다.</p>
+    <div class="combo">
+      <input type="text" id="countryInput" placeholder="국가명 입력 (예: 미국, 중국, 베트남, 러시아 …)" autocomplete="off">
+      <div class="combo-list" id="comboList"></div>
     </div>
-    <div class="section-body">
-      <div class="grid two">
-        <div class="field">
-          <label class="req" for="countrySelect">수출 대상 국가</label>
-          <select id="countrySelect">
-            <option value="">국가 선택</option>
-            <option value="US">미국</option>
-            <option value="CN">중국</option>
-            <option value="VN">베트남</option>
-            <option value="DE">독일</option>
-            <option value="RU">러시아</option>
-            <option value="BY">벨라루스</option>
-            <option value="IR">이란</option>
-            <option value="KP">북한</option>
-            <option value="SY">시리아</option>
-            <option value="CU">쿠바</option>
-            <option value="OTHER">기타 국가</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="endUser">최종사용자 또는 거래상대방</label>
-          <input type="text" id="endUser" placeholder="예: ABC Electronics Vietnam">
-        </div>
-      </div>
-      <div class="grid two" style="margin-top:14px;">
-        <div class="field">
-          <label for="useCase">최종 용도</label>
-          <input type="text" id="useCase" placeholder="예: 소비자용 제품 제조, 연구개발, 유지보수">
-        </div>
-        <div class="field">
-          <label for="shipDate">예상 수출일</label>
-          <input type="text" id="shipDate" placeholder="예: 2026-07-15">
-        </div>
-      </div>
-      <div id="countryResult" class="alert info">국가를 선택하면 지역 판정이 표시됩니다.</div>
-      <div class="actions">
-        <button type="button" class="btn primary" data-target="itemSection">다음: 수출품목</button>
-      </div>
-    </div>
+    <div class="region-result" id="regionResult"></div>
+    <div class="nav-row"><span></span><button class="btn primary" id="next1" disabled>다음 →</button></div>
   </section>
 
-  <section class="section" id="itemSection" data-step="2">
-    <div class="section-head">
-      <div>
-        <div class="section-kicker">Step 2</div>
-        <h2>수출 품목 정보 입력</h2>
-        <p class="section-desc">모델명, 품목명, 전략물자 통제번호 순서로 입력합니다. 여러 품목을 한 번에 확인할 수 있습니다.</p>
-      </div>
+  <!-- STEP 2 : ITEM -->
+  <section class="panel hidden" id="panel2">
+    <div class="panel-h"><span class="badge-n">02</span><h3>수출 품목 정보</h3></div>
+    <p class="lead">먼저 통제번호(ECCN)를 알고 계신지 선택하세요. 통제번호는 전략물자 <b>‘판정’</b>을 통해 확인합니다.</p>
+
+    <div class="opt-grid" id="knowSel">
+      <button class="opt-card sel" data-know="yes"><h4>통제번호를 알고 있어요</h4><p>판정서에 기재된 통제번호(예: 5A002.a.2.)를 입력해 진행합니다.</p></button>
+      <button class="opt-card" data-know="no"><h4>모르겠어요 · 전략물자인지 모름</h4><p>통제번호가 없거나 전략물자 해당 여부가 불확실하면 판정 방법을 안내합니다.</p></button>
     </div>
-    <div class="section-body">
-      <div class="batch-box collapsed" id="batchBox">
-        <button type="button" class="batch-title" id="toggleBatch">
-          <span>대량건 한번에 확인</span>
-          <span id="batchToggleLabel">펼치기</span>
-        </button>
-        <div class="batch-body" style="margin-top:14px;">
-          <div class="field">
-            <label for="bulkInput">대량 입력</label>
-            <textarea id="bulkInput" placeholder="한 줄에 하나씩 입력하세요.&#10;예: SM-G998N, 스마트폰, 5A002&#10;예: ENC-SW-01&#10;예: CNC-9000, 공작기계"></textarea>
-            <div class="hint">쉼표 또는 탭으로 모델명, 품목명, 통제번호를 구분합니다. 모델명이 테스트 DB에 있으면 품목명과 통제번호가 자동 보완됩니다.</div>
+
+    <div id="knowYes" style="margin-top:20px">
+      <div class="batch-box">
+        <details>
+          <summary><span>대량건 한번에 확인</span><span>펼치기 / 접기</span></summary>
+          <div class="batch-body">
+            <div class="field">
+              <label>대량 입력</label>
+              <textarea id="bulkInput" placeholder="한 줄에 하나씩 입력하세요.&#10;예: SM-G998N, 스마트폰, 5A002.a.2.&#10;예: CNC-9000&#10;예: ENC-SW-01, 암호화 소프트웨어"></textarea>
+              <div class="hint">쉼표 또는 탭으로 모델명, 품목명, 통제번호를 구분합니다. 테스트 DB에 모델명이 있으면 품목명·통제번호·판정 유효기간이 자동 보완됩니다.</div>
+            </div>
+            <div class="item-card-actions">
+              <button class="btn mini-btn" id="sampleBulk">샘플 채우기</button>
+              <button class="btn primary mini-btn" id="applyBulk">대량 입력 반영</button>
+            </div>
           </div>
-          <div class="actions">
-            <button type="button" class="btn secondary" id="applyBulkBtn">대량 입력 반영</button>
-            <button type="button" class="btn ghost" id="sampleBulkBtn">샘플 채우기</button>
-          </div>
-        </div>
+        </details>
       </div>
 
-      <div class="item-toolbar">
-        <div>
-          <h3>품목 목록</h3>
-          <div class="hint">기본 1개 품목이 표시되며, 품목 추가로 여러 건을 검토할 수 있습니다.</div>
+      <div class="item-tools">
+        <div class="left">기본 1개 품목이 표시됩니다. 모델명 → 품목명 → 통제번호 순서로 입력하세요.</div>
+        <div class="right">
+          <button class="btn mini-btn" id="lookupAll">DB 조회</button>
+          <button class="btn primary mini-btn" id="addItem">품목 추가</button>
         </div>
-        <button type="button" class="btn primary" id="addItemBtn">품목 추가</button>
       </div>
       <div id="itemList" class="item-list"></div>
-      <div class="actions">
-        <button type="button" class="btn secondary" id="lookupAllBtn">모든 품목 DB 조회</button>
-        <button type="button" class="btn primary" data-target="exemptionSection">다음: 허가면제 검토</button>
-      </div>
+      <div id="ruWarn"></div>
     </div>
-  </section>
 
-  <section class="section" id="exemptionSection" data-step="3">
-    <div class="section-head">
-      <div>
-        <div class="section-kicker">Step 3</div>
-        <h2>허가면제 검토</h2>
-        <p class="section-desc">전략물자에 해당하는 품목이 있는 경우에만 면제 가능성을 검토합니다.</p>
-      </div>
-    </div>
-    <div class="section-body">
-      <div id="exemptionIntro" class="alert info">품목을 입력하면 허가면제 검토 대상 여부가 표시됩니다.</div>
-      <div id="encryptionNotice" class="alert warn" style="display:none;"></div>
-      <div class="question-list" id="questionList"></div>
-      <div id="exemptionResult" class="alert info">문진 결과가 여기에 표시됩니다.</div>
-      <div class="actions">
-        <button type="button" class="btn primary" data-target="resultSection">다음: 결과 확인</button>
-      </div>
-    </div>
-  </section>
+    <div id="knowNo" class="hidden" style="margin-top:20px">
+      <div class="region-banner rb-나의1"><div class="rb-ico">🧭</div><div>
+        <h4 class="serif">통제번호는 ‘전략물자 판정’으로 확인합니다</h4>
+        <p>통제번호(예: 5A002)는 품목이 어떤 통제목록에 해당하는지 나타내는 번호로, <b>판정서에 기재</b>됩니다. 판정 없이는 허가 진행이 어렵습니다.</p>
+      </div></div>
 
-  <section class="section" id="resultSection" data-step="4">
-    <div class="section-head">
-      <div>
-        <div class="section-kicker">Step 4</div>
-        <h2>최종 결과와 서류 안내</h2>
-        <p class="section-desc">입력한 모든 품목과 국가 판정, DB 조회, 허가면제 검토 결과를 요약합니다.</p>
-      </div>
-    </div>
-    <div class="section-body">
-      <div class="result-grid" id="metrics"></div>
-      <div id="finalAlerts"></div>
-      <div style="margin-top:18px;">
-        <h3>품목 메타 정보</h3>
-        <div class="table-wrap" style="margin-top:10px;">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>모델명</th>
-                <th>품목명</th>
-                <th>전략물자 통제번호</th>
-                <th>DB 조회</th>
-                <th>유효기간</th>
-                <th>자동 서식</th>
-              </tr>
-            </thead>
-            <tbody id="itemSummaryBody"></tbody>
-          </table>
+      <div class="doc" style="margin-top:14px">
+        <div class="doc-name">판정 방법 두 가지</div>
+        <div class="doc-note"><b>① 자가판정 <button class="help" data-help="자가판정">?</button></b> — 수출자가 전략물자관리시스템(YESTRADE)에서 직접 판단. 무료·즉시 진행.</div>
+        <div class="doc-note"><b>② 전문판정 <button class="help" data-help="전문판정">?</button></b> — 무역안보관리원(KOSTI) 등 전문판정기관에 의뢰. 접수 후 15일 이내 결과 통보.</div>
+        <div class="dl-row">
+          <a class="dl dl-form" href="https://www.yestrade.go.kr/" target="_blank" rel="noopener"><span class="ic">↗</span>YESTRADE 판정 신청</a>
+          <a class="dl dl-ex" href="https://www.kosti.or.kr/cms/content/view/286" target="_blank" rel="noopener"><span class="ic">↗</span>판정 방법 안내</a>
         </div>
       </div>
-      <div style="margin-top:18px;">
-        <h3>허가유형별 서류 안내</h3>
-        <div class="doc-list" id="docList" style="margin-top:10px;"></div>
-      </div>
-      <div style="margin-top:18px;">
-        <h3>복사용 요약</h3>
-        <div class="copy-area" id="copyArea"></div>
-      </div>
-      <div class="actions">
-        <button type="button" class="btn secondary" id="copyBtn">요약 복사</button>
-        <button type="button" class="btn ghost" id="printBtn">인쇄</button>
-      </div>
+
+      <div class="notice"><b>진행 순서</b> &nbsp;① YESTRADE 접속 → ‘판정/허가 신청 &gt; 자가판정’(또는 전문판정 신청) ② 판정 결과·통제번호 확인 ③ 이 화면으로 돌아와 ‘통제번호를 알고 있어요’를 선택해 계속 진행.</div>
+      <div class="notice"><b>판정 결과별</b> &nbsp;· <b>전략물자 해당</b>(통제번호 있음) → 돌아와 통제번호 입력 후 진행. · <b>비해당</b> → 전략물자 수출허가는 불필요. 다만 거래가 의심스러우면 상황허가(캐치올) 대상일 수 있으니 통상팀·허가기관에 확인하세요.</div>
+      <div class="notice warn"><b>유의</b> &nbsp;암호기능이 있는 IT·전자 제품은 5A002 등 전략물자에 해당하는 경우가 많습니다. 임의로 단정하지 말고 반드시 판정으로 확인하세요.</div>
+
+      <div style="margin-top:14px"><button class="btn primary" id="haveCtrl">통제번호를 확인했어요 → 입력하기</button></div>
     </div>
+
+    <div class="nav-row"><button class="btn" id="back2">← 이전</button><button class="btn primary" id="next2" disabled>다음 →</button></div>
   </section>
-</main>
+
+  <!-- STEP 3 : EXEMPTION REVIEW (문진) -->
+  <section class="panel hidden" id="panel3">
+    <div class="panel-h"><span class="badge-n">03</span><h3>허가면제 검토 (제26조)</h3></div>
+    <p class="lead" id="exLead">몇 가지 질문으로 허가면제 해당 여부를 확인합니다.</p>
+    <div id="exemptBody"></div>
+    <div class="nav-row"><button class="btn" id="back3">← 이전</button><span></span></div>
+  </section>
+
+  <!-- STEP 4 : PERMIT TYPE -->
+  <section class="panel hidden" id="panel4">
+    <div class="panel-h"><span class="badge-n">04</span><h3>수출허가 유형</h3></div>
+    <p class="lead">신청할 허가 유형을 선택하세요.</p>
+    <div class="opt-grid">
+      <button class="opt-card" data-ptype="개별">
+        <h4>개별수출허가 <button class="help" data-help="개별수출허가">?</button></h4>
+        <p>확인된 수량의 품목에 대해 허가기관이 건별로 허가하는 가장 일반적인 유형입니다.</p>
+      </button>
+      <button class="opt-card" data-ptype="사용자포괄">
+        <h4>사용자포괄수출허가 <button class="help" data-help="사용자포괄수출허가">?</button></h4>
+        <p>자율준수무역거래자(CP)에게 구매자·목적지국가·최종수하인을 지정하여 일정 기간 동안 수출하도록 허가합니다.</p>
+      </button>
+    </div>
+    <div class="nav-row"><button class="btn" id="back4">← 이전</button><button class="btn primary" id="next4" disabled>안내 결과 보기 →</button></div>
+  </section>
+
+  <!-- STEP 5 : RESULT -->
+  <section class="panel hidden" id="panel5">
+    <div id="printHead" class="print-only"></div>
+    <div class="panel-h"><span class="badge-n">05</span><h3 id="resultTitle">안내 결과</h3></div>
+    <div class="doc-meta" id="docMeta"></div>
+    <div id="docList"></div>
+    <div id="docExtra"></div>
+    <div class="footer-note" id="footerNote"></div>
+    <div class="result-actions" id="resultActions">
+      <button class="btn" id="copyBtn">📋 요약 복사</button>
+      <button class="btn" id="printBtn">🖨 인쇄 / PDF 저장</button>
+    </div>
+    <div class="nav-row"><button class="btn" id="back5">← 이전</button><button class="btn" id="restart">처음부터 다시</button></div>
+  </section>
+</div>
+
+<!-- GLOSSARY -->
+<div class="overlay" id="glossaryOverlay">
+  <div class="modal">
+    <div class="modal-h"><h3>📖 용어 설명</h3><button class="modal-x" id="glossX">×</button></div>
+    <div class="modal-b" id="glossBody"></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="overlay" id="faqOverlay">
+  <div class="modal wide">
+    <div class="modal-h"><h3>❓ 자주 묻는 질문</h3><button class="modal-x" id="faqX">×</button></div>
+    <div class="modal-b faq-list">
+      <details open><summary>1. 전략물자란 무엇이고, 왜 수출허가가 필요한가요?</summary><p>국제평화·안전 유지와 국가안보를 위해 수출이 통제되는 물품·소프트웨어·기술입니다(대외무역법 제19조). 무기류뿐 아니라 <b>암호기능이 있는 스마트폰·통신장비, 반도체 장비</b> 같은 일반 산업제품(이중용도품목)도 다수 포함되며, 해당 품목은 수출 전 허가기관의 허가를 받아야 합니다.</p></details>
+      <details><summary>2. 우리 제품이 전략물자인지 어떻게 확인하나요?</summary><p>‘판정’으로 확인합니다. <b>자가판정</b>은 YESTRADE에서 수출자가 직접 판단(무료·즉시), <b>전문판정</b>은 무역안보관리원(KOSTI) 등에 의뢰(접수 후 15일 이내 통보)합니다. 판정 결과 전략물자에 해당하면 통제번호가 부여됩니다. 자가판정서는 신청일 기준 최근 2년 이내의 것이어야 합니다.</p></details>
+      <details><summary>3. 통제번호(ECCN)가 뭔가요?</summary><p>품목이 어떤 국제통제목록에 해당하는지 나타내는 분류번호(예: 5A002.a.2.)로, 판정서에 기재됩니다. 통제번호를 알아야 허가 신청을 진행할 수 있으며, 이 화면 2단계에서 입력합니다. 모르면 2단계의 ‘모르겠어요’를 선택해 판정 방법 안내를 받으세요.</p></details>
+      <details><summary>4. 가 / 나의1 / 나의2 지역은 뭐가 다른가요?</summary><p><b>가 지역</b>은 4대 국제수출통제체제에 모두 가입한 29개국으로 일부 서류가 신청 시 생략됩니다. <b>나의1 지역</b>은 그 밖의 모든 국가로 전체 서류 제출이 원칙입니다. <b>나의2 지역</b>은 UN 무기금수 등 우려대상 13개국으로 서류·허가 면제가 제한되고 심사가 엄격합니다. 수출국가를 입력하면 자동 판정됩니다.</p></details>
+      <details><summary>5. 개별수출허가와 사용자포괄수출허가는 어떻게 다른가요?</summary><p><b>개별수출허가</b>는 확인된 수량을 건별로 허가받는 가장 일반적인 유형입니다. <b>사용자포괄수출허가</b>는 자율준수무역거래자(CP)로 지정된 수출자가 구매자·목적지·최종수하인을 지정해 일정 기간 반복 수출하도록 허가받는 유형으로, CP 지정 기업만 신청할 수 있고 나의2 지역에는 적용되지 않습니다.</p></details>
+      <details><summary>6. 허가면제는 어떤 경우에 받을 수 있나요?</summary><p>전략물자수출입고시 제26조에 따라 <b>수입품 반송, 전시회 출품 후 1년 내 재반입, 해외 검사·수리 후 재반입, 암호화 품목의 민간용 수출</b> 등 일부 경우에 개별수출허가가 면제됩니다. 이 화면 3단계 문진에서 해당 여부를 확인할 수 있습니다. 단, 나의2 지역행이거나 경유·환적하는 경우 면제가 적용되지 않습니다.</p></details>
+      <details><summary>7. 허가면제를 받으면 아무 절차 없이 수출해도 되나요?</summary><p>아닙니다. 면제라도 수출 <b>전 사전신고서(별지 제1호의4)</b>를 제출하거나 수출 <b>후 7일 이내 사후거래보고서(별지 제16호)</b>를 허가기관에 제출해야 하며, 재반입 조건부 면제는 1년 이내 재수입 또는 현지 폐기 증빙을 보관해야 합니다.</p></details>
+      <details><summary>8. 전략물자가 아니면(비해당 판정) 자유롭게 수출 가능한가요?</summary><p>원칙적으로 전략물자 수출허가는 불필요합니다. 다만 구매자·최종사용자가 대량파괴무기 등으로 전용할 우려가 있으면 <b>상황허가(캐치올)</b> 대상이 될 수 있습니다. 거래가 의심스러우면(우려거래자, 용도 불명확 등) 통상팀·허가기관에 반드시 확인하세요.</p></details>
+      <details><summary>9. 러시아·벨라루스로는 왜 수출이 안 되나요?</summary><p>對러시아·벨라루스 수출통제에 따라 전략물자(통제번호 보유 품목)의 수출이 원칙적으로 금지됩니다. 선박·항공 안전, 민간 원자력 안전, 인도적 지원 등 <b>사안별 예외 심사</b> 대상에 한해 검토될 수 있으므로, 진행 전 통상팀·법무 검토가 필요합니다.</p></details>
+      <details><summary>10. 허가는 어디에서 받나요? (허가기관)</summary><p>품목에 따라 다릅니다. <b>이중용도품목은 산업통상자원부</b>, 원자력 전용품목(0 계열)은 원자력안전위원회, 군용물자품목(ML 계열)은 방위사업청, 북한 반출은 통일부 소관입니다. 신청은 모두 전략물자관리시스템 <b>YESTRADE</b>(yestrade.go.kr)에서 합니다.</p></details>
+      <details><summary>11. 허가 처리기간은 얼마나 걸리나요?</summary><p>신청서 접수일로부터 <b>15일 이내</b>가 원칙입니다(기술심사·관계기관 협의·현지조사 기간 제외). 통제체제 가입국 수출 또는 수출실적이 있는 품목을 같은 최종사용자에게 수출하는 경우 10일 이내로 단축될 수 있습니다(원자력·군용 제외).</p></details>
+      <details><summary>12. 허가 없이 수출하면 어떻게 되나요?</summary><p>무허가 수출은 대외무역법에 따라 <b>형사처벌 및 일정 기간 수출입 제한</b> 등 무거운 제재 대상입니다. 미국 재수출통제(EAR) 등 외국 법령이 함께 적용될 수도 있습니다. 애매하면 수출을 보류하고 반드시 먼저 확인하세요.</p></details>
+      <details><summary>13. 최종수하인과 최종사용자는 뭐가 다른가요?</summary><p><b>최종수하인</b>은 물품을 실제로 인도받는 자(받는 사람), <b>최종사용자</b>는 물품을 실제로 사용하는 자입니다. 서로 다를 수 있으며, 허가 신청 시 각각에 대한 진술서·서약서가 필요할 수 있습니다.</p></details>
+      <details><summary>14. 판단이 애매하면 어떻게 해야 하나요?</summary><p>자가 판단으로 종결하지 마세요. 이 화면의 <b>안내 결과(요약 복사·인쇄)</b>와 거래 정보를 통상팀 담당자에게 공유해 검토를 요청하거나, YESTRADE·무역안보관리원(KOSTI)에 문의하세요. 본 화면은 사내 참고용이며 법적 효력이 없습니다.</p></details>
+    </div>
+  </div>
+</div>
+
+<div id="tip" class="tip"></div>
+<div id="toast"></div>
 
 <script>
-const today = new Date();
-const todayIso = today.toISOString().slice(0, 10);
+/* ===== 설정 ===== */
+const BAKED_CONFIG = { formOverrides:{}, exampleLinks:{} };
 
-const MODEL_DB = [
-  {
-    modelName: "SM-G998N",
-    itemName: "스마트폰",
-    ctrlNo: "5A002",
-    source: "자가판정",
-    determinationNo: "SELF-2026-0012",
-    validUntil: "2028-03-31",
-    result: "해당",
-    formHint: "전략물자 수출허가 신청서 - 암호화 품목 부속정보 자동 기재"
-  },
-  {
-    modelName: "ENC-SW-01",
-    itemName: "암호화 소프트웨어",
-    ctrlNo: "5D002",
-    source: "전문판정",
-    determinationNo: "EXP-2026-0044",
-    validUntil: "2027-11-30",
-    result: "해당",
-    formHint: "소프트웨어 수출형태, 제공방식, 사용자 범위 자동 기재"
-  },
-  {
-    modelName: "CNC-9000",
-    itemName: "5축 머시닝센터",
-    ctrlNo: "2B001",
-    source: "전문판정",
-    determinationNo: "EXP-2024-0318",
-    validUntil: "2026-01-15",
-    result: "해당",
-    formHint: "공작기계 사양, 정밀도, 축수 항목 자동 기재"
-  },
-  {
-    modelName: "GPU-A100",
-    itemName: "고성능 GPU 모듈",
-    ctrlNo: "3A090",
-    source: "자가판정",
-    determinationNo: "SELF-2025-0901",
-    validUntil: "2027-06-30",
-    result: "해당",
-    formHint: "연산성능, 인터커넥트, 최종용도 항목 자동 기재"
-  },
-  {
-    modelName: "INV-200",
-    itemName: "범용 인버터",
-    ctrlNo: "",
-    source: "자가판정",
-    determinationNo: "SELF-2025-0220",
-    validUntil: "2028-02-28",
-    result: "비해당",
-    formHint: "비해당 판정 근거와 판정번호 자동 기재"
-  }
-];
-
-const COUNTRY_DB = {
-  US: { name: "미국", region: "일반 관리 국가", level: "normal", note: "일반적인 전략물자 수출허가 검토 대상입니다." },
-  CN: { name: "중국", region: "우려거래·최종용도 확인 강화", level: "caution", note: "최종사용자, 최종용도, 군사전용 가능성을 함께 확인하세요." },
-  VN: { name: "베트남", region: "일반 관리 국가", level: "normal", note: "일반적인 전략물자 수출허가 검토 대상입니다." },
-  DE: { name: "독일", region: "수출통제 공조국", level: "normal", note: "전략물자 해당 여부와 거래상대방 확인이 필요합니다." },
-  RU: { name: "러시아", region: "러시아/벨라루스 차단 대상", level: "blocked", note: "전략물자 통제번호가 있는 품목은 수출 불가 안내가 우선 표시됩니다." },
-  BY: { name: "벨라루스", region: "러시아/벨라루스 차단 대상", level: "blocked", note: "전략물자 통제번호가 있는 품목은 수출 불가 안내가 우선 표시됩니다." },
-  IR: { name: "이란", region: "제재 고위험 국가", level: "restricted", note: "전략물자 여부와 별개로 제재, 금융, 최종사용자 심사가 필요합니다." },
-  KP: { name: "북한", region: "제재 고위험 국가", level: "restricted", note: "대북 제재 및 수출입 제한을 우선 확인해야 합니다." },
-  SY: { name: "시리아", region: "제재 고위험 국가", level: "restricted", note: "국제 제재 및 국내 고시상 제한을 우선 확인해야 합니다." },
-  CU: { name: "쿠바", region: "제재 고위험 국가", level: "restricted", note: "미국 재수출규정 등 복수 관할 리스크를 함께 확인하세요." },
-  OTHER: { name: "기타 국가", region: "직접 확인 필요", level: "caution", note: "국가명과 최종사용자 소재지를 기준으로 별도 확인이 필요합니다." }
+const YT = id => "https://www.yestrade.go.kr/static-files/" + id;
+const OFFICIAL = {
+  finalReceiver_I:[["DOC",YT(2670)],["HWP",YT(2673)],["PDF",YT(2674)]],
+  exporterPledge:[["DOC",YT(2675)],["HWP",YT(2676)],["PDF",YT(2677)]],
+  endUserAll_I:[["별지2의2 DOC",YT(2678)],["별지2의2 HWP",YT(2679)]],
+  endUserWA_I:[["별지2의3 DOC",YT(2680)],["별지2의3 HWP",YT(2681)]],
+  endUserGuide_I:[["가이던스 PDF",YT(2682)]],
+  finalReceiver_II:[["DOC",YT(2683)],["HWP",YT(2684)]],
+  endUserAll_II:[["별지2의2 DOC",YT(2685)],["별지2의2 HWP",YT(2686)]],
+  endUserWA_II:[["별지2의3 DOC",YT(2687)],["별지2의3 HWP",YT(2688)]],
+  endUserGuide_II:[["가이던스 PDF",YT(2689)]]
 };
 
-const QUESTIONS = [
-  {
-    id: "returnRepair",
-    title: "수리·반송 목적",
-    text: "일시 수출 후 동일 품목을 재수입하거나, 수리를 위해 반출하는 거래인가요?"
-  },
-  {
-    id: "displayOnly",
-    title: "전시·시연 목적",
-    text: "판매·이전 없이 전시회, 시연, 시험평가 목적으로만 반출되나요?"
-  },
-  {
-    id: "publicInfo",
-    title: "공개 정보 또는 공개 소프트웨어",
-    text: "이미 공개되어 누구나 접근 가능한 기술·소프트웨어에 해당하나요?"
-  },
-  {
-    id: "sameCompany",
-    title: "동일 회사 내부 이전",
-    text: "해외 법인 또는 지점으로의 내부 이전이며 최종사용자가 명확한가요?"
-  },
-  {
-    id: "noMilitary",
-    title: "군사용·WMD 관련 우려 없음",
-    text: "군사 최종용도, 대량파괴무기 관련 용도, 우려거래자 관련성이 없다고 확인했나요?"
-  }
-];
+/* ===== 국가 / 지역 ===== */
+const 가=["미국","일본","영국","프랑스","독일","캐나다","호주","뉴질랜드","네덜란드","벨기에","룩셈부르크","스위스","스웨덴","노르웨이","핀란드","덴마크","오스트리아","아일랜드","이탈리아","스페인","포르투갈","그리스","폴란드","체코","헝가리","불가리아","우크라이나","아르헨티나","터키"];
+const 가_미국령=["괌(미국령)","북마리아나제도(미국령)","미국령 버진아일랜드","푸에르토리코(미국령)"];
+const 나의2=["북한","이란","시리아","수단","남수단","소말리아","리비아","레바논","이라크","예멘","아프가니스탄","콩고민주공화국","중앙아프리카공화국"];
+const 나의1=["중국","홍콩","대만","마카오","싱가포르","말레이시아","인도네시아","태국","베트남","필리핀","인도","파키스탄","방글라데시","스리랑카","미얀마","캄보디아","라오스","몽골","네팔","부탄","몰디브","브루나이","동티모르","러시아","벨라루스","카자흐스탄","우즈베키스탄","키르기스스탄","투르크메니스탄","타지키스탄","아제르바이잔","아르메니아","조지아","사우디아라비아","아랍에미리트","카타르","쿠웨이트","바레인","오만","이스라엘","요르단","팔레스타인","이집트","모로코","알제리","튀니지","남아프리카공화국","나이지리아","케냐","가나","에티오피아","탄자니아","앙골라","우간다","르완다","카메룬","세네갈","코트디부아르","말리","부르키나파소","니제르","차드","모리타니","감비아","기니","시에라리온","라이베리아","토고","베냉","가봉","콩고","적도기니","지부티","에리트레아","짐바브웨","잠비아","모잠비크","보츠와나","나미비아","레소토","에스와티니","말라위","마다가스카르","모리셔스","세이셸","카보베르데","브라질","멕시코","칠레","콜롬비아","페루","우루과이","파라과이","볼리비아","에콰도르","베네수엘라","코스타리카","파나마","과테말라","온두라스","엘살바도르","니카라과","쿠바","아이티","도미니카공화국","자메이카","트리니다드토바고","바베이도스","바하마","벨리즈","가이아나","수리남","버뮤다","케이맨제도","영국령 버진아일랜드","지브롤터","아이슬란드","루마니아","크로아티아","슬로바키아","슬로베니아","에스토니아","라트비아","리투아니아","키프로스","몰타","세르비아","알바니아","몬테네그로","북마케도니아","보스니아헤르체고비나","코소보","몰도바","모나코","리히텐슈타인","안도라","산마리노","피지","파푸아뉴기니","사모아","통가","바누아투","솔로몬제도","팔라우","마셜제도","미크로네시아"];
+const RU_BY=["러시아","벨라루스"];
+const ENC_CODES=["5A002.A.1","5A002.A.2","5A002.A.3","5A002.A.4","5B002","5D002"];
 
-const state = {
-  destination: {
-    countryCode: "",
-    countryName: "",
-    region: "",
-    level: "",
-    endUser: "",
-    useCase: "",
-    shipDate: ""
-  },
-  items: [
-    { id: makeId(), modelName: "", itemName: "", ctrlNo: "", dbMatch: null }
-  ],
-  exemptionAnswers: {},
-  activeStep: 1
+const COUNTRIES=[]; const seen=new Set();
+const add=(n,r,note)=>{ if(!seen.has(n)){seen.add(n);COUNTRIES.push({n,r,note:note||null});} };
+가.forEach(n=>add(n,"가")); 가_미국령.forEach(n=>add(n,"가","미국령 — 가 지역"));
+나의2.forEach(n=>add(n,"나의2")); 나의1.forEach(n=>add(n,"나의1"));
+COUNTRIES.sort((a,b)=>a.n.localeCompare(b.n,"ko"));
+
+const REGION_INFO={
+  "가":{icon:"🟦",title:"가 지역",desc:"4대 국제수출통제체제(WA·NSG·MTCR·AG)에 모두 가입한 29개국.",tone:"가"},
+  "나의1":{icon:"🟨",title:"나의1 지역",desc:"가·나의2 지역을 제외한 그 밖의 모든 국가. 원칙적으로 전체 서류 제출이 필요합니다.",tone:"나의1"},
+  "나의2":{icon:"🟥",title:"나의2 지역",desc:"UN 무기금수 등 우려대상 13개국. 서류·허가 면제가 제한됩니다.",tone:"나의2"}
 };
 
-function makeId() {
-  return "item-" + Math.random().toString(36).slice(2, 10);
+/* ===== 용어 설명 ===== */
+const GLOSSARY={
+  통제번호:{t:"통제번호 (ECCN)",d:"품목이 어떤 국제통제목록에 해당하는지 나타내는 분류번호(예: 5A002.a.2.). 전략물자 판정을 통해 확인되며 판정서에 기재됩니다."},
+  전략물자:{t:"전략물자",d:"국제평화와 안보를 위해 수출이 통제되는 물품·기술. 통제번호가 부여됩니다."},
+  자가판정:{t:"자가판정",d:"수출자가 전략물자관리시스템(YESTRADE)에서 품목의 전략물자 해당 여부를 직접 판단하는 절차. 무료·즉시 진행."},
+  전문판정:{t:"전문판정",d:"무역안보관리원(KOSTI) 등 전문판정기관에 판정을 의뢰하는 절차. 접수 후 15일 이내 결과가 통보됩니다."},
+  최종수하인:{t:"최종수하인",d:"수출 물품을 실제로 인도받는 자(받는 사람). 실제 사용자(최종사용자)와 다를 수 있습니다."},
+  최종사용자:{t:"최종사용자",d:"수출 물품을 실제로 사용하는 자. 구매자·수하인과 다를 수 있습니다."},
+  전문판정서:{t:"전문판정서 / 자가판정서",d:"품목의 전략물자 해당 여부와 통제번호가 기재된 판정 결과 문서."},
+  자율준수무역거래자:{t:"자율준수무역거래자 (CP)",d:"수출통제 자율준수체제를 갖춘 것으로 정부가 지정한 수출자. 포괄수출허가를 신청할 수 있습니다."},
+  상황허가:{t:"상황허가 (캐치올)",d:"전략물자가 아니더라도 대량파괴무기 등으로 전용될 우려가 있을 때 받는 허가."},
+  개별수출허가:{t:"개별수출허가",d:"확인된 수량의 품목을 건별로 허가받는 가장 일반적인 유형."},
+  사용자포괄수출허가:{t:"사용자포괄수출허가",d:"자율준수무역거래자(CP)에게 구매자·목적지·최종수하인을 지정해 일정 기간 수출을 허가하는 유형."},
+  가지역:{t:"가 지역",d:"4대 국제수출통제체제(바세나르·NSG·MTCR·AG)에 모두 가입한 29개국. 신뢰도가 높아 일부 제출서류가 신청 시 생략됩니다."},
+  나의1지역:{t:"나의1 지역",d:"가 지역과 나의2 지역을 제외한 그 밖의 모든 국가. 원칙적으로 전체 서류 제출이 필요합니다."},
+  나의2지역:{t:"나의2 지역",d:"북한·이란 등 UN 무기금수 우려대상 13개국. 서류·허가 면제가 제한되고 심사가 엄격합니다."},
+  별지:{t:"별지(別紙) 서식",d:"고시에 정해진 표준 서식 번호(예: 별지 제21호). 해당 서식으로 작성·제출합니다."},
+  사후제출:{t:"추후 사후 제출",d:"신청 시점에는 제출이 생략되더라도, 이후 내부 기준·허가기관 요청에 따라 추가로 제출하는 것."},
+  사전신고서:{t:"사전신고서",d:"허가면제 품목을 수출하기 전에 제출하는 신고서(별지 제1호의4)."},
+  사후거래보고서:{t:"사후거래보고서",d:"허가면제 품목을 수출한 후 7일 이내 제출하는 보고서(별지 제16호)."}
+};
+function help(key){ return GLOSSARY[key]?`<button class="help" data-help="${key}">?</button>`:""; }
+function regKey(r){ return r==="가"?"가지역":r==="나의1"?"나의1지역":"나의2지역"; }
+
+/* ===== 면제 사유 (제5·8·9·15·16호) ===== */
+const EXEMPTIONS={
+  "5":{n:5,t:"수입 전략물자의 제조업체·당초 수출자 반송",
+       d:"수입한 전략물자를 그 제조업체 또는 당초 수출자에게 반송하는 경우",
+       proof:["해당 전략물자를 <b>이전에 수입하였음을 증명</b>할 수 있어야 합니다. (수입신고필증 등)"]},
+  "8":{n:8,t:"전시회 등 출품 후 1년 내 재반입·현지 폐기",
+       d:"박람회·견본회·전시회 등에 출품할 목적으로 수출한 후 1년 이내 재반입하거나, 1년 이내 해외 현지에서 폐기하는 조건인 경우",
+       proof:["<b>1년 이내 재수입</b> 또는 <b>1년 이내 해외 현지 폐기</b>를 증명할 수 있어야 합니다."],
+       reimport:true,disposal:true},
+  "9":{n:9,t:"암호화 품목 민간 내부시스템·민수용 개발 수출",encOnly:true,
+       d:"암호화 품목(5A002.a.1~a.4, 5B002, 5D002)을 민간기업 내부시스템 구축·운영 또는 민수용 제품 개발·생산 용도로 수출하고, 최종목적지가 바세나르체제 가입국 또는 별표23 국가에 본사를 둔 민간분야 최종사용자인 경우",
+       proof:["입력한 통제번호가 암호화 품목(5A002.a.1~a.4, 5B002, 5D002)에 해당하고, 최종사용자가 민간분야여야 합니다.","최종목적지가 바세나르체제 가입국 또는 별표23 국가 본사 민간 최종사용자여야 합니다."]},
+  "15":{n:15,t:"검사·시험·보정·수리 목적 수출 후 1년 내 재반입·현지 폐기",
+       d:"별표2(이중용도품목) 제1부~제9부 물품을 외국에서 보정·수리·검사·시험을 받을 목적으로 수출한 후 1년 이내 재반입하거나, 1년 이내 해외 현지에서 폐기하는 조건인 경우",
+       proof:["<b>1년 이내 재수입</b> 또는 <b>1년 이내 해외 현지 폐기</b>를 증명할 수 있어야 합니다."],
+       reimport:true,disposal:true},
+  "16":{n:16,t:"수출 후 1년 내 재반입·현지 폐기 면제 (현행 고시 문구 확인 필요)",
+       d:"전략물자를 수출 후 1년 이내 재반입하거나 1년 이내 해외 현지에서 폐기하는 조건의 면제 유형(제8·14·15·16호 그룹). 현행 고시 제26조제1항제16호의 정확한 문구는 원문으로 확인하여 보완하세요.",
+       proof:["<b>1년 이내 재수입</b> 또는 <b>1년 이내 해외 현지 폐기</b>를 증명할 수 있어야 합니다."],
+       reimport:true,disposal:true,verify:true}
+};
+
+/* ===== 상태 / 설정 ===== */
+const SAMPLE_MODEL_DB=[
+  {modelName:"SM-G998N",itemName:"스마트폰",ctrlNo:"5A002.a.2.",type:"자가판정",number:"SELF-2026-0012",validUntil:"2028-03-31",result:"전략물자 해당"},
+  {modelName:"ENC-SW-01",itemName:"암호화 소프트웨어",ctrlNo:"5D002.",type:"전문판정",number:"EXP-2026-0044",validUntil:"2027-11-30",result:"전략물자 해당"},
+  {modelName:"CNC-9000",itemName:"5축 머시닝센터",ctrlNo:"2B001.",type:"전문판정",number:"EXP-2024-0318",validUntil:"2026-01-15",result:"전략물자 해당"},
+  {modelName:"GPU-A100",itemName:"고성능 GPU 모듈",ctrlNo:"3A090.",type:"자가판정",number:"SELF-2025-0901",validUntil:"2027-06-30",result:"전략물자 해당"},
+  {modelName:"INV-200",itemName:"범용 인버터",ctrlNo:"",type:"자가판정",number:"SELF-2025-0220",validUntil:"2028-02-28",result:"비해당"}
+];
+function makeItem(seed={}){
+  return {id:"it"+Math.random().toString(36).slice(2,9),modelName:seed.modelName||"",itemName:seed.itemName||"",ctrlNo:seed.ctrlNo||"",db:null};
+}
+let state={country:null,region:null,custom:false,items:[makeItem()],itemName:"",modelName:"",ctrlNo:"",exemptionSel:null,ptype:null,path:null};
+let CFG=mergeCfg();
+function mergeCfg(){
+  let ls={}; try{ls=JSON.parse(localStorage.getItem("sgEorConfig")||"{}");}catch(e){}
+  return {formOverrides:Object.assign({},BAKED_CONFIG.formOverrides,ls.formOverrides||{}),
+    exampleLinks:Object.assign({},BAKED_CONFIG.exampleLinks,ls.exampleLinks||{})};
 }
 
-function normalize(value) {
-  return String(value || "").trim();
+/* ===== 문서 정의 ===== */
+const DOC_DEFS={
+  contract:{label:"수출신용장 또는 수출계약서·가계약서 (의향서 등 포함)"},
+  judgement:{label:"전문판정서 또는 자가판정서"},
+  finalReceiver:{label:"최종수하인 진술서"},
+  exporterPledge:{label:"수출자 서약서"},
+  endUserPledge:{label:"최종사용자 서약서 (별지 2의2 / 2의3)"},
+  endUserDocs:{label:"최종사용자 등의 관련 서류"},
+  reimport:{label:"별지 제21호 재수입신고서(증명서)"}
+};
+function formsFor(docId,scheme){
+  if(CFG.formOverrides[docId]) return [["사내 양식",CFG.formOverrides[docId]]];
+  if(docId==="finalReceiver") return scheme==="II"?OFFICIAL.finalReceiver_II:OFFICIAL.finalReceiver_I;
+  if(docId==="exporterPledge") return OFFICIAL.exporterPledge;
+  if(docId==="endUserPledge") return scheme==="II"
+    ? [...OFFICIAL.endUserAll_II,...OFFICIAL.endUserWA_II,...OFFICIAL.endUserGuide_II]
+    : [...OFFICIAL.endUserAll_I,...OFFICIAL.endUserWA_I,...OFFICIAL.endUserGuide_I];
+  return null;
 }
+function reimportLink(){ return CFG.formOverrides["reimport"] || "files/별지21_재수입신고서.hwp"; }
 
-function normalizeModel(value) {
-  return normalize(value).toUpperCase();
+const ST_LABEL={required:"필수 제출",conditional:"조건부 제출",postsubmit:"추후 사후 제출 필요",asneeded:"필요시 제출",na:"해당 없음"};
+function mk(id,status,note,scheme){
+  return {id,status,label:DOC_DEFS[id].label,note:note||null,
+    forms:(status==="na")?null:formsFor(id,scheme), example:CFG.exampleLinks[id]||null};
 }
+function warnBox(m){ return `<div class="notice warn"><b>안내</b> &nbsp;${m}</div>`; }
 
-function normalizeCtrl(value) {
-  return normalize(value).toUpperCase().replace(/\s+/g, "");
-}
-
-function isDateValid(dateText) {
-  if (!dateText) return false;
-  return new Date(dateText + "T23:59:59") >= new Date(todayIso + "T00:00:00");
-}
-
-function isControlledItem(item) {
-  return Boolean(normalizeCtrl(item.ctrlNo));
-}
-
-function hasControlledItems() {
-  return state.items.some(isControlledItem);
-}
-
-function hasEncryptionItems() {
-  return state.items.some(item => /^(5A002|5B002|5D002)/.test(normalizeCtrl(item.ctrlNo)));
-}
-
-function isBlockedDestination() {
-  return state.destination.countryCode === "RU" || state.destination.countryCode === "BY";
-}
-
-function findDb(modelName) {
-  const key = normalizeModel(modelName);
-  if (!key) return null;
-  return MODEL_DB.find(row => normalizeModel(row.modelName) === key) || null;
-}
-
-function lookupItem(item, fillEmpty) {
-  const db = findDb(item.modelName);
-  if (!db) {
-    item.dbMatch = null;
-    return;
+function getDocuments(){
+  const {ptype,region}=state; const R=region; const list=[]; let extra=null;
+  if(ptype==="개별"){
+    const ga=R==="가";
+    list.push(mk("contract", ga?"postsubmit":"required"));
+    list.push(mk("judgement","required"));
+    list.push(mk("finalReceiver", ga?"postsubmit":"conditional", ga?null:"구매자·최종수하인·최종사용자가 동일한 경우 제출 생략 가능(필요 시 사후 제출).","I"));
+    list.push(mk("exporterPledge", ga?"postsubmit":"required",null,"I"));
+    list.push(mk("endUserPledge", ga?"postsubmit":"required","품목 취급 체제에 따라 별지 2의2(모든 체제) 또는 2의3(바세나르)을 선택. 가이던스 참고.","I"));
+    list.push(mk("endUserDocs","required","수입국 정부가 발행하는 최종사용자의 영업증명서 또는 납세증명서 등"));
+  } else if(ptype==="사용자포괄"){
+    if(R==="나의2") return {list:[],extra:warnBox("사용자포괄수출허가는 가 지역 및 나의1 지역에만 적용됩니다. 나의2 지역은 개별수출허가 절차를 확인하세요.")};
+    const ga=R==="가";
+    list.push(mk("judgement","required"));
+    list.push(mk("finalReceiver", ga?"postsubmit":"required",null,"II"));
   }
-  item.dbMatch = { ...db, valid: isDateValid(db.validUntil) };
-  if (fillEmpty || !normalize(item.itemName)) item.itemName = db.itemName;
-  if (fillEmpty || !normalize(item.ctrlNo)) item.ctrlNo = db.ctrlNo;
+  return {list,extra};
 }
 
-function updateDestinationFromInputs() {
-  const code = document.getElementById("countrySelect").value;
-  const data = COUNTRY_DB[code] || {};
-  state.destination = {
-    countryCode: code,
-    countryName: data.name || "",
-    region: data.region || "",
-    level: data.level || "",
-    endUser: normalize(document.getElementById("endUser").value),
-    useCase: normalize(document.getElementById("useCase").value),
-    shipDate: normalize(document.getElementById("shipDate").value)
-  };
+/* ===== DOM ===== */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function goStep(n){
+  [1,2,3,4,5].forEach(i=>$("#panel"+i).classList.toggle("hidden",i!==n));
+  $$(".step-pill").forEach(p=>{const s=+p.dataset.step;p.classList.toggle("active",s===n);p.classList.toggle("done",s<n);});
+  window.scrollTo({top:0,behavior:"smooth"});
 }
-
-function syncItemsFromDom() {
-  state.items = state.items.map(item => {
-    const modelEl = document.getElementById(`${item.id}-model`);
-    const nameEl = document.getElementById(`${item.id}-name`);
-    const ctrlEl = document.getElementById(`${item.id}-ctrl`);
-    return {
-      ...item,
-      modelName: modelEl ? modelEl.value : item.modelName,
-      itemName: nameEl ? nameEl.value : item.itemName,
-      ctrlNo: ctrlEl ? ctrlEl.value : item.ctrlNo
-    };
+function isRU(){ return RU_BY.includes(state.country); }
+function normCtrl(v){ v=(v||"").trim(); if(v && !v.endsWith(".")) v+="."; return v; }
+function syncLegacy(){
+  const first=state.items[0]||makeItem();
+  state.modelName=first.modelName||"";
+  state.itemName=first.itemName||"";
+  state.ctrlNo=(state.items.find(i=>(i.ctrlNo||"").trim())||first).ctrlNo||"";
+}
+function syncItemsFromDom(){
+  state.items.forEach(item=>{
+    const m=$("#model-"+item.id), n=$("#name-"+item.id), c=$("#ctrl-"+item.id);
+    if(m) item.modelName=m.value.trim();
+    if(n) item.itemName=n.value.trim();
+    if(c) item.ctrlNo=c.value.trim();
   });
+  syncLegacy();
 }
-
-function renderItems() {
-  const list = document.getElementById("itemList");
-  list.innerHTML = state.items.map((item, index) => {
-    const dbHtml = item.dbMatch ? renderDbStatus(item) : `<div class="status-line neutral">아직 DB 조회 전입니다.</div>`;
-    const deleteDisabled = state.items.length === 1 ? "disabled" : "";
-    return `
-      <div class="item-card" data-item="${item.id}">
-        <div class="item-card-head">
-          <div class="item-title">
-            <span class="item-index">${index + 1}</span>
-            <span>품목 ${index + 1}</span>
-          </div>
-          <button type="button" class="btn danger small" ${deleteDisabled} data-delete="${item.id}">삭제</button>
-        </div>
-        <div class="grid three">
-          <div class="field">
-            <label class="req" for="${item.id}-model">모델명</label>
-            <input type="text" id="${item.id}-model" value="${esc(item.modelName)}" placeholder="예: SM-G998N" data-field="modelName" data-id="${item.id}">
-          </div>
-          <div class="field">
-            <label for="${item.id}-name">품목명</label>
-            <input type="text" id="${item.id}-name" value="${esc(item.itemName)}" placeholder="예: 스마트폰" data-field="itemName" data-id="${item.id}">
-          </div>
-          <div class="field">
-            <label for="${item.id}-ctrl">전략물자 통제번호</label>
-            <input type="text" id="${item.id}-ctrl" value="${esc(item.ctrlNo)}" placeholder="예: 5A002" data-field="ctrlNo" data-id="${item.id}">
-          </div>
-        </div>
-        <div class="actions">
-          <button type="button" class="btn ghost small" data-lookup="${item.id}">이 품목 DB 조회</button>
-        </div>
-        <div class="db-status">${dbHtml}</div>
-      </div>
-    `;
-  }).join("");
-
-  list.querySelectorAll("[data-delete]").forEach(button => {
-    button.addEventListener("click", () => {
-      syncItemsFromDom();
-      state.items = state.items.filter(item => item.id !== button.dataset.delete);
-      renderAll();
-    });
-  });
-
-  list.querySelectorAll("[data-lookup]").forEach(button => {
-    button.addEventListener("click", () => {
-      syncItemsFromDom();
-      const item = state.items.find(row => row.id === button.dataset.lookup);
-      if (item) lookupItem(item, true);
-      renderAll();
-    });
-  });
-
-  list.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", () => {
-      const item = state.items.find(row => row.id === input.dataset.id);
-      if (!item) return;
-      item[input.dataset.field] = input.value;
-      if (input.dataset.field === "modelName") item.dbMatch = null;
-      renderDerivedOnly();
-    });
-  });
-}
-
-function renderDbStatus(item) {
-  const db = item.dbMatch;
-  if (!db) return `<div class="status-line neutral">DB에 등록된 모델명이 없습니다. 직접 입력값 기준으로 검토합니다.</div>`;
-  const validClass = db.valid ? "good" : "bad";
-  const validText = db.valid ? "유효" : "만료";
-  const ctrlText = db.ctrlNo ? db.ctrlNo : "비해당";
-  return `
-    <div class="status-line ${validClass}">
-      ${esc(db.source)} DB 매칭: ${esc(db.determinationNo)} / ${esc(validText)} / 유효기간 ${esc(db.validUntil)}
-    </div>
-    <div class="status-line neutral">
-      자동 보완: 품목명 ${esc(db.itemName)}, 통제번호 ${esc(ctrlText)}
-    </div>
-  `;
-}
-
-function addItem(seed = {}) {
-  syncItemsFromDom();
-  state.items.push({
-    id: makeId(),
-    modelName: seed.modelName || "",
-    itemName: seed.itemName || "",
-    ctrlNo: seed.ctrlNo || "",
-    dbMatch: null
-  });
-  renderAll();
-}
-
-function applyBulkInput() {
-  const raw = document.getElementById("bulkInput").value;
-  const lines = raw.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
-  if (lines.length === 0) {
-    alert("대량 입력할 모델명을 1개 이상 입력하세요.");
-    return;
+function normalizeModel(v){ return (v||"").trim().toUpperCase(); }
+function dbFor(modelName){ const key=normalizeModel(modelName); return SAMPLE_MODEL_DB.find(r=>normalizeModel(r.modelName)===key)||null; }
+function isValidDate(d){ return !!d && new Date(d+"T23:59:59")>=new Date(new Date().toISOString().slice(0,10)+"T00:00:00"); }
+function lookupItem(item,fillEmpty=true){
+  const db=dbFor(item.modelName);
+  item.db=db?Object.assign({valid:isValidDate(db.validUntil)},db):null;
+  if(db&&fillEmpty){
+    if(!item.itemName) item.itemName=db.itemName;
+    if(!item.ctrlNo) item.ctrlNo=db.ctrlNo;
   }
-  state.items = lines.map(line => {
-    const parts = line.split(/\t|,/).map(part => part.trim());
-    const item = {
-      id: makeId(),
-      modelName: parts[0] || "",
-      itemName: parts[1] || "",
-      ctrlNo: parts[2] || "",
-      dbMatch: null
-    };
-    lookupItem(item, false);
+}
+function controlledItems(){ return state.items.filter(i=>(i.ctrlNo||"").trim()!==""); }
+function hasControl(){ return controlledItems().length>0; }
+function hasEnc(){
+  return state.items.some(item=>{
+    const n=(item.ctrlNo||"").toUpperCase().replace(/\s/g,"");
+    return ENC_CODES.some(c=>n.includes(c));
+  });
+}
+function primaryCtrl(){ return (controlledItems()[0]||{}).ctrlNo||""; }
+function ctrlSummary(){ const nums=controlledItems().map(i=>i.ctrlNo).filter(Boolean); return nums.length?nums.join(", "):"-"; }
+function itemLabel(item){ return [item.modelName,item.itemName].filter(Boolean).join(" / ")||"-"; }
+function itemsText(){ return state.items.map((item,i)=>`${i+1}. ${itemLabel(item)} (${item.ctrlNo||"통제번호 없음"})`).join("\n"); }
+function updateNext2(){ const btn=$("#next2"); if(btn) btn.disabled=!hasControl(); }
+function renderDbLine(item){
+  if(!item.db) return `<div class="db-line">테스트 DB 조회 전 또는 미매칭입니다.</div>`;
+  const cls=item.db.valid?"good":"bad";
+  const v=item.db.valid?"유효":"만료";
+  const ctrl=item.db.ctrlNo||"비해당";
+  return `<div class="db-line ${cls}">${item.db.type} DB 매칭 · ${item.db.number} · ${v}(${item.db.validUntil}) · ${item.db.result} · 통제번호 ${ctrl}</div>`;
+}
+function renderItems(){
+  const list=$("#itemList");
+  if(!list) return;
+  list.innerHTML=state.items.map((item,i)=>`<div class="item-card">
+    <div class="item-card-head">
+      <div class="item-card-title"><span class="item-num">${i+1}</span>품목 ${i+1}</div>
+      <button class="btn mini-btn" data-del="${item.id}" ${state.items.length===1?"disabled":""}>삭제</button>
+    </div>
+    <div class="item-grid">
+      <div class="field"><label>모델명</label><input id="model-${item.id}" data-id="${item.id}" data-field="modelName" value="${esc(item.modelName)}" placeholder="예: SM-G998N"></div>
+      <div class="field"><label>품목명</label><input id="name-${item.id}" data-id="${item.id}" data-field="itemName" value="${esc(item.itemName)}" placeholder="예: 스마트폰, Radio Unit"></div>
+      <div class="field"><label>통제번호 (ECCN) ${help("통제번호")}</label><input id="ctrl-${item.id}" data-id="${item.id}" data-field="ctrlNo" value="${esc(item.ctrlNo)}" placeholder="예: 5A002.a.2." autocomplete="off"></div>
+    </div>
+    <div class="item-card-actions"><button class="btn mini-btn" data-lookup="${item.id}">이 품목 DB 조회</button></div>
+    ${renderDbLine(item)}
+  </div>`).join("");
+  $$("#itemList input").forEach(input=>input.addEventListener("input",()=>{
+    const item=state.items.find(x=>x.id===input.dataset.id); if(!item)return;
+    item[input.dataset.field]=input.value;
+    if(input.dataset.field==="modelName") item.db=null;
+    syncLegacy(); updateNext2();
+  }));
+  $$("#itemList input[data-field='ctrlNo']").forEach(input=>input.addEventListener("blur",()=>{
+    input.value=normCtrl(input.value);
+    syncItemsFromDom(); updateNext2(); renderItems();
+  }));
+  $$("#itemList [data-lookup]").forEach(btn=>btn.addEventListener("click",()=>{
+    syncItemsFromDom();
+    const item=state.items.find(x=>x.id===btn.dataset.lookup);
+    if(item) lookupItem(item,true);
+    syncLegacy(); updateNext2(); renderItems();
+  }));
+  $$("#itemList [data-del]").forEach(btn=>btn.addEventListener("click",()=>{
+    syncItemsFromDom();
+    state.items=state.items.filter(x=>x.id!==btn.dataset.del);
+    syncLegacy(); updateNext2(); renderItems();
+  }));
+}
+function lookupAllItems(){ syncItemsFromDom(); state.items.forEach(item=>lookupItem(item,true)); syncLegacy(); updateNext2(); renderItems(); }
+function parseBulk(){
+  const raw=$("#bulkInput").value;
+  const lines=raw.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  if(!lines.length){ alert("대량 입력할 품목을 1개 이상 입력하세요."); return; }
+  state.items=lines.map(line=>{
+    const p=line.split(/\t|,/).map(x=>x.trim());
+    const item=makeItem({modelName:p[0]||"",itemName:p[1]||"",ctrlNo:p[2]||""});
+    lookupItem(item,true);
     return item;
   });
-  renderAll();
+  syncLegacy(); updateNext2(); renderItems();
 }
-
-function lookupAllItems() {
-  syncItemsFromDom();
-  state.items.forEach(item => lookupItem(item, false));
-  renderAll();
+function esc(v){ return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function goFromPill(n){
+  if(n===1) goStep(1);
+  else if(n===2) enterStep2();
+  else if(n===3) enterStep3();
+  else if(n===4) toPermitStep();
+  else { if(!state.path){state.path=hasControl()?"permit":"permit";state.ptype=state.ptype||"개별";} renderResult(); goStep(5); }
 }
+$$(".step-pill").forEach(p=>{
+  p.setAttribute("role","button"); p.tabIndex=0;
+  p.addEventListener("click",()=>goFromPill(+p.dataset.step));
+  p.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();goFromPill(+p.dataset.step);}});
+});
 
-function renderCountry() {
-  const box = document.getElementById("countryResult");
-  if (!state.destination.countryCode) {
-    box.className = "alert info";
-    box.textContent = "국가를 선택하면 지역 판정이 표시됩니다.";
-    return;
-  }
-  const data = COUNTRY_DB[state.destination.countryCode];
-  if (data.level === "blocked" && hasControlledItems()) {
-    box.className = "alert block";
-    box.innerHTML = `<strong>${esc(data.name)} 수출 차단 안내</strong><br>입력 품목 중 전략물자 통제번호가 있는 품목이 있어 러시아/벨라루스 대상 전략물자 수출 불가 안내가 우선 적용됩니다.`;
-    return;
-  }
-  if (data.level === "blocked") {
-    box.className = "alert warn";
-    box.innerHTML = `<strong>${esc(data.name)} 고위험 지역</strong><br>${esc(data.note)} 통제번호가 확인되면 수출 불가 안내로 전환됩니다.`;
-    return;
-  }
-  if (data.level === "restricted") {
-    box.className = "alert block";
-    box.innerHTML = `<strong>${esc(data.name)}: ${esc(data.region)}</strong><br>${esc(data.note)}`;
-    return;
-  }
-  if (data.level === "caution") {
-    box.className = "alert warn";
-    box.innerHTML = `<strong>${esc(data.name)}: ${esc(data.region)}</strong><br>${esc(data.note)}`;
-    return;
-  }
-  box.className = "alert ok";
-  box.innerHTML = `<strong>${esc(data.name)}: ${esc(data.region)}</strong><br>${esc(data.note)}`;
+/* STEP 1 */
+const input=$("#countryInput"), listEl=$("#comboList");
+let kbIdx=-1, shown=[];
+function renderList(q){
+  q=q.trim();
+  let matches=q?COUNTRIES.filter(c=>c.n.includes(q)):COUNTRIES.slice();
+  shown=matches.slice();
+  const exact=q&&COUNTRIES.some(c=>c.n===q);
+  let html=matches.map(c=>{const i=shown.indexOf(c);return `<div class="combo-opt" data-i="${i}"><span>${c.n}${c.note?` <span style="color:var(--muted);font-size:11px">· ${c.note}</span>`:""}</span><span class="rg rg-${c.r}">${c.r} 지역</span></div>`;}).join("");
+  if(q&&!exact){const ci=shown.length;shown.push({n:q,r:"나의1",custom:true});html=`<div class="combo-opt custom" data-i="${ci}"><span>＋ "${q}" 직접 선택</span><span class="rg rg-나의1">나의1 지역</span></div>`+html;}
+  if(!shown.length) html=`<div class="combo-empty">국가명을 입력하세요.</div>`;
+  listEl.innerHTML=html; listEl.classList.add("open"); kbIdx=-1;
+  $$("#comboList .combo-opt").forEach(o=>o.addEventListener("click",()=>pick(shown[+o.dataset.i])));
 }
-
-function renderQuestions() {
-  const list = document.getElementById("questionList");
-  const intro = document.getElementById("exemptionIntro");
-  const encryption = document.getElementById("encryptionNotice");
-
-  if (!hasControlledItems()) {
-    intro.className = "alert ok";
-    intro.textContent = "현재 입력 품목에는 전략물자 통제번호가 없습니다. 허가면제 문진 대상 품목은 없는 것으로 표시합니다.";
-    encryption.style.display = "none";
-    list.innerHTML = "";
-    renderExemptionResult();
-    return;
-  }
-
-  intro.className = "alert info";
-  intro.textContent = "전략물자 통제번호가 있는 품목이 있어 허가면제 가능성을 문진합니다.";
-
-  if (hasEncryptionItems()) {
-    encryption.style.display = "block";
-    encryption.textContent = "입력 품목 중 5A002/5B002/5D002가 있어 암호화 품목 허가면제 제9호 검토 대상입니다.";
-  } else {
-    encryption.style.display = "none";
-  }
-
-  list.innerHTML = QUESTIONS.map(question => {
-    const selected = state.exemptionAnswers[question.id] || "";
-    return `
-      <div class="question">
-        <div>
-          <strong>${esc(question.title)}</strong>
-          <p>${esc(question.text)}</p>
-        </div>
-        <div class="toggle-group" role="radiogroup" aria-label="${esc(question.title)}">
-          <label>
-            <input type="radio" name="${question.id}" value="yes" ${selected === "yes" ? "checked" : ""}>
-            <span>예</span>
-          </label>
-          <label>
-            <input type="radio" name="${question.id}" value="no" ${selected === "no" ? "checked" : ""}>
-            <span>아니오</span>
-          </label>
-        </div>
-      </div>
-    `;
-  }).join("");
-
-  list.querySelectorAll("input[type='radio']").forEach(input => {
-    input.addEventListener("change", () => {
-      state.exemptionAnswers[input.name] = input.value;
-      renderDerivedOnly();
-    });
-  });
-
-  renderExemptionResult();
+function pick(c){ state.country=c.n; state.region=c.r; state.custom=!!c.custom; input.value=c.n; listEl.classList.remove("open"); showRegion(c); $("#next1").disabled=false; }
+function showRegion(c){
+  const info=REGION_INFO[c.r];
+  let html=`<div class="region-banner rb-${info.tone}"><div class="rb-ico">${info.icon}</div><div><h4 class="serif">${c.n} → ${info.title} ${help(regKey(c.r))}</h4><p>${info.desc}</p></div></div>`;
+  if(c.custom) html+=`<div class="notice"><b>직접 선택 국가</b> &nbsp;가·나의2 지역에 해당하지 않으면 일반적으로 나의1 지역입니다. 별표6으로 확인하세요.</div>`;
+  if(RU_BY.includes(c.n)) html+=`<div class="notice warn"><b>러시아·벨라루스</b> &nbsp;전략물자 수출이 원칙적으로 <b>불가</b>합니다. 통제번호가 있는 전략물자라면 다음 단계에서 곧바로 안내 결과(수출 불가)로 이동합니다.</div>`;
+  else if(c.r==="나의2") html+=`<div class="notice warn"><b>유의</b> &nbsp;나의2 지역은 서류·허가 면제가 제한됩니다. 경유·환적 시에도 면제가 제한됩니다.</div>`;
+  const rr=$("#regionResult"); rr.innerHTML=html; rr.classList.add("show");
 }
+input.addEventListener("input",()=>{renderList(input.value);state.country=null;$("#next1").disabled=true;$("#regionResult").classList.remove("show");});
+input.addEventListener("focus",()=>renderList(input.value));
+input.addEventListener("keydown",e=>{const o=$$("#comboList .combo-opt");
+  if(e.key==="ArrowDown"){e.preventDefault();kbIdx=Math.min(kbIdx+1,o.length-1);}
+  else if(e.key==="ArrowUp"){e.preventDefault();kbIdx=Math.max(kbIdx-1,0);}
+  else if(e.key==="Enter"){e.preventDefault();if(kbIdx>=0&&shown[kbIdx])pick(shown[kbIdx]);return;}
+  else return; o.forEach((x,i)=>x.classList.toggle("kb",i===kbIdx)); if(o[kbIdx])o[kbIdx].scrollIntoView({block:"nearest"});});
+document.addEventListener("click",e=>{if(!e.target.closest(".combo"))listEl.classList.remove("open");});
+$("#next1").addEventListener("click",()=>{ enterStep2(); });
 
-function renderExemptionResult() {
-  const box = document.getElementById("exemptionResult");
-  if (!hasControlledItems()) {
-    box.className = "alert ok";
-    box.textContent = "허가면제 문진 없이 비전략물자 또는 미입력 상태로 요약됩니다.";
-    return;
-  }
-  if (isBlockedDestination() && hasControlledItems()) {
-    box.className = "alert block";
-    box.textContent = "러시아/벨라루스 대상 전략물자 품목이 있어 허가면제 검토보다 수출 불가 안내가 우선합니다.";
-    return;
-  }
-  const yesCount = Object.values(state.exemptionAnswers).filter(value => value === "yes").length;
-  const answered = Object.values(state.exemptionAnswers).length;
-  if (answered === 0) {
-    box.className = "alert info";
-    box.textContent = "문진을 선택하면 면제 가능성 안내가 표시됩니다.";
-    return;
-  }
-  if (yesCount > 0 && state.exemptionAnswers.noMilitary === "yes") {
-    box.className = "alert warn";
-    box.textContent = "일부 허가면제 사유 가능성이 있습니다. 증빙자료와 적용 조항 확인 후 수출담당자 검토가 필요합니다.";
-    return;
-  }
-  box.className = "alert block";
-  box.textContent = "현재 답변만으로는 허가면제 적용 가능성이 낮습니다. 전략물자 수출허가 신청을 준비하세요.";
-}
-
-function renderMetrics() {
-  const total = state.items.length;
-  const controlled = state.items.filter(isControlledItem).length;
-  const matched = state.items.filter(item => item.dbMatch).length;
-  const expired = state.items.filter(item => item.dbMatch && !item.dbMatch.valid).length;
-  document.getElementById("metrics").innerHTML = `
-    <div class="metric"><b>${total}</b><span>전체 품목</span></div>
-    <div class="metric"><b>${controlled}</b><span>통제번호 입력 품목</span></div>
-    <div class="metric"><b>${matched}</b><span>DB 매칭 품목</span></div>
-    <div class="metric"><b>${expired}</b><span>판정 만료 품목</span></div>
-  `;
-}
-
-function renderFinalAlerts() {
-  const alerts = [];
-  if (isBlockedDestination() && hasControlledItems()) {
-    alerts.push(`<div class="alert block"><strong>러시아/벨라루스 차단</strong><br>하나 이상의 품목에 전략물자 통제번호가 있어 해당 국가로의 전략물자 수출 불가 안내가 표시됩니다.</div>`);
-  } else if (state.destination.level === "restricted") {
-    alerts.push(`<div class="alert block"><strong>제재 고위험 국가</strong><br>전략물자 여부와 별도로 제재 및 거래상대방 심사가 필요합니다.</div>`);
-  } else if (hasControlledItems()) {
-    alerts.push(`<div class="alert warn"><strong>전략물자 허가 검토 필요</strong><br>통제번호가 입력된 품목은 허가 또는 허가면제 검토가 필요합니다.</div>`);
-  } else {
-    alerts.push(`<div class="alert ok"><strong>통제번호 입력 품목 없음</strong><br>현재 입력값 기준으로 전략물자 수출허가 대상 품목은 확인되지 않았습니다.</div>`);
-  }
-  if (hasEncryptionItems()) {
-    alerts.push(`<div class="alert warn"><strong>암호화 품목</strong><br>5A002/5B002/5D002 품목이 있어 허가면제 제9호 적용 가능성을 별도로 검토하세요.</div>`);
-  }
-  document.getElementById("finalAlerts").innerHTML = alerts.join("");
-}
-
-function renderItemSummary() {
-  const body = document.getElementById("itemSummaryBody");
-  body.innerHTML = state.items.map((item, index) => {
-    const db = item.dbMatch;
-    const dbText = db ? `${db.source} / ${db.determinationNo}` : "미매칭";
-    const validText = db ? (db.valid ? `유효 ~ ${db.validUntil}` : `만료 ${db.validUntil}`) : "-";
-    const badge = db ? (db.valid ? "green" : "red") : "amber";
-    const ctrl = normalizeCtrl(item.ctrlNo) || "없음";
-    const ctrlBadge = normalizeCtrl(item.ctrlNo) ? "red" : "green";
-    return `
-      <tr>
-        <td>${index + 1}</td>
-        <td>${esc(item.modelName || "-")}</td>
-        <td>${esc(item.itemName || "-")}</td>
-        <td><span class="badge ${ctrlBadge}">${esc(ctrl)}</span></td>
-        <td><span class="badge ${badge}">${esc(dbText)}</span></td>
-        <td>${esc(validText)}</td>
-        <td>${esc(db ? db.formHint : "직접 입력값 기준으로 서식 작성")}</td>
-      </tr>
-    `;
-  }).join("");
-}
-
-function getPermitType() {
-  if (isBlockedDestination() && hasControlledItems()) return "blocked";
-  if (!hasControlledItems()) return "none";
-  const expired = state.items.some(item => item.dbMatch && !item.dbMatch.valid);
-  if (expired) return "redetermination";
-  const yesCount = Object.values(state.exemptionAnswers).filter(value => value === "yes").length;
-  if (yesCount > 0 && state.exemptionAnswers.noMilitary === "yes") return "exemption-review";
-  return "individual";
-}
-
-function renderDocuments() {
-  const type = getPermitType();
-  const docs = [];
-  if (type === "blocked") {
-    docs.push({
-      title: "수출 불가 또는 거래 중단 검토",
-      lines: ["거래상대방 및 최종사용자 확인 자료", "통제번호가 있는 품목 목록", "수출담당자 검토 기록"]
-    });
-  } else if (type === "none") {
-    docs.push({
-      title: "비전략물자 또는 미통제 품목 관리",
-      lines: ["모델명·품목명 목록", "비해당 판정번호가 있는 경우 판정서", "거래상대방 기본 확인 자료"]
-    });
-  } else if (type === "redetermination") {
-    docs.push({
-      title: "재판정 또는 신규 판정 신청",
-      lines: ["만료된 판정번호", "모델별 사양서와 카탈로그", "주요 성능·기술 파라미터", "최종 용도 설명"]
-    });
-  } else if (type === "exemption-review") {
-    docs.push({
-      title: "허가면제 검토 자료",
-      lines: ["면제 적용 조항 검토표", "거래 목적 증빙", "최종사용자 및 최종용도 확인서", "암호화 품목인 경우 제9호 관련 기술자료"]
-    });
-  } else {
-    docs.push({
-      title: "개별수출허가 신청",
-      lines: ["수출허가 신청서", "계약서 또는 주문서", "품목별 사양서", "최종사용자 서약서", "판정서 또는 통제번호 근거자료"]
-    });
-    docs.push({
-      title: "포괄수출허가 가능성 확인",
-      lines: ["반복 수출 여부", "동일 수입자·최종사용자 여부", "내부준법체계 운영 여부"]
-    });
-  }
-  document.getElementById("docList").innerHTML = docs.map(doc => `
-    <div class="doc-card">
-      <strong>${esc(doc.title)}</strong>
-      <ul>${doc.lines.map(line => `<li>${esc(line)}</li>`).join("")}</ul>
-    </div>
-  `).join("");
-}
-
-function buildReport() {
-  const country = state.destination.countryName || "미선택";
-  const lines = [];
-  lines.push("[전략물자 수출허가 자가진단 요약]");
-  lines.push(`작성일: ${todayIso}`);
-  lines.push("");
-  lines.push("1. 수출국가");
-  lines.push(`- 국가: ${country}`);
-  lines.push(`- 지역 판정: ${state.destination.region || "-"}`);
-  lines.push(`- 최종사용자: ${state.destination.endUser || "-"}`);
-  lines.push(`- 최종 용도: ${state.destination.useCase || "-"}`);
-  lines.push(`- 예상 수출일: ${state.destination.shipDate || "-"}`);
-  lines.push("");
-  lines.push("2. 수출품목");
-  state.items.forEach((item, index) => {
-    const db = item.dbMatch;
-    lines.push(`- 품목 ${index + 1}`);
-    lines.push(`  모델명: ${item.modelName || "-"}`);
-    lines.push(`  품목명: ${item.itemName || "-"}`);
-    lines.push(`  전략물자 통제번호: ${normalizeCtrl(item.ctrlNo) || "없음"}`);
-    lines.push(`  DB 조회: ${db ? `${db.source} / ${db.determinationNo} / ${db.valid ? "유효" : "만료"}(${db.validUntil})` : "미매칭"}`);
-    lines.push(`  자동 서식: ${db ? db.formHint : "직접 입력값 기준 작성"}`);
-  });
-  lines.push("");
-  lines.push("3. 허가면제 문진");
-  if (!hasControlledItems()) {
-    lines.push("- 통제번호 입력 품목이 없어 문진 대상 없음");
-  } else {
-    QUESTIONS.forEach(question => {
-      const value = state.exemptionAnswers[question.id] || "미답변";
-      lines.push(`- ${question.title}: ${value === "yes" ? "예" : value === "no" ? "아니오" : "미답변"}`);
-    });
-    if (hasEncryptionItems()) lines.push("- 암호화 품목 허가면제 제9호 검토 대상 포함");
-  }
-  lines.push("");
-  lines.push("4. 최종 안내");
-  if (getPermitType() === "blocked") {
-    lines.push("- 러시아/벨라루스 대상 전략물자 통제번호 품목이 있어 수출 불가 안내 우선");
-  } else if (getPermitType() === "redetermination") {
-    lines.push("- 판정 유효기간 만료 품목이 있어 재판정 또는 신규 판정 신청 필요");
-  } else if (getPermitType() === "exemption-review") {
-    lines.push("- 허가면제 가능성 검토 필요");
-  } else if (getPermitType() === "individual") {
-    lines.push("- 전략물자 수출허가 신청 필요");
-  } else {
-    lines.push("- 현재 입력 기준 통제번호 품목 없음");
-  }
-  return lines.join("\n");
-}
-
-function renderCopyArea() {
-  document.getElementById("copyArea").textContent = buildReport();
-}
-
-function renderDerivedOnly() {
-  updateDestinationFromInputs();
-  renderCountry();
-  renderQuestions();
-  renderMetrics();
-  renderFinalAlerts();
-  renderItemSummary();
-  renderDocuments();
-  renderCopyArea();
-}
-
-function renderAll() {
-  updateDestinationFromInputs();
+/* STEP 2 */
+function enterStep2(){
   renderItems();
-  renderDerivedOnly();
+  $("#ruWarn").innerHTML = isRU()
+    ? `<div class="notice warn"><b>러시아·벨라루스 수출</b> &nbsp;전략물자(통제번호 보유 품목)의 수출은 원칙적으로 불가합니다. 통제번호 입력 후 "다음"을 누르면 안내 결과로 이동합니다.</div>` : "";
+  setKnow("yes");
+  goStep(2);
 }
-
-function setActiveStep(step) {
-  state.activeStep = Number(step);
-  document.querySelectorAll(".step-button").forEach(button => button.classList.remove("active"));
-  const targetSection = document.querySelector(`[data-step="${state.activeStep}"]`);
-  if (!targetSection) return;
-  const button = document.querySelector(`.step-button[data-target="${targetSection.id}"]`);
-  if (button) button.classList.add("active");
+function setKnow(mode){
+  $$("#knowSel .opt-card").forEach(c=>c.classList.toggle("sel", c.dataset.know===mode));
+  $("#knowYes").classList.toggle("hidden", mode!=="yes");
+  $("#knowNo").classList.toggle("hidden", mode==="yes");
+  $("#next2").classList.toggle("hidden", mode!=="yes");
+  if(mode==="yes") updateNext2();
 }
+$$("#knowSel .opt-card").forEach(c=>c.addEventListener("click",()=>setKnow(c.dataset.know)));
+$("#haveCtrl").addEventListener("click",()=>{ setKnow("yes"); const first=state.items[0]; if(first) $("#model-"+first.id)?.focus(); });
+$("#addItem").addEventListener("click",()=>{ syncItemsFromDom(); state.items.push(makeItem()); renderItems(); updateNext2(); });
+$("#lookupAll").addEventListener("click",lookupAllItems);
+$("#applyBulk").addEventListener("click",parseBulk);
+$("#sampleBulk").addEventListener("click",()=>{
+  $("#bulkInput").value=["SM-G998N, 스마트폰","CNC-9000","ENC-SW-01, 암호화 소프트웨어","INV-200, 범용 인버터"].join("\n");
+});
+$("#back2").addEventListener("click",()=>goStep(1));
+$("#next2").addEventListener("click",()=>{
+  syncItemsFromDom();
+  state.items.forEach(item=>item.ctrlNo=normCtrl(item.ctrlNo));
+  syncLegacy();
+  if(isRU()&&hasControl()){ state.path="block"; renderResult(); goStep(5); return; }
+  enterStep3();
+});
 
-function scrollToSection(id) {
-  const section = document.getElementById(id);
-  if (!section) return;
-  section.scrollIntoView({ behavior: "smooth", block: "start" });
-  setActiveStep(section.dataset.step);
+/* STEP 3 — 허가면제 문진 */
+let exStep="purpose";
+const EX_PURPOSE=[
+  {key:"5",label:"이전에 수입한 물품을 반송",desc:"수입했던 전략물자를 제조업체 또는 당초 수출자에게 되돌려 보냄"},
+  {key:"8",label:"전시회·박람회 출품",desc:"전시·견본 목적으로 내보낸 뒤 1년 내 재반입 또는 현지 폐기"},
+  {key:"15",label:"해외에서 검사·시험·보정·수리",desc:"해외에서 점검·수리받을 목적으로 내보낸 뒤 1년 내 재반입 또는 현지 폐기"},
+  {key:"16",label:"그 밖의 재반입·폐기 조건부 수출",desc:"위와 유사하나 항목이 다른 경우 (제16호 해당 여부 확인 필요)"},
+  {key:"9",label:"암호화 품목의 민간용 수출",desc:"암호화 품목(5A002 등)을 민간 내부시스템·민수용 용도로 수출",encOnly:true},
+  {key:"none",label:"위에 해당하지 않음",desc:"해당 면제 사유가 없습니다. 허가유형 선택으로 진행합니다.",none:true}
+];
+const EX_CONFIRM={
+  "5":"이전에 해당 물품을 정식으로 수입하였고, 그 사실을 증빙(수입신고필증 등)할 수 있나요?",
+  "8":"수출 후 <b>1년 이내</b>에 재수입하거나 해외 현지에서 폐기할 예정이며, 이를 증빙할 수 있나요?",
+  "9":`최종사용자가 <b>민간분야</b>이고, 최종목적지가 바세나르체제 가입국(또는 별표23 국가)에 본사를 둔 민간 최종사용자 ${help("최종사용자")}이며, 민간 내부시스템 구축·운영 또는 민수용 제품 개발·생산 용도인가요?`,
+  "15":"수출 후 <b>1년 이내</b>에 재수입하거나 해외 현지에서 폐기할 예정이며, 이를 증빙할 수 있나요?",
+  "16":"수출 후 <b>1년 이내</b>에 재수입하거나 해외 현지에서 폐기할 예정이며, 이를 증빙할 수 있나요?"
+};
+function toPermitStep(){ state.exemptionSel="none"; state.ptype=null; $$("#panel4 .opt-card").forEach(x=>x.classList.remove("sel")); $("#next4").disabled=true; goStep(4); }
+function enterStep3(){ state.exemptionSel=null; renderExPurpose(); goStep(3); }
+function renderExPurpose(){
+  exStep="purpose";
+  $("#exLead").innerHTML="이번 수출이 어떤 경우에 해당하는지 선택하세요. 해당하는 면제 사유가 없으면 ‘위에 해당하지 않음’을 선택해 허가유형으로 진행합니다.";
+  const items=EX_PURPOSE.filter(p=>!p.encOnly||hasEnc());
+  $("#exemptBody").innerHTML=`<div class="opt-grid">`+items.map(p=>{
+    const ho=(p.none||!EXEMPTIONS[p.key])?"":`<div class="ho">제${EXEMPTIONS[p.key].n}호</div>`;
+    return `<button class="opt-card ${p.none?'opt-none':''}" data-purpose="${p.key}">${ho}<h4>${p.label}</h4><p>${p.desc}</p></button>`;
+  }).join("")+`</div>`;
+  $$("#exemptBody .opt-card").forEach(c=>c.addEventListener("click",()=>{
+    const k=c.dataset.purpose;
+    if(k==="none") toPermitStep();
+    else { state.exPurpose=k; renderExConfirm(k); }
+  }));
 }
-
-function esc(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+function renderExConfirm(k){
+  exStep="confirm";
+  const e=EXEMPTIONS[k];
+  $("#exLead").innerHTML="선택하신 경우의 면제 요건을 확인합니다.";
+  $("#exemptBody").innerHTML=`
+    <div class="region-banner rb-나의1"><div class="rb-ico">📋</div><div><h4 class="serif">제${e.n}호 · ${e.t}</h4><p>${e.d}</p></div></div>
+    <div class="doc" style="margin-top:14px">
+      <div class="doc-name">확인 질문</div>
+      <div class="doc-note" style="margin-top:8px;font-size:13.5px;color:var(--ink)">${EX_CONFIRM[k]}</div>
+      <div class="dl-row" style="margin-top:14px">
+        <button class="btn primary" id="exYes">예, 해당합니다</button>
+        <button class="btn" id="exNo">아니오</button>
+      </div>
+      <div id="exNoMsg"></div>
+    </div>`;
+  $("#exYes").addEventListener("click",()=>{ state.exemptionSel=k; state.path="exempt"; renderResult(); goStep(5); });
+  $("#exNo").addEventListener("click",()=>{
+    $("#exNoMsg").innerHTML=`<div class="notice warn" style="margin-top:14px"><b>이 면제는 적용되지 않습니다</b> &nbsp;요건을 충족하지 못하면 제${e.n}호 면제를 적용할 수 없습니다. 다른 경우를 선택하거나, 허가유형을 선택해 정식 수출허가로 진행하세요.</div>
+      <div class="dl-row" style="margin-top:12px"><button class="btn" id="exBack2">← 다른 경우 선택</button><button class="btn primary" id="exToPermit">해당사항 없음으로 진행 →</button></div>`;
+    $("#exBack2").addEventListener("click",renderExPurpose);
+    $("#exToPermit").addEventListener("click",toPermitStep);
+  });
 }
+$("#back3").addEventListener("click",()=>{ if(exStep==="confirm") renderExPurpose(); else goStep(2); });
 
-function attachEvents() {
-  document.querySelectorAll("[data-target]").forEach(button => {
-    button.addEventListener("click", () => scrollToSection(button.dataset.target));
+/* STEP 4 */
+$$("#panel4 .opt-card").forEach(c=>c.addEventListener("click",()=>{
+  $$("#panel4 .opt-card").forEach(x=>x.classList.remove("sel")); c.classList.add("sel");
+  state.ptype=c.dataset.ptype; $("#next4").disabled=false;
+}));
+$("#back4").addEventListener("click",()=>goStep(3));
+$("#next4").addEventListener("click",()=>{ state.path="permit"; renderResult(); goStep(5); });
+
+/* STEP 5 */
+function metaHtml(){
+  let typeLabel = state.path==="block"?"수출 불가":
+    state.path==="exempt"?`허가면제 · 제${EXEMPTIONS[state.exemptionSel].n}호`:
+    (state.ptype==="사용자포괄"?"사용자포괄수출허가":"개별수출허가");
+  const rows=state.items.map((item,i)=>{
+    const db=item.db?`${item.db.type} ${item.db.number} · ${item.db.valid?"유효":"만료"}(${item.db.validUntil})`:"미조회/미매칭";
+    return `<tr><td>${i+1}</td><td>${esc(item.modelName||"-")}</td><td>${esc(item.itemName||"-")}</td><td>${esc(item.ctrlNo||"-")}</td><td>${esc(db)}</td></tr>`;
+  }).join("");
+  return `<div class="m">수출국가 <b>${state.country}</b></div>
+          <div class="m">수출지역 <b>${state.region} 지역</b></div>
+          <div class="m">품목 수 <b>${state.items.length}개</b></div>
+          <div class="m">통제번호 <b>${ctrlSummary()}</b></div>
+          <div class="m">구분 <b>${typeLabel}</b></div>
+          <div class="item-summary"><table><thead><tr><th>#</th><th>모델명</th><th>품목명</th><th>통제번호</th><th>DB 조회</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+function renderResult(){
+  syncItemsFromDom();
+  const now=new Date();
+  const ds=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")} ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;
+  $("#printHead").innerHTML=`<div style="border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:16px"><div style="font-size:16px;font-weight:700">전략물자 수출허가 안내 결과</div><div style="font-size:11px;color:#444">생성일시 ${ds} · 사내 참고용</div></div>`;
+  $("#docMeta").innerHTML=metaHtml();
+  if(state.path==="block") renderBlocked();
+  else if(state.path==="exempt") renderExemption();
+  else renderDocs();
+}
+function renderBlocked(){
+  $("#resultTitle").textContent="안내 결과 — 수출 불가";
+  $("#docList").innerHTML=`<div class="blocked-banner">
+    <div class="bx">⛔</div>
+    <h4 class="serif">${state.country}로의 전략물자 수출은 불가합니다</h4>
+    <p>러시아·벨라루스로의 전략물자 수출은 원칙적으로 금지됩니다. ${hasControl()?`입력 품목 중 통제번호 <b>${ctrlSummary()}</b>가 있어 전략물자 수출 불가 안내가 우선 적용됩니다.`:`통제번호가 없더라도 對러·벨 수출통제(상황허가 대상품목 등)가 매우 엄격하므로 전문판정 및 법무 검토가 필요합니다.`}</p>
+  </div>`;
+  $("#docExtra").innerHTML=`<div class="notice warn"><b>예외 심사</b> &nbsp;선박·항공 안전, 민간 원자력 안전, 인도적 지원, 가지역 기업이 지배하는 회사가 최종사용자인 경우 등 사안별 심사대상에 한해 예외적으로 검토될 수 있습니다. 진행 전 허가기관·법무 검토를 받으세요.</div>`+nextStepsBlocked();
+  $("#footerNote").innerHTML=`※ 對러시아·벨라루스 수출통제는 전략물자수출입고시 및 별도 안내에 따라 수시로 변경됩니다. 신청 전 최신 고시와 허가기관 안내를 반드시 확인하세요.`;
+}
+function dlBtn(label,url,ex){ return `<a class="dl ${ex?'dl-ex':'dl-form'}" href="${url}" target="_blank" rel="noopener"><span class="ic">${ex?'✎':'▼'}</span>${label}</a>`; }
+
+/* ===== 허가기관 / 처리기간 / 이제 할 일 ===== */
+function authority(){
+  const n=(primaryCtrl()||"").toUpperCase().replace(/\s/g,"");
+  if(state.country==="북한") return {name:"통일부",note:"북한으로 반출하는 경우 통일부의 반출승인 대상입니다."};
+  if(/^0/.test(n)) return {name:"원자력안전위원회",note:"원자력 전용품목(통제번호 0 계열)은 원자력안전위원회가 허가기관입니다."};
+  if(/^ML/.test(n)||/^M\d/.test(n)) return {name:"방위사업청",note:"군용물자품목은 방위사업청이 허가기관입니다."};
+  return {name:"산업통상자원부",note:"이중용도품목은 산업통상자원부가 허가기관입니다(원자력·군용 제외). 정확한 허가기관은 판정 결과·품목에 따라 달라질 수 있습니다."};
+}
+function nextStepsPermit(){
+  const a=authority();
+  const ptypeLabel = state.ptype==="사용자포괄"?"사용자포괄수출허가신청서":"개별수출허가신청서";
+  const lead = state.ptype==="사용자포괄"
+    ? "신청서 접수일로부터 15일 이내(기술심사·관계기관 협의·현지조사 기간 제외). 통제체제 가입국 수출 또는 수출실적 품목을 같은 최종사용자에게 수출하는 경우 10일 이내(원자력·군용 제외)."
+    : "신청서 접수일로부터 15일 이내(기술심사·관계기관 협의·현지조사 기간 제외).";
+  return `<div class="action-card">
+    <h4>✅ 이제 할 일</h4>
+    <ol class="steps">
+      <li><b>전략물자 판정 확인</b><span>통제번호(${ctrlSummary()})가 기재된 판정서를 확보하세요. 자가판정서는 신청일 기준 최근 2년 이내의 것이어야 합니다.</span></li>
+      <li><b>제출 서류 준비</b><span>위 목록의 양식을 내려받아 작성하세요. ‘추후 사후 제출 필요’ 서류도 미리 준비해 두면 좋습니다.</span></li>
+      <li><b>YESTRADE에서 수출허가 신청</b><span>전략물자관리시스템 접속 → ‘허가 신청 &gt; 수출허가 신청’에서 ${ptypeLabel}를 작성·제출합니다.</span></li>
+      <li><b>허가기관 심사</b><span>${lead}</span></li>
+      <li><b>허가서 수령 후 수출 진행</b><span>허가 범위(품목·수량·최종사용자) 내에서만 수출하세요.</span></li>
+    </ol>
+    <div class="infobar">
+      <div class="ib"><b>허가기관</b>${a.name}</div>
+      <div class="ib"><b>처리기간</b>15일 이내(기술심사 등 제외)</div>
+      <div class="ib"><b>신청처</b>YESTRADE</div>
+    </div>
+    <div class="doc-note" style="margin-top:10px">${a.note} 수입자·최종사용자의 부적격거래자(Denial List) 확인은 별도 절차입니다.</div>
+    <div class="dl-row" style="margin-top:12px"><a class="dl dl-form" href="https://www.yestrade.go.kr/" target="_blank" rel="noopener"><span class="ic">↗</span>YESTRADE 수출허가 신청</a></div>
+  </div>`;
+}
+function nextStepsExempt(e){
+  const a=authority();
+  const proof = e.reimport
+    ? "1년 이내 재수입(별지 제21호 재수입신고서) 또는 해외 현지 폐기(사진 포함 자유양식 폐기증명서) 증빙을 확보·보관"
+    : "면제 요건 증빙(수입신고필증 등)을 확보·보관";
+  return `<div class="action-card">
+    <h4>✅ 이제 할 일</h4>
+    <ol class="steps">
+      <li><b>면제 요건 증빙 준비</b><span>${proof}하세요.</span></li>
+      <li><b>사전신고 또는 사후거래보고</b><span>수출 전 사전신고서(별지 제1호의4) 제출, 또는 수출 후 7일 이내 사후거래보고서(별지 제16호)를 ${a.name}에 제출합니다(YESTRADE).</span></li>
+      ${e.reimport?`<li><b>재수입·폐기 이행 및 증빙 보관</b><span>1년 이내 재수입 또는 현지 폐기를 이행하고 증빙을 보관하세요.</span></li>`:""}
+    </ol>
+    <div class="infobar">
+      <div class="ib"><b>제출처</b>${a.name}</div>
+      <div class="ib"><b>보고기한</b>수출 후 7일 이내</div>
+    </div>
+    <div class="dl-row" style="margin-top:12px"><a class="dl dl-form" href="https://www.yestrade.go.kr/" target="_blank" rel="noopener"><span class="ic">↗</span>YESTRADE 바로가기</a></div>
+  </div>`;
+}
+function nextStepsBlocked(){
+  return `<div class="action-card"><h4>✅ 이제 할 일</h4>
+    <ol class="steps">
+      <li><b>통상팀·법무 검토 요청</b><span>對러시아·벨라루스 수출통제 적용 여부와 예외 심사 가능성을 확인하세요.</span></li>
+      <li><b>예외 심사 사유 해당 여부 확인</b><span>선박·항공 안전, 민간 원자력 안전, 인도적 지원, 가지역 기업이 지배하는 회사 등에 해당하는지 점검하세요.</span></li>
+    </ol></div>`;
+}
+function renderExemption(){
+  const e=EXEMPTIONS[state.exemptionSel];
+  $("#resultTitle").textContent=`안내 결과 — 허가면제 제${e.n}호`;
+  let proof=e.proof.map(p=>`<li style="margin:4px 0">${p}</li>`).join("");
+  let dl="";
+  if(e.reimport){ dl+=dlBtn("별지 제21호 재수입신고서(증명서)",reimportLink()); if(CFG.exampleLinks["reimport"]) dl+=dlBtn("작성 예시",CFG.exampleLinks["reimport"],true); }
+  const disposalNote = e.disposal? `<div class="doc-note">· <b>폐기증명서</b>는 별도 지정 양식이 없습니다. 폐기 일자·장소·수량과 <b>폐기 현장 사진을 포함한 자유양식</b>으로 작성하여 증빙하세요.</div>`:"";
+  $("#docList").innerHTML=`<div class="doc">
+    <div class="doc-top"><div class="doc-name"><span class="seq">제${e.n}호</span>${e.t}${e.verify?` <span style="color:var(--amber);font-weight:600">· 원문 확인 필요</span>`:""}</div><span class="status st-ok">면제 가능</span></div>
+    <div class="doc-note">${e.d}</div>
+    <div class="doc-note" style="margin-top:10px"><b>증빙 요건</b><ul style="margin:6px 0 0 18px">${proof}</ul></div>
+    ${disposalNote}
+    ${dl?`<div class="dl-row">${dl}</div>`:""}
+  </div>`;
+  $("#docExtra").innerHTML=`<div class="notice"><b>면제 시 절차</b> &nbsp;개별수출허가가 면제되더라도, 수출 전 <b>사전신고서(별지 제1호의4)</b> 또는 수출 후 7일 이내 <b>사후거래보고서(별지 제16호 서식)</b>를 허가기관에 제출해야 합니다. 기술 수출은 본 면제(제1항) 대상이 아닙니다.</div>`
+    + (state.region==="나의2"?`<div class="notice warn"><b>나의2 지역 적용 배제</b> &nbsp;목적지가 나의2 지역이거나 경유·환적하는 경우, 본 면제(제5·8·9·15·16호)는 적용되지 않습니다. 개별수출허가 절차를 확인하세요.</div>`:nextStepsExempt(e));
+  $("#footerNote").innerHTML=`※ 면제 사유는 전략물자수출입고시 제26조제1항(제5·8·9·15·16호)을 요약한 사내 참고용입니다. 호별 단서·제외 품목과 제16호의 정확한 문구는 개정될 수 있으니, 적용 전 <a href="https://www.law.go.kr/행정규칙/전략물자수출입고시" target="_blank" rel="noopener">최신 고시 원문</a>을 확인하세요.`;
+}
+function renderDocs(){
+  $("#resultTitle").textContent="안내 결과 — 제출 서류";
+  const {list,extra}=getDocuments();
+  const ST_DESC={required:"반드시 제출해야 합니다",conditional:"조건 충족 시 생략 가능(필요 시 사후 제출)",postsubmit:"신청 시 생략되나 추후 사후 제출이 필요합니다",asneeded:"허가기관이 요청하는 경우 제출",na:"해당 없음"};
+  const DOC_HELP={finalReceiver:"최종수하인",endUserPledge:"최종사용자",judgement:"전문판정서"};
+  const usedSt=[...new Set(list.map(d=>d.status))];
+  const legend = list.length? `<div class="legend">${usedSt.map(s=>`<span class="lg"><span class="status st-${s}">${ST_LABEL[s]}</span> ${ST_DESC[s]}</span>`).join("")}</div>` : "";
+  $("#docList").innerHTML=(!list.length)?"":legend+list.map((d,i)=>{
+    const dim=d.status==="na"?"na":"";
+    let row="";
+    if(d.forms) row+=d.forms.map(([l,u])=>dlBtn(l,u)).join("");
+    if(d.example && d.status!=="na") row+=dlBtn("작성 예시",d.example,true);
+    return `<div class="doc ${dim}"><div class="doc-top"><div class="doc-name"><span class="seq">${String(i+1).padStart(2,"0")}</span>${d.label}${help(DOC_HELP[d.id]||"")}</div><span class="status st-${d.status}">${ST_LABEL[d.status]}</span></div>${d.note?`<div class="doc-note">${d.note}</div>`:""}${row?`<div class="dl-row">${row}</div>`:""}</div>`;
+  }).join("");
+  let ex=extra||"";
+  ex+=`<div class="notice"><b>“추후 사후 제출 필요” ${help("사후제출")}</b> &nbsp;신청 시점에는 제출이 생략되는 서류라도, 내부 기준에 따라 추후 사후 제출이 필요합니다. 위 다운로드 양식을 미리 준비해 두세요.</div>`;
+  if(state.ptype==="사용자포괄") ex+=`<div class="notice"><b>자율준수무역거래자(CP) ${help("자율준수무역거래자")} 한정</b> &nbsp;사용자포괄수출허가는 자율준수무역거래자로 지정된 수출자만 신청할 수 있습니다.</div>`;
+  if(list.length) ex+=nextStepsPermit();
+  $("#docExtra").innerHTML=ex;
+  $("#footerNote").innerHTML=`※ 본 안내는 전략물자수출입고시 및 YESTRADE(<a href="https://www.yestrade.go.kr/export-permissions/guide/overview" target="_blank" rel="noopener">바로가기</a>) 공개자료 기반의 사내 참고용입니다. 허가기관의 장이 필요하다고 인정하면 추가 서류를 요구할 수 있으며, 신청 전 최신 고시를 확인하세요.`;
+}
+$("#back5").addEventListener("click",()=>{ goStep(state.path==="block"?2:state.path==="exempt"?3:4); });
+$("#restart").addEventListener("click",()=>{
+  state={country:null,region:null,custom:false,items:[makeItem()],itemName:"",modelName:"",ctrlNo:"",exemptionSel:null,ptype:null,path:null};
+  $$(".opt-card").forEach(x=>x.classList.remove("sel"));
+  input.value=""; $("#bulkInput").value=""; renderItems();
+  $("#next1").disabled=true; $("#next2").disabled=true; $("#next4").disabled=true;
+  $("#regionResult").classList.remove("show"); $("#regionResult").innerHTML=""; $("#ruWarn").innerHTML="";
+  goStep(1);
+});
+
+/* ===== 결과 요약 · 인쇄 · 복사 ===== */
+function stripTags(s){ return String(s).replace(/<[^>]+>/g,""); }
+function buildSummary(){
+  syncItemsFromDom();
+  const now=new Date();
+  const dt=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")} ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;
+  const L=[];
+  L.push("[전략물자 수출허가 안내 결과]");
+  L.push("작성일시: "+dt);
+  L.push("수출국가: "+state.country+" ("+state.region+" 지역)");
+  L.push("");
+  L.push("[수출 품목]");
+  state.items.forEach((item,i)=>{
+    const db=item.db?`${item.db.type} ${item.db.number} / ${item.db.valid?"유효":"만료"}(${item.db.validUntil})`:"미조회/미매칭";
+    L.push((i+1)+". 모델명: "+(item.modelName||"-")+" / 품목명: "+(item.itemName||"-")+" / 통제번호: "+(item.ctrlNo||"-")+" / DB: "+db);
   });
-
-  ["countrySelect", "endUser", "useCase", "shipDate"].forEach(id => {
-    document.getElementById(id).addEventListener("input", renderDerivedOnly);
-    document.getElementById(id).addEventListener("change", renderDerivedOnly);
-  });
-
-  document.getElementById("addItemBtn").addEventListener("click", () => addItem());
-  document.getElementById("lookupAllBtn").addEventListener("click", lookupAllItems);
-  document.getElementById("applyBulkBtn").addEventListener("click", applyBulkInput);
-  document.getElementById("sampleBulkBtn").addEventListener("click", () => {
-    document.getElementById("bulkInput").value = [
-      "SM-G998N, 스마트폰,",
-      "CNC-9000,",
-      "INV-200, 범용 인버터",
-      "UNKNOWN-1, 연구장비, 3A999"
-    ].join("\n");
-  });
-
-  document.getElementById("toggleBatch").addEventListener("click", () => {
-    const box = document.getElementById("batchBox");
-    box.classList.toggle("collapsed");
-    document.getElementById("batchToggleLabel").textContent = box.classList.contains("collapsed") ? "펼치기" : "접기";
-  });
-
-  document.getElementById("copyBtn").addEventListener("click", async () => {
-    const text = buildReport();
-    try {
-      await navigator.clipboard.writeText(text);
-      document.getElementById("copyBtn").textContent = "복사됨";
-      setTimeout(() => { document.getElementById("copyBtn").textContent = "요약 복사"; }, 1400);
-    } catch (error) {
-      const area = document.createElement("textarea");
-      area.value = text;
-      document.body.appendChild(area);
-      area.select();
-      document.execCommand("copy");
-      area.remove();
+  L.push("");
+  if(state.path==="block"){
+    L.push("구분: 수출 불가 (러시아·벨라루스 전략물자 수출)");
+    L.push("");
+    L.push("· 러시아·벨라루스로의 전략물자 수출은 원칙적으로 금지됩니다. 대상 통제번호: "+ctrlSummary());
+    L.push("· 통상팀·법무 검토 및 예외 심사 사유 해당 여부 확인이 필요합니다.");
+  } else if(state.path==="exempt"){
+    const e=EXEMPTIONS[state.exemptionSel]; const a=authority();
+    L.push("구분: 허가면제 · 제"+e.n+"호 ("+e.t+")");
+    if(state.region==="나의2"){
+      L.push(""); L.push("· 나의2 지역으로 적용 배제 — 개별수출허가 절차를 확인하세요.");
+    } else {
+      L.push(""); L.push("[증빙 요건]");
+      e.proof.forEach(p=>L.push("· "+stripTags(p)));
+      L.push(""); L.push("[이제 할 일]");
+      L.push("1. 면제 요건 증빙 준비"+(e.reimport?" (별지 제21호 재수입신고서 또는 사진 포함 폐기증명서)":" (수입신고필증 등)"));
+      L.push("2. 수출 전 사전신고서(별지 제1호의4) 또는 수출 후 7일 이내 사후거래보고서(별지 제16호) 제출 — "+a.name);
+      if(e.reimport) L.push("3. 1년 이내 재수입 또는 현지 폐기 이행 및 증빙 보관");
+      L.push(""); L.push("제출처: "+a.name+" / 보고기한: 수출 후 7일 이내 / 신청처: YESTRADE");
     }
-  });
-
-  document.getElementById("printBtn").addEventListener("click", () => window.print());
-
-  const observer = new IntersectionObserver(entries => {
-    const visible = entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (visible) setActiveStep(visible.target.dataset.step);
-  }, { rootMargin: "-35% 0px -55% 0px", threshold: [0.1, 0.3, 0.6] });
-
-  document.querySelectorAll(".section").forEach(section => observer.observe(section));
+  } else {
+    const {list}=getDocuments(); const a=authority();
+    L.push("구분: "+(state.ptype==="사용자포괄"?"사용자포괄수출허가":"개별수출허가"));
+    L.push("");
+    if(!list.length){
+      L.push("· 사용자포괄수출허가는 가·나의1 지역만 적용됩니다. 개별수출허가 절차를 확인하세요.");
+    } else {
+      L.push("[제출 서류]");
+      list.forEach((d,i)=>L.push((i+1)+". "+d.label+" — "+ST_LABEL[d.status]));
+      L.push("");
+      L.push("허가기관: "+a.name+" / 처리기간: 15일 이내(기술심사 등 제외) / 신청처: YESTRADE");
+    }
+  }
+  L.push("");
+  L.push("※ 본 결과는 사내 참고용이며, 신청 전 최신 고시와 허가기관 안내를 반드시 확인하세요.");
+  return L.join("\n");
 }
+let toastT;
+function showToast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("show"),2200); }
+function fallbackCopy(text,cb){
+  const ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.focus(); ta.select();
+  try{document.execCommand("copy");cb();}catch(e){showToast("복사 실패 — 길게 눌러 직접 복사하세요");}
+  document.body.removeChild(ta);
+}
+$("#copyBtn").addEventListener("click",()=>{
+  const text=buildSummary(); const done=()=>showToast("요약이 복사되었습니다");
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done));
+  else fallbackCopy(text,done);
+});
+$("#printBtn").addEventListener("click",()=>window.print());
 
-attachEvents();
-renderAll();
+/* ===== 용어 도움말 ===== */
+const tip=$("#tip");
+document.addEventListener("click",e=>{
+  const h=e.target.closest(".help");
+  if(h){ e.stopPropagation(); const g=GLOSSARY[h.dataset.help]; if(!g)return;
+    tip.innerHTML=`<b>${g.t}</b><br>${g.d}`; tip.style.display="block";
+    const w=Math.min(260,window.innerWidth-16); tip.style.maxWidth=w+"px";
+    const r=h.getBoundingClientRect();
+    tip.style.left=Math.min(Math.max(8,r.left-20),window.innerWidth-w-8)+"px";
+    tip.style.top=(r.bottom+8)+"px";
+    if(r.bottom+8+tip.offsetHeight>window.innerHeight-8) tip.style.top=(r.top-tip.offsetHeight-8)+"px";
+    return;
+  }
+  if(!e.target.closest("#tip")) tip.style.display="none";
+});
+window.addEventListener("scroll",()=>{tip.style.display="none";},true);
+
+const glossOverlay=$("#glossaryOverlay");
+$("#glossBtn").addEventListener("click",()=>{
+  $("#glossBody").innerHTML=Object.values(GLOSSARY).map(g=>`<div class="gloss-item"><div class="gt">${g.t}</div><div class="gd">${g.d}</div></div>`).join("");
+  glossOverlay.classList.add("open");
+});
+$("#glossX").addEventListener("click",()=>glossOverlay.classList.remove("open"));
+glossOverlay.addEventListener("click",e=>{if(e.target===glossOverlay)glossOverlay.classList.remove("open");});
+
+/* ===== FAQ ===== */
+const faqOverlay=$("#faqOverlay");
+$("#faqBtn").addEventListener("click",()=>faqOverlay.classList.add("open"));
+$("#faqX").addEventListener("click",()=>faqOverlay.classList.remove("open"));
+faqOverlay.addEventListener("click",e=>{if(e.target===faqOverlay)faqOverlay.classList.remove("open");});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$$(".overlay.open").forEach(o=>o.classList.remove("open"));});
+
+/* ===== 인트로 패널 (제도 한눈에 보기) ===== */
+const introPanel=$("#introPanel");
+try{ if(localStorage.getItem("sgIntroCollapsed")==="1") introPanel.removeAttribute("open"); }catch(e){}
+introPanel.addEventListener("toggle",()=>{ try{localStorage.setItem("sgIntroCollapsed",introPanel.open?"0":"1");}catch(e){} });
+$("#introStart").addEventListener("click",()=>{
+  introPanel.removeAttribute("open");
+  $("#panel1").scrollIntoView({behavior:"smooth",block:"start"});
+  $("#countryInput").focus({preventScroll:true});
+});
+renderItems();
+updateNext2();
+
 </script>
 </body>
 </html>
