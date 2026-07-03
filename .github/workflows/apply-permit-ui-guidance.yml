@@ -1,0 +1,101 @@
+name: Apply permit UI guidance patch
+on:
+  push:
+    branches:
+      - codex/add-step5-review-memo
+permissions:
+  contents: write
+jobs:
+  patch:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/add-step5-review-memo
+      - name: Patch index.html
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, json
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          def H(s):
+              return ''.join(chr(int(x, 16)) for x in s.split())
+          def J(s):
+              return json.dumps(s, ensure_ascii=False)
+
+          select_label = H('c120 d0dd')
+          selected_label = H('c120 d0dd b428')
+          css_marker = '  .opt-none{grid-column:1/-1;border-style:dashed}\n'
+          css_add = f'''  #panel4 .opt-grid{{grid-template-columns:1fr;gap:14px}}
+  #panel4 .opt-card{{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:18px 20px}}
+  #panel4 .opt-card h4{{font-size:16px;margin-bottom:4px}}
+  #panel4 .opt-card p{{font-size:13px;max-width:680px}}
+  #panel4 .opt-card::after{{content:"{select_label}";font-size:11px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 9px;background:var(--paper)}}
+  #panel4 .opt-card.sel::after{{content:"{selected_label}";background:var(--ink);border-color:var(--ink);color:#fff}}
+  @media(max-width:640px){{#panel4 .opt-card{{grid-template-columns:1fr}}#panel4 .opt-card::after{{justify-self:start}}}}
+'''
+          if css_add not in text:
+              text = text.replace(css_marker, css_marker + css_add, 1)
+
+          old_forms = '''  if(docId==="endUserPledge") return scheme==="II"
+    ? [...OFFICIAL.endUserAll_II,...OFFICIAL.endUserWA_II,...OFFICIAL.endUserGuide_II]
+    : [...OFFICIAL.endUserAll_I,...OFFICIAL.endUserWA_I,...OFFICIAL.endUserGuide_I];'''
+          new_forms = '''  if(docId==="endUserPledge"){
+    if(scheme==="II") return [...OFFICIAL.endUserAll_II,...OFFICIAL.endUserWA_II,...OFFICIAL.endUserGuide_II];
+    if(scheme==="WA") return [...OFFICIAL.endUserWA_I,...OFFICIAL.endUserGuide_I];
+    return [...OFFICIAL.endUserAll_I,...OFFICIAL.endUserGuide_I];
+  }'''
+          if old_forms not in text:
+              raise SystemExit('formsFor marker not found')
+          text = text.replace(old_forms, new_forms, 1)
+
+          func_marker = '''function hasEnc(){
+  return state.items.some(item=>{
+    const n=(item.ctrlNo||"").toUpperCase().replace(/\\s/g,"");
+    return ENC_CODES.some(c=>n.includes(c));
+  });
+}
+'''
+          func_add = '''function isWassenaarEndUserPledge(){
+  const nums=controlledItems().map(i=>(i.ctrlNo||"").toUpperCase().replace(/\\s/g,"")).join(" ");
+  return state.region==="''' + H('ac00') + '''" && (nums.includes("5A002") || nums.includes("5D002"));
+}
+'''
+          if func_add not in text:
+              if func_marker not in text:
+                  raise SystemExit('hasEnc marker not found')
+              text = text.replace(func_marker, func_marker + func_add, 1)
+
+          all_note = H('cd5c c885 c0ac c6a9 c790 0020 c11c c57d c11c b294 0020 bcc4 c9c0 0020 0032 c758 0032 0020 c11c c2dd c744 0020 c791 c131 d558 c138 c694 002e 0020 b2e8 002c 0020 ac00 0020 c9c0 c5ed c73c b85c 0020 0035 0041 0030 0030 0032 0020 b610 b294 0020 0035 0044 0030 0030 0032 0020 acc4 c5f4 0020 d1b5 c81c bc88 d638 b97c 0020 c218 cd9c d558 b294 0020 acbd c6b0 0020 bcc4 c9c0 0020 0032 c758 0033 0020 c11c c2dd c744 0020 c791 c131 d558 c138 c694 002e')
+          wa_note = H('ac00 0020 c9c0 c5ed 0020 002b 0020 0035 0041 0030 0030 0032 002f 0035 0044 0030 0030 0032 0020 acc4 c5f4 0020 d1b5 c81c bc88 d638 c774 bbc0 b85c 0020 cd5c c885 c0ac c6a9 c790 0020 c11c c57d c11c b294 0020 bcc4 c9c0 0020 0032 c758 0033 0028 bc14 c138 b098 b974 0029 0020 c11c c2dd c744 0020 c791 c131 d558 c138 c694 002e')
+          line_pat = re.compile(r'    list\.push\(mk\("endUserPledge", ga\?"postsubmit":"required",".*?","I"\)\);\n')
+          repl = '    const endUserScheme=isWassenaarEndUserPledge()?"WA":"I";\n    const endUserNote=isWassenaarEndUserPledge()?'+J(wa_note)+':'+J(all_note)+';\n    list.push(mk("endUserPledge", ga?"postsubmit":"required",endUserNote,endUserScheme));\n'
+          text, n = line_pat.subn(repl, text, count=1)
+          if n != 1:
+              raise SystemExit('endUserPledge line not replaced')
+
+          l15 = H('d574 c678 c5d0 c11c 0020 bcf4 c815 002c 0020 c218 b9ac')
+          d15 = H('d574 c678 c5d0 c11c 0020 bcf4 c815 0020 b610 b294 0020 c218 b9ac b97c 0020 bc1b c744 0020 baa9 c801 c73c b85c 0020 c218 cd9c d55c 0020 d6c4 0020 0031 b144 0020 c774 b0b4 c5d0 0020 c7ac c218 c785 d558 ac70 b098 0020 d574 c678 0020 d604 c9c0 c5d0 c11c 0020 d3d0 ae30')
+          l16 = H('d574 c678 c5d0 c11c 0020 ac80 c0ac 002c 0020 c2dc d5d8')
+          d16 = H('d574 c678 c5d0 c11c 0020 ac80 c0ac 0020 b610 b294 0020 c2dc d5d8 c744 0020 bc1b c744 0020 baa9 c801 c73c b85c 0020 c218 cd9c d55c 0020 d6c4 0020 0031 b144 0020 c774 b0b4 c5d0 0020 c7ac c218 c785 d558 ac70 b098 0020 d574 c678 0020 d604 c9c0 c5d0 c11c 0020 d3d0 ae30')
+          text, n15 = re.subn(r'\{key:"15",label:"[^"]*",desc:"[^"]*"\}', '{key:"15",label:'+J(l15)+',desc:'+J(d15)+'}', text, count=1)
+          text, n16 = re.subn(r'\{key:"16",label:"[^"]*",desc:"[^"]*"\}', '{key:"16",label:'+J(l16)+',desc:'+J(d16)+'}', text, count=1)
+          if n15 != 1 or n16 != 1:
+              raise SystemExit('exemption purpose replacement failed')
+
+          for p in [Path('.github/workflows/apply-permit-ui-guidance.yml'), Path('trigger-permit-ui-patch.txt')]:
+              if p.exists():
+                  p.unlink()
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Improve permit type UI and document guidance"
+          git push
