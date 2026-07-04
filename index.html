@@ -25,7 +25,6 @@ function patchHtml(html){
   @media(max-width:640px){#panel4 .opt-card{grid-template-columns:1fr}#panel4 .opt-card::after{justify-self:start}}
 `;
   if(!html.includes('#panel4 .opt-card.sel::after')) html=html.replace(cssMarker,cssMarker+cssAdd);
-
   const oldForms=`  if(docId==="endUserPledge") return scheme==="II"
     ? [...OFFICIAL.endUserAll_II,...OFFICIAL.endUserWA_II,...OFFICIAL.endUserGuide_II]
     : [...OFFICIAL.endUserAll_I,...OFFICIAL.endUserWA_I,...OFFICIAL.endUserGuide_I];`;
@@ -35,7 +34,6 @@ function patchHtml(html){
     return [...OFFICIAL.endUserAll_I,...OFFICIAL.endUserGuide_I];
   }`;
   html=html.replace(oldForms,newForms);
-
   const hasEnc=`function hasEnc(){
   return state.items.some(item=>{
     const n=(item.ctrlNo||"").toUpperCase().replace(/\\s/g,"");
@@ -49,14 +47,20 @@ function patchHtml(html){
 }
 `;
   if(!html.includes('function isWassenaarEndUserPledge')) html=html.replace(hasEnc,hasEnc+waFn);
-
   html=html.replace(/    list\.push\(mk\("endUserPledge", ga\?"postsubmit":"required",".*?","I"\)\);\n/,`    const endUserScheme=isWassenaarEndUserPledge()?"WA":"I";
     const endUserNote=isWassenaarEndUserPledge()?"가 지역 + 5A002/5D002 계열 통제번호이므로 최종사용자 서약서는 별지 2의3(바세나르) 서식을 작성하세요.":"최종사용자 서약서는 별지 2의2 서식을 작성하세요. 단, 가 지역으로 5A002 또는 5D002 계열 통제번호를 수출하는 경우 별지 2의3 서식을 작성하세요.";
     list.push(mk("endUserPledge", ga?"postsubmit":"required",endUserNote,endUserScheme));
 `);
-
   html=html.replace(/\{key:"15",label:"[^"]*",desc:"[^"]*"\}/,`{key:"15",label:"해외에서 보정, 수리",desc:"해외에서 보정 또는 수리를 받을 목적으로 수출한 후 1년 이내에 재수입하거나 해외 현지에서 폐기"}`);
   html=html.replace(/\{key:"16",label:"[^"]*",desc:"[^"]*"\}/,`{key:"16",label:"해외에서 검사, 시험",desc:"해외에서 검사 또는 시험을 받을 목적으로 수출한 후 1년 이내에 재수입하거나 해외 현지에서 폐기"}`);
+  const add=`<script>(()=>{
+const FLAGS='최종용도 정보 제공 기피|품목과 사업분야 불일치|수입국 기술수준과 격차|최종사용자 경험 부족|설치·보수·교육 거부|가격·결제조건 비정상|납기·수송경로 비정상|사용 또는 재수출 여부 불명확|거래자 스크리닝 이슈'.split('|');
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function reviewBox(){if(document.querySelector('#reviewChecklist'))return;const t=document.querySelector('#docExtra');if(!t)return;let rows=FLAGS.map((f,i)=>'<label style="display:flex;gap:10px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;margin:8px 0;font-size:13px"><input type="checkbox" data-rf="'+i+'" style="width:17px;height:17px;margin-top:2px"><span>'+(i+1)+'. '+esc(f)+'</span></label>').join('');t.insertAdjacentHTML('beforeend','<div class="action-card" id="reviewChecklist"><h4>상황허가 의심징후 점검</h4><div class="doc-note" style="margin-bottom:10px">거래 상대방, 최종용도, 수송경로 등에 의심징후가 있는지 확인하세요. 해당 항목이 있으면 수출을 보류하고 통상팀 검토를 받으세요.</div>'+rows+'<div class="field" style="max-width:none;margin-top:12px"><label>검토 메모</label><textarea id="reviewMemo" placeholder="확인 내용 또는 추가 검토사항을 입력하세요."></textarea></div></div>');}
+function memoBox(){if(state.path!=='exempt'||document.querySelector('#exemptMemoBox'))return;const e=EXEMPTIONS[state.exemptionSel], d=document.querySelector('#docList');if(!e||!d)return;const first=state.items[0]||{};const title='전략물자 수출허가면제 검토 품의 ('+(first.modelName||first.itemName||'수출 품목')+' · 제'+e.n+'호)';const items=state.items.map((x,i)=>(i+1)+'. '+(x.modelName||'-')+' / '+(x.itemName||'-')+' / '+(x.ctrlNo||'-')).join('\\n');const body=['아래와 같이 전략물자 수출허가면제 적용 여부를 검토하여 상신합니다.','','1. 수출 개요','- 수출국가: '+state.country+' ('+state.region+' 지역)','- 대상 품목:',items,'- 통제번호: '+ctrlSummary(),'','2. 면제 검토','- 조항: 제'+e.n+'호','- 사유: '+e.t,'','3. 요청 사항','허가면제 적용 및 후속 신고 절차 진행을 승인 요청드립니다.'].join('\\n');d.insertAdjacentHTML('beforeend','<div class="action-card" id="exemptMemoBox"><h4>허가면제 품의 작성</h4><div class="field" style="max-width:none"><label>품의 제목</label><input id="memoTitle" value="'+esc(title)+'"></div><div class="field" style="max-width:none"><label>품의 본문</label><textarea id="memoBody" style="min-height:240px">'+esc(body)+'</textarea></div></div>');}
+const rr=renderResult;renderResult=function(){rr();memoBox();reviewBox();};
+})();<\/script>`;
+  if(!html.includes('id="reviewChecklist"')) html=html.replace('</body>',add+'</body>');
   return html;
 }
 fetch(BASE_URL,{cache:"no-store"})
