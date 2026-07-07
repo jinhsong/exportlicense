@@ -52,8 +52,8 @@
   /* fields */
   .field{margin-bottom:16px;max-width:460px}
   .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
-  .field input{width:100%;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;font-family:inherit;font-size:15px;background:#fff;color:var(--ink)}
-  .field input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(21,36,61,.08)}
+  .field input,.field select{width:100%;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;font-family:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(21,36,61,.08)}
   .field input[readonly]{background:var(--paper);color:var(--muted);cursor:not-allowed}
   .field input[readonly]:focus{border-color:var(--line-strong);box-shadow:none}
   .field .hint{font-size:11.5px;color:var(--muted);margin-top:5px}
@@ -70,6 +70,9 @@
   .company-db-strip b{color:var(--copper)}
   .party-match{font-size:11.6px;color:var(--green);margin-top:6px;line-height:1.45}
   .party-match.none{color:var(--muted)}
+  .party-extra-list{display:grid;gap:8px;margin-top:8px}
+  .party-extra-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:start}
+  .party-extra-row input{width:100%;padding:10px 12px;border:1px solid var(--line-strong);border-radius:10px;font-family:inherit;font-size:14px;background:#fff;color:var(--ink)}
   .item-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:16px 0 12px}
   .item-tools .left{font-size:13px;color:var(--muted)}
   .item-tools .right{display:flex;gap:8px;flex-wrap:wrap}
@@ -93,6 +96,21 @@
   .risk-line{line-height:1.55}
   .risk-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
   .risk-tag{display:inline-flex;align-items:center;border:1px solid rgba(154,61,48,.22);background:#fff;border-radius:999px;padding:2px 7px;font-size:11.2px;font-weight:700;color:var(--red)}
+  .classify-extra{margin-top:14px;border:1px solid var(--line);background:var(--paper-2);border-radius:12px;padding:14px}
+  .classify-extra-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
+  .classify-extra-head b{font-size:13px;color:var(--ink)}
+  .classify-extra-head span{font-size:11.8px;color:var(--muted);line-height:1.45}
+  .classify-extra-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .hs-suggest-list{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+  .hs-chip{border:1px solid var(--line-strong);background:#fff;border-radius:999px;padding:6px 10px;font-family:inherit;font-size:11.8px;font-weight:700;color:var(--ink-soft);cursor:pointer}
+  .hs-chip:hover{border-color:var(--copper);color:var(--copper);background:var(--amber-bg)}
+  .ex-value-list{display:grid;gap:12px;margin-top:14px}
+  .ex-value-card{border:1px solid var(--line);background:#fff;border-radius:12px;padding:15px}
+  .ex-value-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:12px}
+  .ex-value-head b{font-size:13.5px;color:var(--ink)}
+  .ex-value-head span{font-size:12px;color:var(--muted);line-height:1.45}
+  .ex-value-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .ex-amount{min-height:43px;border:1px solid var(--line-strong);background:var(--paper);border-radius:10px;padding:10px 12px;font-size:13px;font-weight:800;color:var(--ink-soft);display:flex;align-items:center}
   .db-choice-list{display:grid;gap:8px;margin-top:10px}
   .db-choice{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
   .db-choice .choice-head{font-size:13px;font-weight:700;color:var(--ink)}
@@ -165,6 +183,19 @@
   .permit-card .pc-desc{display:block;font-size:12.8px;color:var(--muted);line-height:1.55}
   .permit-card .pc-meta{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px}
   .permit-card .pc-meta span{font-size:11.3px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 8px;color:var(--ink-soft)}
+  .permit-qty-box{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px 16px;margin-top:14px}
+  .permit-qty-row{display:grid;grid-template-columns:minmax(0,220px) auto;gap:10px;align-items:end}
+  .permit-qty-unit{min-height:43px;display:inline-flex;align-items:center;border:1px solid var(--line-strong);background:var(--paper);border-radius:10px;padding:0 14px;font-size:13px;font-weight:800;color:var(--ink-soft)}
+  .permit-detail-box{border:1px solid var(--line);background:#fff;border-radius:12px;padding:16px;margin-top:14px}
+  .permit-detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+  .permit-item-list{display:grid;gap:12px;margin-top:14px}
+  .permit-item-card{border:1px solid var(--line);background:var(--paper-2);border-radius:12px;padding:14px}
+  .permit-item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:12px}
+  .permit-item-head b{font-size:13.5px;color:var(--ink)}
+  .permit-item-head span{font-size:12px;color:var(--muted);line-height:1.45}
+  .permit-item-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .bulk-permit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .bulk-permit-grid .span-2{grid-column:span 2}
   .flag-list{display:grid;gap:10px}
   .flag-section-title{font-size:12px;font-weight:800;color:var(--ink-soft);margin:4px 0 2px}
   .flag-card{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
@@ -326,7 +357,7 @@
   .modal-h{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
   .modal-h h3{font-size:17px}.modal-x{border:none;background:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1}
   .modal-b{padding:22px 24px}
-  @media(max-width:720px){.item-grid,.txn-grid,.permit-grid{grid-template-columns:1fr}.item-card-head,.item-tools{align-items:stretch;flex-direction:column}.item-tools .right,.item-card-actions{display:grid;grid-template-columns:1fr}.item-card-actions .btn,.item-tools .btn{width:100%}.db-choice{grid-template-columns:1fr}.db-choice .btn{width:100%}.item-summary{overflow-x:auto}.item-summary table{min-width:620px}.db-status-strip{align-items:flex-start}.flag-card{grid-template-columns:1fr}.radio-pair{display:grid;grid-template-columns:1fr 1fr;justify-content:stretch}.radio-chip{width:100%}#panel4 .nav-row{display:grid;grid-template-columns:1fr}#panel4 .nav-row .btn{width:100%}}
+  @media(max-width:720px){.item-grid,.classify-extra-grid,.ex-value-grid,.permit-detail-grid,.permit-item-grid,.bulk-permit-grid,.txn-grid,.permit-grid,.permit-qty-row,.party-extra-row{grid-template-columns:1fr}.bulk-permit-grid .span-2{grid-column:auto}.item-card-head,.item-tools,.ex-value-head,.permit-item-head{align-items:stretch;flex-direction:column}.item-tools .right,.item-card-actions{display:grid;grid-template-columns:1fr}.item-card-actions .btn,.item-tools .btn{width:100%}.db-choice{grid-template-columns:1fr}.db-choice .btn{width:100%}.item-summary{overflow-x:auto}.item-summary table{min-width:620px}.db-status-strip{align-items:flex-start}.flag-card{grid-template-columns:1fr}.radio-pair{display:grid;grid-template-columns:1fr 1fr;justify-content:stretch}.radio-chip{width:100%}#panel4 .nav-row{display:grid;grid-template-columns:1fr}#panel4 .nav-row .btn{width:100%}}
 </style>
 </head>
 <body>
@@ -496,10 +527,11 @@
       <span class="substep-chip active" data-substep="country"><span class="dot">1</span>국가</span>
       <span class="substep-chip" data-substep="transaction"><span class="dot">2</span>거래정보</span>
       <span class="substep-chip" data-substep="purpose"><span class="dot">3</span>면제조항</span>
+      <span class="substep-chip" data-substep="iteminfo"><span class="dot">4</span>품목정보</span>
     </div>
     <div class="ex-substep" id="exCountryStep">
       <div class="combo">
-        <input type="text" id="countryInput" placeholder="국가명 또는 코드 입력 (예: 한국, KR, 미국, US, 중국, CN …)" autocomplete="off">
+        <input type="text" id="countryInput" placeholder="국가명 입력 (예: 한국, 미국 ...)" autocomplete="off">
         <div class="combo-list" id="comboList"></div>
       </div>
       <div class="region-result" id="regionResult"></div>
@@ -514,16 +546,22 @@
           <label>구매자</label>
           <input type="text" id="buyerInput" placeholder="예: SG Electronics Vietnam Co., Ltd." list="companyOptions" autocomplete="off">
           <div class="party-match none" id="buyerMatch"></div>
+          <div class="party-extra-list" id="buyerExtraList"></div>
+          <button type="button" class="btn mini-btn" id="addBuyer" style="margin-top:8px">구매자 추가</button>
         </div>
         <div class="field">
           <label>최종수하인</label>
           <input type="text" id="consigneeInput" placeholder="예: SG Electronics Vietnam Co., Ltd." list="companyOptions" autocomplete="off">
           <div class="party-match none" id="consigneeMatch"></div>
+          <div class="party-extra-list" id="consigneeExtraList"></div>
+          <button type="button" class="btn mini-btn" id="addConsignee" style="margin-top:8px">최종수하인 추가</button>
         </div>
         <div class="field">
           <label>최종사용자</label>
           <input type="text" id="endUserInput" placeholder="예: SG Electronics Vietnam Co., Ltd." list="companyOptions" autocomplete="off">
           <div class="party-match none" id="endUserMatch"></div>
+          <div class="party-extra-list" id="endUserExtraList"></div>
+          <button type="button" class="btn mini-btn" id="addEndUser" style="margin-top:8px">최종사용자 추가</button>
         </div>
         <div class="field">
           <label>최종사용용도</label>
@@ -562,6 +600,40 @@
         </button>
       </div>
     </div>
+    <div class="permit-qty-box hidden" id="permitQtyBox">
+      <div class="field" style="max-width:none;margin-bottom:0">
+        <label>개별수출허가 신청 수량</label>
+        <div class="permit-qty-row">
+          <input type="number" id="permitQtyInput" min="1" step="1" inputmode="numeric" pattern="[0-9]*" placeholder="예: 100">
+          <span class="permit-qty-unit">EA</span>
+        </div>
+        <div class="hint">개별수출허가는 허가받은 수량 범위 내에서만 수출할 수 있으므로, 예상 출하량보다 넉넉하게 기입하세요.</div>
+      </div>
+    </div>
+    <div class="permit-detail-box hidden" id="permitDetailBox">
+      <div class="notice" style="margin-top:0"><b>개별수출허가 신청 상세정보</b> &nbsp;개별수출허가 신청서와 품의에 필요한 운송·제조자·품목별 금액 정보를 입력하세요.</div>
+      <div class="permit-detail-grid">
+        <div class="field"><label>최종도착지항구(공항)명</label><input type="text" id="permitDestPortInput" placeholder="예: Ho Chi Minh Port, ICN Airport"></div>
+        <div class="field"><label>운송방법</label>
+          <select id="permitTransportSelect">
+            <option value="">선택하세요</option>
+            <option value="해상">해상</option>
+            <option value="항공">항공</option>
+            <option value="육상">육상</option>
+            <option value="복합">복합</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+        <div class="field hidden" id="permitTransportOtherField"><label>기타 운송방법</label><input type="text" id="permitTransportOtherInput" placeholder="예: 특송, 철도+해상"></div>
+        <div class="field"><label>제조자</label><input type="text" id="permitManufacturerInput" placeholder="예: SG Electronics Korea HQ"></div>
+      </div>
+      <div class="hint">품목별 수출액은 단가(USD) × 수량으로 자동 계산됩니다.</div>
+      <div id="permitItemInfoList" class="permit-item-list"></div>
+    </div>
+    <div class="permit-detail-box hidden" id="bulkPermitDetailBox">
+      <div class="notice" style="margin-top:0"><b>사용자포괄수출허가 신청 정보</b> &nbsp;허가신청 품목별로 구매자, 최종수하인, 최종사용자를 매칭하고 최종사용용도와 홈페이지를 입력하세요.</div>
+      <div id="bulkPermitItemList" class="permit-item-list"></div>
+    </div>
     <div id="permitWarn"></div>
     <div class="nav-row"><button class="btn" id="back3">← 이전</button><button class="btn primary" id="next3" disabled>AI 검토결과 보기 →</button></div>
   </section>
@@ -595,9 +667,9 @@
   <!-- STEP 6 : AI DRAFT SUPPORT -->
   <section class="panel hidden" id="panel6">
     <div class="panel-h"><span class="badge-n">06</span><h3>AI 품의작성 지원</h3></div>
-    <p class="lead">5단계 AI 검토결과를 바탕으로 통상그룹 담당자 검토·승인을 요청하는 내부 품의 초안을 작성합니다. 실제 상신 전 최신 고시, 판정서, 거래 서류와 대조하세요.</p>
+    <p class="lead" id="draftLead">5단계 AI 검토결과를 바탕으로 판정 요청 메일 또는 통상그룹 담당자 검토·승인을 요청하는 내부 품의 초안을 작성합니다. 실제 발송 또는 상신 전 최신 고시, 판정서, 거래 서류와 대조하세요.</p>
     <div class="support-tabs">
-      <button class="support-tab active" data-draft-tab="draft">품의 초안</button>
+      <button class="support-tab active" data-draft-tab="draft" id="draftTabLabel">품의 초안</button>
       <button class="support-tab" data-draft-tab="guide">통상그룹 진행 안내</button>
     </div>
     <div class="support-pane" id="draftPane"><div id="draftSupport"></div></div>
@@ -621,7 +693,7 @@
     <div class="modal-b faq-list">
       <details open><summary>1. 전략물자란 무엇이고, 왜 수출허가가 필요한가요?</summary><p>국제평화·안전 유지와 국가안보를 위해 수출이 통제되는 물품·소프트웨어·기술입니다(대외무역법 제19조). 무기류뿐 아니라 <b>암호기능이 있는 스마트폰·통신장비, 반도체 장비</b> 같은 일반 산업제품(이중용도품목)도 다수 포함되며, 해당 품목은 수출 전 허가기관의 허가를 받아야 합니다.</p></details>
       <details><summary>2. 우리 제품이 전략물자인지 어떻게 확인하나요?</summary><p>‘판정’으로 확인합니다. <b>자가판정</b>은 YESTRADE에서 수출자가 직접 판단(무료·즉시), <b>전문판정</b>은 무역안보관리원(KOSTI) 등에 의뢰(접수 후 15일 이내 통보)합니다. 판정 결과 전략물자에 해당하면 통제번호가 부여됩니다. 자가판정서는 신청일 기준 최근 2년 이내의 것이어야 합니다.</p></details>
-      <details><summary>3. 통제번호(ECCN)가 뭔가요?</summary><p>품목이 어떤 국제통제목록에 해당하는지 나타내는 분류번호(예: 5A002.a.2.)로, 판정서에 기재됩니다. 통제번호를 알아야 허가 신청 검토를 진행할 수 있으며, 이 화면 1단계 전략물자 검토에서 입력합니다. 아직 판정이 없다면 수출통제 담당자에게 판정 요청 품의를 올려 자가판정 또는 전문판정을 먼저 진행해야 합니다.</p></details>
+      <details><summary>3. 통제번호(ECCN)가 뭔가요?</summary><p>품목이 어떤 국제통제목록에 해당하는지 나타내는 분류번호(예: 5A002.a.2.)로, 판정서에 기재됩니다. 통제번호를 알아야 허가 신청 검토를 진행할 수 있으며, 이 화면 1단계 전략물자 검토에서 입력합니다. 아직 판정이 없다면 통상그룹 담당자에게 판정 요청 메일을 보내 자가판정 또는 전문판정을 먼저 진행해야 합니다.</p></details>
       <details><summary>4. 가 / 나의1 / 나의2 지역은 뭐가 다른가요?</summary><p><b>가 지역</b>은 4대 국제수출통제체제에 모두 가입한 29개국으로 일부 서류가 신청 시 생략됩니다. <b>나의1 지역</b>은 그 밖의 모든 국가로 전체 서류 제출이 원칙입니다. <b>나의2 지역</b>은 UN 무기금수 등 우려대상 13개국으로 허가면제가 적용되지 않고 심사가 엄격합니다. 수출국가를 입력하면 자동 판정됩니다.</p></details>
       <details><summary>5. 개별수출허가와 사용자포괄수출허가는 어떻게 다른가요?</summary><p><b>개별수출허가</b>는 확인된 수량을 건별로 허가받는 가장 일반적인 유형입니다. <b>사용자포괄수출허가</b>는 자율준수무역거래자(CP)로 지정된 수출자가 구매자·목적지·최종수하인을 지정해 일정 기간 반복 수출하도록 허가받는 유형으로, CP 지정 기업만 신청할 수 있고 나의2 지역에는 적용되지 않습니다.</p></details>
       <details><summary>6. 허가면제는 어떤 경우에 받을 수 있나요?</summary><p>전략물자수출입고시 제26조에 따라 <b>수입품 반송, 전시회 출품 후 1년 내 재반입, 해외 보정·수리 또는 검사·시험 후 1년 내 재반입, 암호화 품목의 민간용 수출</b> 등 일부 경우에 개별수출허가가 면제됩니다. 이 화면 2단계 문진에서 해당 여부를 확인할 수 있습니다. 단, 나의2 지역행이거나 경유·환적하는 경우 면제가 적용되지 않습니다.</p></details>
@@ -735,14 +807,24 @@ const EXEMPTIONS={
 
 /* ===== 상태 / 설정 ===== */
 const SAMPLE_MODEL_DB=[
-  {modelName:"SM-G998N",itemName:"스마트폰",ctrlNo:"5A002.a.2.",type:"전문판정",number:"EXP-2026-0415",validUntil:"2029-05-31",result:"전략물자 해당"},
-  {modelName:"SM-G998N",itemName:"스마트폰",ctrlNo:"5A002.a.1.",type:"자가판정",number:"SELF-2026-0012",validUntil:"2028-03-31",result:"전략물자 해당"},
-  {modelName:"SM-G998N",itemName:"스마트폰 구형 판정",ctrlNo:"5A002.a.2.",type:"자가판정",number:"SELF-2023-0999",validUntil:"2025-12-31",result:"전략물자 해당"},
-  {modelName:"ENC-SW-01",itemName:"암호화 소프트웨어",ctrlNo:"5D002.",type:"전문판정",number:"EXP-2026-0044",validUntil:"2027-11-30",result:"전략물자 해당"},
-  {modelName:"CNC-9000",itemName:"5축 머시닝센터",ctrlNo:"2B001.",type:"전문판정",number:"EXP-2024-0318",validUntil:"2026-01-15",result:"전략물자 해당"},
-  {modelName:"CNC-9000",itemName:"5축 머시닝센터",ctrlNo:"2B001.",type:"전문판정",number:"EXP-2026-0132",validUntil:"2028-08-15",result:"전략물자 해당"},
-  {modelName:"GPU-A100",itemName:"고성능 GPU 모듈",ctrlNo:"3A090.",type:"자가판정",number:"SELF-2025-0901",validUntil:"2027-06-30",result:"전략물자 해당"},
-  {modelName:"INV-200",itemName:"범용 인버터",ctrlNo:"",type:"자가판정",number:"SELF-2025-0220",validUntil:"2028-02-28",result:"비해당"}
+  {modelName:"SM-G998N",itemName:"스마트폰",ctrlNo:"5A002.a.2.",hsCode:"8517.13",type:"전문판정",number:"EXP-2026-0415",validUntil:"2029-05-31",result:"전략물자 해당"},
+  {modelName:"SM-G998N",itemName:"스마트폰",ctrlNo:"5A002.a.1.",hsCode:"8517.13",type:"자가판정",number:"SELF-2026-0012",validUntil:"2028-03-31",result:"전략물자 해당"},
+  {modelName:"SM-G998N",itemName:"스마트폰 구형 판정",ctrlNo:"5A002.a.2.",hsCode:"8517.13",type:"자가판정",number:"SELF-2023-0999",validUntil:"2025-12-31",result:"전략물자 해당"},
+  {modelName:"ENC-SW-01",itemName:"암호화 소프트웨어",ctrlNo:"5D002.",hsCode:"8523.49",type:"전문판정",number:"EXP-2026-0044",validUntil:"2027-11-30",result:"전략물자 해당"},
+  {modelName:"CNC-9000",itemName:"5축 머시닝센터",ctrlNo:"2B001.",hsCode:"8457.10",type:"전문판정",number:"EXP-2024-0318",validUntil:"2026-01-15",result:"전략물자 해당"},
+  {modelName:"CNC-9000",itemName:"5축 머시닝센터",ctrlNo:"2B001.",hsCode:"8457.10",type:"전문판정",number:"EXP-2026-0132",validUntil:"2028-08-15",result:"전략물자 해당"},
+  {modelName:"GPU-A100",itemName:"고성능 GPU 모듈",ctrlNo:"3A090.",hsCode:"8473.30",type:"자가판정",number:"SELF-2025-0901",validUntil:"2027-06-30",result:"전략물자 해당"},
+  {modelName:"INV-200",itemName:"범용 인버터",ctrlNo:"",hsCode:"8504.40",type:"자가판정",number:"SELF-2025-0220",validUntil:"2028-02-28",result:"비해당"}
+];
+const SAMPLE_HS_DB=[
+  {hsCode:"8517.13",label:"스마트폰·무선통신기기",keywords:["스마트폰","휴대폰","SM-G","PHONE","MOBILE","RADIO UNIT","BASE STATION"]},
+  {hsCode:"8457.10",label:"머시닝센터·공작기계",keywords:["CNC","MACHINING CENTER","MILLING","머시닝센터","공작기계"]},
+  {hsCode:"8466.93",label:"공작기계 부품",keywords:["MACHINE TOOL","SPINDLE","CHUCK","TOOL HOLDER","공작기계 부품"]},
+  {hsCode:"8471.50",label:"서버·워크스테이션",keywords:["SERVER","WORKSTATION","GPU SERVER","서버","워크스테이션"]},
+  {hsCode:"8473.30",label:"컴퓨터 부품·GPU 모듈",keywords:["GPU","NVIDIA","A100","H100","B200","RTX","MI300","컴퓨터 부품"]},
+  {hsCode:"8525.89",label:"카메라·열화상 카메라",keywords:["CAMERA","THERMAL","열화상","카메라"]},
+  {hsCode:"9031.49",label:"측정·검사 장비",keywords:["3D SCANNER","INSPECTOR","CMM","MEASURING","측정기","검사장비"]},
+  {hsCode:"8543.70",label:"기타 전기기기",keywords:["SIGNAL GENERATOR","SIGNAL ANALYZER","NETWORK ANALYZER","CONVERTER","전기기기"]}
 ];
 const HIGH_RISK_GROUPS=[
   {category:"3차원측정기",keywords:["3D Scanner","Inspector 3D","3D Inspector","CMM","Coordinate Measuring Machines","3차원측정기"]},
@@ -777,9 +859,38 @@ const SAMPLE_EXPORT_LICENSE_DB=[
   {permitNo:"EL-UG-2024-0099",permitType:"사용자포괄수출허가",country:"베트남",buyer:"SG Electronics Vietnam Co., Ltd.",consignee:"SG Electronics Vietnam Co., Ltd.",endUser:"SG Electronics Vietnam Co., Ltd.",validUntil:"2025-12-31",models:["CNC-9000"],note:"만료된 테스트 허가"}
 ];
 function makeItem(seed={}){
-  return {id:seed.id||"it"+Math.random().toString(36).slice(2,9),modelName:seed.modelName||"",itemName:seed.itemName||"",ctrlNo:seed.ctrlNo||"",db:seed.db||null,dbOptions:Array.isArray(seed.dbOptions)?seed.dbOptions:[],needsDbChoice:!!seed.needsDbChoice};
+  return {
+    id:seed.id||"it"+Math.random().toString(36).slice(2,9),
+    modelName:seed.modelName||"",
+    itemName:seed.itemName||"",
+    ctrlNo:seed.ctrlNo||"",
+    hsCode:seed.hsCode||"",
+    spec:seed.spec||"",
+    usage:seed.usage||"",
+    note:seed.note||"",
+    exWeightKg:seed.exWeightKg||"",
+    exQty:seed.exQty||"",
+    exUnitPriceUsd:seed.exUnitPriceUsd||"",
+    exAmountUsd:seed.exAmountUsd||"",
+    exUsOriginPct:seed.exUsOriginPct||"",
+    permitUnitPriceUsd:seed.permitUnitPriceUsd||"",
+    permitQty:seed.permitQty||"",
+    permitWeightKg:seed.permitWeightKg||"",
+    permitAmountUsd:seed.permitAmountUsd||"",
+    bulkBuyer:seed.bulkBuyer||"",
+    bulkConsignee:seed.bulkConsignee||"",
+    bulkEndUser:seed.bulkEndUser||"",
+    bulkEndUse:seed.bulkEndUse||"",
+    bulkHomepage:seed.bulkHomepage||"",
+    db:seed.db||null,
+    dbOptions:Array.isArray(seed.dbOptions)?seed.dbOptions:[],
+    needsDbChoice:!!seed.needsDbChoice
+  };
 }
-let state={country:null,region:null,custom:false,buyer:"",consignee:"",endUser:"",endUse:"",items:[makeItem()],itemName:"",modelName:"",ctrlNo:"",exemptionSel:null,ptype:null,permitMode:null,permitBaseNo:null,path:null,redFlags:[],flagAuto:[],screeningDone:false,draftNeeded:null,defenseReview:null};
+function initialState(){
+  return {country:null,region:null,custom:false,buyer:"",consignee:"",endUser:"",endUse:"",buyers:[],consignees:[],endUsers:[],items:[makeItem()],itemName:"",modelName:"",ctrlNo:"",exemptionSel:null,ptype:null,permitMode:null,permitBaseNo:null,permitQty:"",permitDestPort:"",permitTransport:"",permitTransportOther:"",permitManufacturer:"",path:null,redFlags:[],flagAuto:[],screeningDone:false,draftNeeded:null,defenseReview:null};
+}
+let state=initialState();
 let CFG=mergeCfg();
 const DRAFT_KEY="exportlicense_draft_v3";
 const DRAFT_MAX_AGE=1000*60*60*24*14;
@@ -881,14 +992,14 @@ function defenseReviewScan(){
   syncTxnFromDom();
   if(!hasControl()) return {needed:false,signature:"",partyHits:[],endUseHits:[]};
   const partyHits=compactDefenseHits([
-    ...keywordHitsForField("구매자",state.buyer,DEFENSE_PARTY_KEYWORDS),
-    ...keywordHitsForField("최종수하인",state.consignee,DEFENSE_PARTY_KEYWORDS),
-    ...keywordHitsForField("최종사용자",state.endUser,DEFENSE_PARTY_KEYWORDS)
+    ...partyValues("buyers").flatMap(value=>keywordHitsForField("구매자",value,DEFENSE_PARTY_KEYWORDS)),
+    ...partyValues("consignees").flatMap(value=>keywordHitsForField("최종수하인",value,DEFENSE_PARTY_KEYWORDS)),
+    ...partyValues("endUsers").flatMap(value=>keywordHitsForField("최종사용자",value,DEFENSE_PARTY_KEYWORDS))
   ]);
   const endUseHits=compactDefenseHits(keywordHitsForField("최종사용용도",state.endUse,DEFENSE_ENDUSE_KEYWORDS));
   const signature=JSON.stringify({
     country:state.country,region:state.region,
-    buyer:state.buyer,consignee:state.consignee,endUser:state.endUser,endUse:state.endUse,
+    buyers:partyValues("buyers"),consignees:partyValues("consignees"),endUsers:partyValues("endUsers"),endUse:state.endUse,
     ctrl:controlledItems().map(item=>item.ctrlNo).join("|")
   });
   return {needed:!!(partyHits.length||endUseHits.length),signature,partyHits,endUseHits};
@@ -934,6 +1045,7 @@ function routeDefenseReviewResult(){
   state.ptype=null;
   state.permitMode=null;
   state.permitBaseNo=null;
+  state.permitQty="";
   state.exemptionSel=null;
   state.draftNeeded=null;
   renderResult();
@@ -1008,8 +1120,11 @@ function pledgeSchemeForPermit(baseScheme,ptype){
   return ptype==="사용자포괄"?baseScheme.replace(/^I/,"II"):baseScheme;
 }
 function allTransactionPartiesSame(){
-  const vals=[state.buyer,state.consignee,state.endUser].map(v=>String(v||"").trim().toLowerCase());
-  return vals.every(Boolean) && vals[0]===vals[1] && vals[0]===vals[2];
+  const buyers=partyValues("buyers").map(canonicalPartyText);
+  const consignees=partyValues("consignees").map(canonicalPartyText);
+  const endUsers=partyValues("endUsers").map(canonicalPartyText);
+  const vals=[...buyers,...consignees,...endUsers];
+  return buyers.length>0 && consignees.length>0 && endUsers.length>0 && vals.every(Boolean) && new Set(vals).size===1;
 }
 function buildPermitDocs(ptype){
   const list=[];
@@ -1071,7 +1186,12 @@ function syncLegacy(){
 function syncItemsFromDom(){
   state.items.forEach(item=>{
     const m=$("#model-"+item.id), n=$("#name-"+item.id), c=$("#ctrl-"+item.id);
+    const hs=$("#hs-"+item.id), spec=$("#spec-"+item.id), usage=$("#usage-"+item.id), note=$("#note-"+item.id);
     if(m) item.modelName=m.value.trim();
+    if(hs) item.hsCode=hs.value.trim();
+    if(spec) item.spec=spec.value.trim();
+    if(usage) item.usage=usage.value.trim();
+    if(note) item.note=note.value.trim();
     if(isDbLocked(item)) enforceDbValues(item);
     else {
       if(n) item.itemName=n.value.trim();
@@ -1080,17 +1200,34 @@ function syncItemsFromDom(){
   });
   syncLegacy();
 }
-function syncTxnFromDom(){
-  const buyer=$("#buyerInput"), consignee=$("#consigneeInput"), eu=$("#endUserInput"), use=$("#endUseInput");
-  if(buyer) state.buyer=buyer.value.trim();
-  if(consignee) state.consignee=consignee.value.trim();
-  if(eu) state.endUser=eu.value.trim();
-  if(use) state.endUse=use.value.trim();
+function syncExemptionItemInfoFromDom(){
+  state.items.forEach(item=>{
+    const w=$("#exWeight-"+item.id), q=$("#exQty-"+item.id), u=$("#exUnit-"+item.id), us=$("#exUs-"+item.id);
+    if(w) item.exWeightKg=w.value.trim();
+    if(q) item.exQty=q.value.trim();
+    if(u) item.exUnitPriceUsd=u.value.trim();
+    if(us) item.exUsOriginPct=us.value.trim();
+    item.exAmountUsd=calcExportAmount(item);
+  });
+}
+function clearExemptionItemInfo(item){
+  item.exWeightKg="";
+  item.exQty="";
+  item.exUnitPriceUsd="";
+  item.exAmountUsd="";
+  item.exUsOriginPct="";
+}
+function clearPermitItemInfo(item){
+  item.permitUnitPriceUsd="";
+  item.permitQty="";
+  item.permitWeightKg="";
+  item.permitAmountUsd="";
 }
 function normalizeCompany(v){ return (v||"").trim().toUpperCase().replace(/[.,()\-\s]/g,""); }
 function companyNames(){
   const names=[];
   COMPANY_DB.forEach(c=>{ names.push(c.name); (c.aliases||[]).forEach(a=>names.push(a)); });
+  (state.buyers||[]).concat(state.consignees||[],state.endUsers||[]).forEach(v=>{ if(String(v||"").trim()) names.push(String(v).trim()); });
   return [...new Set(names)].sort((a,b)=>a.localeCompare(b));
 }
 function companyByInput(v){
@@ -1108,30 +1245,127 @@ function companyLine(value){
   if(!c) return {html:value?`자사 법인 DB 미매칭`:"자사 법인명을 입력하거나 목록에서 선택하세요.",matched:false};
   return {html:`자사 법인 DB 매칭 · ${esc(c.name)} · ${esc(c.country)}(${esc(c.region)} 지역) · ${esc(c.business)}`,matched:true};
 }
+const PARTY_FIELDS={
+  buyer:{base:"#buyerInput",list:"#buyerExtraList",add:"#addBuyer",stateKey:"buyers",legacyKey:"buyer",label:"구매자"},
+  consignee:{base:"#consigneeInput",list:"#consigneeExtraList",add:"#addConsignee",stateKey:"consignees",legacyKey:"consignee",label:"최종수하인"},
+  endUser:{base:"#endUserInput",list:"#endUserExtraList",add:"#addEndUser",stateKey:"endUsers",legacyKey:"endUser",label:"최종사용자"}
+};
+function cleanPartyList(list){
+  return (Array.isArray(list)?list:[]).map(v=>String(v||"").trim()).filter(Boolean);
+}
+function partyValues(key){
+  return cleanPartyList(state[key]||[]);
+}
+function partyListText(list){
+  const vals=cleanPartyList(list);
+  return vals.length?vals.join(", "):"-";
+}
+function ensurePartyArray(role){
+  const cfg=PARTY_FIELDS[role];
+  if(!cfg) return [];
+  let vals=Array.isArray(state[cfg.stateKey])?state[cfg.stateKey].slice():[];
+  if(!vals.length && state[cfg.legacyKey]) vals=[state[cfg.legacyKey]];
+  state[cfg.stateKey]=vals;
+  state[cfg.legacyKey]=cleanPartyList(vals)[0]||"";
+  return vals;
+}
+function syncPartyState(role){
+  const cfg=PARTY_FIELDS[role];
+  if(!cfg) return;
+  const base=$(cfg.base);
+  const extra=$$(`${cfg.list} input[data-party-role="${role}"]`);
+  const vals=[base?.value||"",...extra.map(input=>input.value)].map(v=>String(v||"").trim());
+  state[cfg.stateKey]=vals;
+  state[cfg.legacyKey]=cleanPartyList(vals)[0]||"";
+}
+function syncTxnFromDom(){
+  Object.keys(PARTY_FIELDS).forEach(syncPartyState);
+  const use=$("#endUseInput");
+  if(use) state.endUse=use.value.trim();
+}
+function renderPartyExtras(role){
+  const cfg=PARTY_FIELDS[role];
+  if(!cfg) return;
+  const vals=ensurePartyArray(role);
+  const list=$(cfg.list);
+  if(!list) return;
+  list.innerHTML=vals.slice(1).map((value,i)=>`<div class="party-extra-row">
+    <input type="text" data-party-role="${role}" data-party-index="${i+1}" value="${esc(value)}" list="companyOptions" autocomplete="off" placeholder="${esc(cfg.label)} 추가 입력">
+    <button type="button" class="btn mini-btn" data-party-remove="${role}" data-party-index="${i+1}">삭제</button>
+  </div>`).join("");
+  list.querySelectorAll("input[data-party-role]").forEach(input=>input.addEventListener("input",()=>{
+    const arr=ensurePartyArray(role);
+    arr[+input.dataset.partyIndex]=input.value.trim();
+    state.screeningDone=false;
+    state.defenseReview=null;
+    if($("#txnWarn")) $("#txnWarn").innerHTML="";
+    if(role==="buyer" && $("#sameParties")?.checked) syncSameParties();
+    else renderTxnMatches();
+  }));
+  list.querySelectorAll("button[data-party-remove]").forEach(btn=>btn.addEventListener("click",()=>{
+    syncTxnFromDom();
+    const arr=ensurePartyArray(role);
+    arr.splice(+btn.dataset.partyIndex,1);
+    state[cfg.stateKey]=arr;
+    state[cfg.legacyKey]=cleanPartyList(arr)[0]||"";
+    renderPartyExtras(role);
+    renderTxnMatches();
+    queueSaveDraft();
+  }));
+}
+function renderAllPartyExtras(){
+  Object.keys(PARTY_FIELDS).forEach(renderPartyExtras);
+}
+function addPartyRow(role){
+  const cfg=PARTY_FIELDS[role];
+  if(!cfg) return;
+  syncTxnFromDom();
+  const arr=ensurePartyArray(role).slice();
+  arr.push("");
+  state[cfg.stateKey]=arr;
+  if(role==="buyer" && $("#sameParties")?.checked){
+    state.consignees=arr.slice();
+    state.endUsers=arr.slice();
+    renderAllPartyExtras();
+  } else {
+    renderPartyExtras(role);
+  }
+  const added=$(`${cfg.list} input[data-party-index="${arr.length-1}"]`);
+  added?.focus();
+  renderTxnMatches();
+}
+function ownCompanyValues(values){
+  return cleanPartyList(values).map(companyByInput).filter(Boolean);
+}
 function renderTxnMatches(){
   syncTxnFromDom();
+  renderCompanyOptions();
   const pairs=[
-    ["buyerMatch",state.buyer],
-    ["consigneeMatch",state.consignee],
-    ["endUserMatch",state.endUser]
+    ["buyerMatch","buyers"],
+    ["consigneeMatch","consignees"],
+    ["endUserMatch","endUsers"]
   ];
-  pairs.forEach(([id,value])=>{
+  pairs.forEach(([id,key])=>{
     const el=$("#"+id);
     if(!el) return;
-    const line=companyLine(value);
-    el.innerHTML=line.html;
-    el.classList.toggle("none",!line.matched);
+    const vals=partyValues(key);
+    const line=companyLine(vals[0]||"");
+    const matchedCount=ownCompanyValues(vals).length;
+    el.innerHTML=line.html+(vals.length>1?`<div class="hint" style="margin-top:4px">추가 ${vals.length-1}건 입력 · 자사 법인 DB 매칭 ${matchedCount}건</div>`:"");
+    el.classList.toggle("none",!matchedCount);
   });
-  const matched=[state.buyer,state.consignee,state.endUser].map(companyByInput).filter(Boolean).length;
+  const matchedNames=new Set([...partyValues("buyers"),...partyValues("consignees"),...partyValues("endUsers")].map(companyByInput).filter(Boolean).map(c=>c.name));
   const auto=[];
-  if(matched) auto.push(`거래자 ${matched}개가 자사 법인 DB와 매칭되었습니다.`);
+  if(matchedNames.size) auto.push(`거래자 ${matchedNames.size}개 법인이 자사 법인 DB와 매칭되었습니다.`);
   if(state.region==="가") auto.push("가 지역은 의심징후 #3이 자동 아니오 후보입니다.");
   const strip=$("#companyDbStrip");
   if(strip) strip.innerHTML=`<b>자사 법인 DB 샘플</b> ${COMPANY_DB.length}개 법인이 등록되어 있습니다. 실제 DB 연결 전까지는 샘플 기준으로 입력 보조와 의심징후 자동입력이 동작합니다.${auto.length?`<div class="hint" style="margin-top:6px">${auto.join(" ")}</div>`:""}`;
 }
 function sameOwnCompany(){
-  const b=companyByInput(state.buyer), c=companyByInput(state.consignee), e=companyByInput(state.endUser);
-  return !!(b&&c&&e&&b.name===c.name&&b.name===e.name);
+  const vals=[...partyValues("buyers"),...partyValues("consignees"),...partyValues("endUsers")];
+  if(partyValues("buyers").length<1||partyValues("consignees").length<1||partyValues("endUsers").length<1) return false;
+  const companies=vals.map(companyByInput);
+  return companies.every(Boolean) && new Set(companies.map(c=>c.name)).size===1;
 }
 function addAutoReason(map,flagNo,reason){
   const idx=flagNo-1;
@@ -1141,8 +1375,8 @@ function addAutoReason(map,flagNo,reason){
 function autoFlagReasonMap(){
   syncTxnFromDom();
   const map=[];
-  const consigneeCompany=companyByInput(state.consignee);
-  const endUserCompany=companyByInput(state.endUser);
+  const consigneeCompany=ownCompanyValues(state.consignees).length>0;
+  const endUserCompany=ownCompanyValues(state.endUsers).length>0;
   if(sameOwnCompany()){
     [1,2,3,4,5,6,7,8,9,10,12].forEach(n=>addAutoReason(map,n,"구매자·최종수하인·최종사용자가 동일한 자사 법인"));
   }
@@ -1176,7 +1410,7 @@ function renderDbStatus(){
   const valid=SAMPLE_MODEL_DB.filter(r=>isValidDate(r.validUntil)).length;
   const expired=SAMPLE_MODEL_DB.length-valid;
   const duplicateModels=modelNames().filter(model=>dbMatches(model).length>1);
-  el.innerHTML=`<div class="db-ico">DB</div><div><b>테스트 판정 DB</b> ${modelNames().length}개 모델 / 유효 판정 ${valid}건 / 만료 제외 ${expired}건이 탑재되어 있습니다. 실제 자가판정·전문판정 DB 연결 전까지는 샘플 데이터 기준으로 자동 채움이 동작합니다.${duplicateModels.length?` 같은 모델에 유효 판정이 여러 건인 샘플(${duplicateModels.join(", ")})은 담당자 선택이 필요합니다.`:""} 비해당·미확정 품목은 전략물자 허가 외에 상황허가(캐치올) 검토가 필요할 수 있습니다.</div>`;
+  el.innerHTML=`<div class="db-ico">DB</div><div><b>테스트 판정 DB</b> ${modelNames().length}개 모델 / 유효 판정 ${valid}건 / 만료 제외 ${expired}건 / HS 추천 샘플 ${SAMPLE_HS_DB.length}건이 탑재되어 있습니다. 실제 자가판정·전문판정 DB 연결 전까지는 샘플 데이터 기준으로 자동 채움이 동작합니다.${duplicateModels.length?` 같은 모델에 유효 판정이 여러 건인 샘플(${duplicateModels.join(", ")})은 담당자 선택이 필요합니다.`:""} 비해당·미확정 품목은 전략물자 허가 외에 상황허가(캐치올) 검토가 필요할 수 있습니다.</div>`;
 }
 function isValidDate(d){ return !!d && new Date(d+"T23:59:59")>=new Date(new Date().toISOString().slice(0,10)+"T00:00:00"); }
 function dbMatches(modelName){
@@ -1192,6 +1426,61 @@ function expiredDbCount(modelName){
   const key=normalizeModel(modelName);
   if(!key) return 0;
   return SAMPLE_MODEL_DB.filter(r=>normalizeModel(r.modelName)===key&&!isValidDate(r.validUntil)).length;
+}
+function hsSearchText(item){
+  return [item.modelName,item.itemName,riskBrief(item)].filter(Boolean).join(" ").toUpperCase();
+}
+function hsSuggestions(item){
+  const hay=hsSearchText(item);
+  if(!hay.trim()) return [];
+  const found=SAMPLE_HS_DB.filter(row=>(row.keywords||[]).some(k=>hay.includes(String(k).toUpperCase())));
+  return [...new Map(found.map(row=>[row.hsCode,row])).values()].slice(0,3);
+}
+function needsClassificationInfo(item){
+  return itemHasData(item) && !hasControlledCtrl(item) && !isDbNonControlled(item) && !item.needsDbChoice;
+}
+function renderHsSuggestions(item){
+  const rows=hsSuggestions(item);
+  if(!needsClassificationInfo(item)) return "";
+  if(!rows.length) return `<div class="hint">테스트 HS DB 추천값이 없습니다. 품목 사양서 또는 사전분류 자료 기준으로 수기 입력하세요.</div>`;
+  return `<div class="hint">HS번호를 모르면 추천값을 선택해 임시 입력할 수 있습니다. 실제 신청 전 통상그룹 담당자가 확인합니다.</div>
+    <div class="hs-suggest-list">${rows.map(row=>`<button type="button" class="hs-chip" data-apply-hs="${item.id}" data-hs="${esc(row.hsCode)}">${esc(row.hsCode)} · ${esc(row.label)}</button>`).join("")}</div>`;
+}
+function renderClassificationExtra(item){
+  const hidden=needsClassificationInfo(item)?"":" hidden";
+  return `<div class="classify-extra${hidden}" id="class-extra-${item.id}">
+    <div class="classify-extra-head">
+      <div><b>판정 요청 추가정보</b><br><span>미판정 품목은 전문판정 요청 메일에 들어갈 정보를 함께 입력합니다.</span></div>
+      <span>품목명·모델명은 위 입력값을 사용합니다.</span>
+    </div>
+    <div class="classify-extra-grid">
+      <div class="field"><label>HS 번호</label><input id="hs-${item.id}" data-id="${item.id}" data-field="hsCode" value="${esc(item.hsCode)}" placeholder="예: 8517.13" autocomplete="off"><div id="hs-rec-${item.id}">${renderHsSuggestions(item)}</div></div>
+      <div class="field"><label>규격</label><input id="spec-${item.id}" data-id="${item.id}" data-field="spec" value="${esc(item.spec)}" placeholder="예: 주요 성능, 사양, 구성품"></div>
+      <div class="field"><label>용도</label><input id="usage-${item.id}" data-id="${item.id}" data-field="usage" value="${esc(item.usage)}" placeholder="예: 생산라인 유지보수, 내부 시험"></div>
+      <div class="field"><label>비고</label><input id="note-${item.id}" data-id="${item.id}" data-field="note" value="${esc(item.note)}" placeholder="예: 사전분류 1차"><div class="hint">제품별 사전분류 차수를 기입하세요.</div></div>
+    </div>
+  </div>`;
+}
+function updateClassificationExtraState(item){
+  const box=$("#class-extra-"+item.id);
+  if(!box) return;
+  const show=needsClassificationInfo(item);
+  box.classList.toggle("hidden",!show);
+  const rec=$("#hs-rec-"+item.id);
+  if(rec) rec.innerHTML=renderHsSuggestions(item);
+  wireHsButtons(box);
+}
+function wireHsButtons(scope=document){
+  scope.querySelectorAll?.("[data-apply-hs]").forEach(btn=>{
+    btn.onclick=()=>{
+      const item=state.items.find(x=>x.id===btn.dataset.applyHs);
+      if(!item) return;
+      item.hsCode=btn.dataset.hs||"";
+      const input=$("#hs-"+item.id);
+      if(input) input.value=item.hsCode;
+      saveDraft();
+    };
+  });
 }
 function riskText(v){ return String(v||"").toUpperCase().replace(/\s+/g," ").trim(); }
 function isDbMissingForRisk(item){
@@ -1311,6 +1600,25 @@ function unclassifiedItems(){ return state.items.filter(item=>itemHasData(item)&
 function nonControlledItems(){ return state.items.filter(item=>isDbNonControlled(item)); }
 function allItemsJudged(){ return hasAnyItemData() && unclassifiedItems().length===0; }
 function allItemsNonControlled(){ return allItemsJudged() && !hasControl(); }
+function classificationMissingDetails(){
+  const labels={modelName:"모델명",itemName:"품목명",hsCode:"HS 번호",spec:"규격",usage:"용도",note:"비고"};
+  return unclassifiedItems().map(item=>{
+    const missing=["modelName","itemName","hsCode","spec","usage","note"].filter(k=>!(item[k]||"").trim());
+    return missing.length?{item,missing:missing.map(k=>labels[k])}:null;
+  }).filter(Boolean);
+}
+function showClassificationMissing(missing){
+  const rows=missing.map(row=>`<li>${esc(itemLabel(row.item))}: ${row.missing.map(esc).join(", ")}</li>`).join("");
+  const box=$("#ruWarn");
+  if(box) box.innerHTML=`<div class="notice warn"><b>판정 요청 정보 입력 필요</b> &nbsp;미판정 품목은 전문판정 요청 메일에 들어갈 정보를 모두 입력해야 합니다.<ul style="margin:8px 0 0 18px">${rows}</ul></div>`;
+  const first=missing[0]?.item;
+  if(first){
+    updateClassificationExtraState(first);
+    const target=["model","name","hs","spec","usage","note"].map(prefix=>$("#"+prefix+"-"+first.id)).find(el=>el&&!el.value.trim());
+    target?.focus({preventScroll:true});
+    target?.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
 function isExemption9Ctrl(ctrlNo){
   const n=(ctrlNo||"").toUpperCase().replace(/\s/g,"").replace(/\.+$/,"");
   return /^5A002\.A\.[1-4](\.|$)/.test(n) || /^5B002(\.|$)/.test(n) || /^5D002(\.|$)/.test(n);
@@ -1332,17 +1640,24 @@ function canonicalPartyText(v){
   const c=companyByInput(v);
   return normalizePermitText(c?c.name:v);
 }
+function partyMatchesAny(rowValue,values){
+  const target=canonicalPartyText(rowValue);
+  return cleanPartyList(values).some(value=>canonicalPartyText(value)===target);
+}
 function validExportLicenses(){
   return SAMPLE_EXPORT_LICENSE_DB
     .map(row=>Object.assign({valid:isValidDate(row.validUntil)},row))
     .filter(row=>row.valid)
     .sort((a,b)=>b.validUntil.localeCompare(a.validUntil));
 }
-function licenseMatchesTransaction(row){
+function licenseMatchesTransaction(row,item=null){
+  const buyers=item?.bulkBuyer?[item.bulkBuyer]:partyValues("buyers");
+  const consignees=item?.bulkConsignee?[item.bulkConsignee]:partyValues("consignees");
+  const endUsers=item?.bulkEndUser?[item.bulkEndUser]:partyValues("endUsers");
   return normalizePermitText(row.country)===normalizePermitText(state.country)
-    && canonicalPartyText(row.buyer)===canonicalPartyText(state.buyer)
-    && canonicalPartyText(row.consignee)===canonicalPartyText(state.consignee)
-    && canonicalPartyText(row.endUser)===canonicalPartyText(state.endUser);
+    && partyMatchesAny(row.buyer,buyers)
+    && partyMatchesAny(row.consignee,consignees)
+    && partyMatchesAny(row.endUser,endUsers);
 }
 function licenseMatchesItem(row,item){
   const model=normalizeModel(item.modelName);
@@ -1350,7 +1665,7 @@ function licenseMatchesItem(row,item){
 }
 function permitMatchesForItem(item){
   if(!hasControlledCtrl(item)) return [];
-  return validExportLicenses().filter(row=>licenseMatchesTransaction(row)&&licenseMatchesItem(row,item));
+  return validExportLicenses().filter(row=>licenseMatchesTransaction(row,item)&&licenseMatchesItem(row,item));
 }
 function existingPermitReview(){
   const rows=controlledItems().map(item=>{
@@ -1389,6 +1704,329 @@ function permitTargetItems(){
   const review=existingPermitReview();
   return state.permitMode==="change"?review.unmatched.map(row=>row.item):controlledItems();
 }
+function validBulkPermitsForCountry(){
+  return validExportLicenses().filter(row=>/사용자포괄/.test(row.permitType||"") && normalizePermitText(row.country)===normalizePermitText(state.country));
+}
+function bulkPermitBaseForApplication(){
+  if(state.ptype!=="사용자포괄") return null;
+  const review=existingPermitReview();
+  if(review.basePermits.length){
+    const bulk=review.basePermits.find(row=>/사용자포괄/.test(row.permitType||""));
+    if(bulk) return bulk;
+  }
+  return validBulkPermitsForCountry()[0]||null;
+}
+function bulkPermitItems(){
+  const items=permitTargetItems().filter(hasControlledCtrl);
+  const base=state.permitMode==="new"?bulkPermitBaseForApplication():null;
+  if(!base) return items;
+  const additions=items.filter(item=>!licenseMatchesItem(base,item));
+  return additions.length?additions:items;
+}
+function normalizedPermitQty(){
+  const raw=String(state.permitQty||"").replace(/,/g,"").trim();
+  if(!/^[1-9]\d*$/.test(raw)) return "";
+  return raw;
+}
+function permitQtyText(){
+  const q=normalizedPermitQty();
+  return q?`${q} EA`:"-";
+}
+function toNum(v){
+  const n=Number(String(v||"").replace(/,/g,"").trim());
+  return Number.isFinite(n)?n:null;
+}
+function formatNumber(n,digits=2){
+  if(!Number.isFinite(n)) return "-";
+  return n.toLocaleString("en-US",{minimumFractionDigits:0,maximumFractionDigits:digits});
+}
+function formatUsd(n){
+  return Number.isFinite(n)?formatNumber(n,2):"-";
+}
+function calcExportAmount(item){
+  const qty=toNum(item.exQty);
+  const unit=toNum(item.exUnitPriceUsd);
+  if(qty===null||unit===null) return "";
+  return String(qty*unit);
+}
+function exemptionAmountText(item){
+  const n=toNum(item.exAmountUsd||calcExportAmount(item));
+  return n===null?"-":`${formatUsd(n)} USD`;
+}
+function exemptionWeightText(item){
+  const n=toNum(item.exWeightKg);
+  return n===null?"-":`${formatNumber(n,3)} kg`;
+}
+function exemptionQtyText(item){
+  const n=toNum(item.exQty);
+  return n===null?"-":`${formatNumber(n,0)} ea`;
+}
+function exemptionUnitText(item){
+  const n=toNum(item.exUnitPriceUsd);
+  return n===null?"-":`${formatUsd(n)} USD`;
+}
+function exemptionUsText(item){
+  const n=toNum(item.exUsOriginPct);
+  return n===null?"-":`${formatNumber(n,2)}%`;
+}
+function exemptionItemInfoMissing(){
+  syncExemptionItemInfoFromDom();
+  const labels={exWeightKg:"중량(kg)",exQty:"수량(ea)",exUnitPriceUsd:"단가(USD)",exUsOriginPct:"미국산 비중(%)"};
+  return controlledItems().map(item=>{
+    const missing=[];
+    if(toNum(item.exWeightKg)===null||toNum(item.exWeightKg)<0) missing.push(labels.exWeightKg);
+    if(toNum(item.exQty)===null||toNum(item.exQty)<=0) missing.push(labels.exQty);
+    if(toNum(item.exUnitPriceUsd)===null||toNum(item.exUnitPriceUsd)<0) missing.push(labels.exUnitPriceUsd);
+    const us=toNum(item.exUsOriginPct);
+    if(us===null||us<0||us>100) missing.push(labels.exUsOriginPct);
+    return missing.length?{item,missing}:null;
+  }).filter(Boolean);
+}
+function exemptionItemInfoTableHtml(items=controlledItems()){
+  if(!items.length) return "";
+  const rows=items.map((item,i)=>`<tr><td>${i+1}</td><td>${esc(item.itemName||"-")}</td><td>${esc(item.modelName||"-")}</td><td>${esc(item.ctrlNo||"-")}</td><td>${esc(exemptionWeightText(item))}</td><td>${esc(exemptionQtyText(item))}</td><td>${esc(exemptionUnitText(item))}</td><td>${esc(exemptionAmountText(item))}</td><td>${esc(exemptionUsText(item))}</td></tr>`).join("");
+  return `<div class="item-summary"><table><thead><tr><th>#</th><th>품목명</th><th>모델명</th><th>통제번호</th><th>중량</th><th>수량</th><th>단가</th><th>수출액</th><th>미국산 비중</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+function exemptionItemLine(item,i){
+  return `${i+1}. ${item.itemName||"-"} ${item.modelName||"-"} ${item.ctrlNo||"-"} ${exemptionWeightText(item)} ${exemptionQtyText(item)} ${exemptionAmountText(item)} ${exemptionUsText(item)}`;
+}
+function exemptionItemLines(items=controlledItems()){
+  return items.map(exemptionItemLine).join("\n");
+}
+function isIndividualPermitApplication(){
+  return state.ptype==="개별" && state.permitMode!=="existing";
+}
+function calcPermitExportAmount(item){
+  const qty=toNum(item.permitQty);
+  const unit=toNum(item.permitUnitPriceUsd);
+  if(qty===null||unit===null) return "";
+  return String(qty*unit);
+}
+function permitAmountText(item){
+  const n=toNum(item.permitAmountUsd||calcPermitExportAmount(item));
+  return n===null?"-":`${formatUsd(n)} USD`;
+}
+function permitUnitText(item){
+  const n=toNum(item.permitUnitPriceUsd);
+  return n===null?"-":`${formatUsd(n)} USD`;
+}
+function permitItemQtyText(item){
+  const n=toNum(item.permitQty);
+  return n===null?"-":`${formatNumber(n,0)}`;
+}
+function permitWeightText(item){
+  const n=toNum(item.permitWeightKg);
+  return n===null?"-":`${formatNumber(n,3)} kg`;
+}
+function permitTotalQty(){
+  const total=controlledItems().reduce((sum,item)=>{
+    const n=toNum(item.permitQty);
+    return sum+(n&&n>0?n:0);
+  },0);
+  return total>0?String(Math.floor(total)):"";
+}
+function permitTransportText(){
+  if(state.permitTransport==="기타") return state.permitTransportOther?`기타(${state.permitTransportOther})`:"기타";
+  return state.permitTransport||"-";
+}
+function permitJudgementNo(item){
+  return item.db?.number || "-";
+}
+function permitJudgementValidUntil(item){
+  return item.db?.validUntil || "-";
+}
+function individualPermitItems(){
+  return permitTargetItems().filter(hasControlledCtrl);
+}
+function individualPermitInfoMissing(){
+  syncPermitDetailFromDom();
+  const missing=[];
+  if(!state.permitDestPort) missing.push({label:"최종도착지항구(공항)명"});
+  if(!state.permitTransport) missing.push({label:"운송방법"});
+  if(state.permitTransport==="기타"&&!state.permitTransportOther) missing.push({label:"기타 운송방법"});
+  if(!state.permitManufacturer) missing.push({label:"제조자"});
+  const itemMissing=individualPermitItems().map(item=>{
+    const fields=[];
+    if(toNum(item.permitUnitPriceUsd)===null||toNum(item.permitUnitPriceUsd)<0) fields.push("단가(USD)");
+    const qty=toNum(item.permitQty);
+    if(qty===null||qty<=0||!Number.isInteger(qty)) fields.push("수량");
+    if(toNum(item.permitWeightKg)===null||toNum(item.permitWeightKg)<0) fields.push("중량");
+    return fields.length?{item,fields}:null;
+  }).filter(Boolean);
+  return {missing,itemMissing};
+}
+function individualPermitInfoTableHtml(items=individualPermitItems()){
+  if(!items.length) return "";
+  const rows=items.map((item,i)=>`<tr><td>${i+1}</td><td>${esc(item.modelName||"-")}</td><td>${esc(item.itemName||"-")}</td><td>${esc(item.ctrlNo||"-")}</td><td>${esc(permitJudgementNo(item))}</td><td>${esc(permitUnitText(item))}</td><td>${esc(permitItemQtyText(item))}</td><td>${esc(permitWeightText(item))}</td><td>${esc(permitAmountText(item))}</td><td>${esc(permitJudgementValidUntil(item))}</td></tr>`).join("");
+  return `<div class="item-summary"><table><thead><tr><th>#</th><th>모델명</th><th>품목명</th><th>통제번호</th><th>판정번호</th><th>단가</th><th>수량</th><th>중량</th><th>수출액</th><th>판정 유효기간</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+function individualPermitDraftItemLine(item,i){
+  return `${i+1}. ${permitJudgementNo(item)} ${permitUnitText(item)} ${permitItemQtyText(item)} ${permitWeightText(item)} ${state.endUse||"-"} ${permitJudgementValidUntil(item)}`;
+}
+function individualPermitDraftItemLines(items=individualPermitItems()){
+  return items.map(individualPermitDraftItemLine).join("\n");
+}
+function endUserCompanyDraftLines(){
+  if(!partyValues("endUsers").some(value=>companyByInput(value))) return "";
+  return `  * 최종사용자가 수출자가 최대주주인 외국 현지 법인입니다.
+  * 최종사용자가 수출자의 해외 지점입니다.`;
+}
+function endUserPledgeAttachmentLabel(){
+  const pledge=endUserPledgeInfo();
+  return /WA$/.test(pledge.scheme)?"최종사용자 서약서 (별지 2의3) 1부":"최종사용자 서약서 (별지 2의2) 1부";
+}
+function isBulkPermitApplication(){
+  return state.ptype==="사용자포괄" && state.permitMode!=="existing";
+}
+function bulkPermitHs(item){
+  return item.db?.hsCode || item.hsCode || "-";
+}
+function setBulkDefaults(item,index=0){
+  if(!item.bulkBuyer) item.bulkBuyer=partyValues("buyers")[index]||partyValues("buyers")[0]||"";
+  if(!item.bulkConsignee) item.bulkConsignee=partyValues("consignees")[index]||partyValues("consignees")[0]||"";
+  if(!item.bulkEndUser) item.bulkEndUser=partyValues("endUsers")[index]||partyValues("endUsers")[0]||"";
+  if(!item.bulkEndUse) item.bulkEndUse=state.endUse||"";
+}
+function syncBulkPermitInfoFromDom(){
+  state.items.forEach(item=>{
+    const buyer=$("#bulkBuyer-"+item.id), consignee=$("#bulkConsignee-"+item.id), endUser=$("#bulkEndUser-"+item.id), endUse=$("#bulkEndUse-"+item.id), homepage=$("#bulkHomepage-"+item.id);
+    if(buyer) item.bulkBuyer=buyer.value.trim();
+    if(consignee) item.bulkConsignee=consignee.value.trim();
+    if(endUser) item.bulkEndUser=endUser.value.trim();
+    if(endUse) item.bulkEndUse=endUse.value.trim();
+    if(homepage) item.bulkHomepage=homepage.value.trim();
+  });
+}
+function bulkPermitInfoMissing(){
+  syncBulkPermitInfoFromDom();
+  return bulkPermitItems().map(item=>{
+    const fields=[];
+    if(!item.bulkBuyer) fields.push("구매자");
+    if(!item.bulkConsignee) fields.push("최종수하인");
+    if(!item.bulkEndUser) fields.push("최종사용자");
+    if(!item.bulkEndUse) fields.push("최종사용용도");
+    if(!item.bulkHomepage) fields.push("홈페이지");
+    return fields.length?{item,fields}:null;
+  }).filter(Boolean);
+}
+function bulkPermitInfoTableHtml(items=bulkPermitItems()){
+  if(!items.length) return "";
+  const rows=items.map((item,i)=>`<tr><td>${i+1}</td><td>${esc(state.country||"-")}</td><td>${esc(item.bulkBuyer||"-")}</td><td>${esc(item.bulkConsignee||"-")}</td><td>${esc(permitJudgementNo(item))}</td><td>${esc(bulkPermitHs(item))}</td><td>${esc(item.ctrlNo||"-")}</td><td>${esc(item.itemName||"-")}</td><td>${esc(item.modelName||"-")}</td><td>${esc(item.bulkEndUser||"-")}</td><td>${esc(item.bulkEndUse||"-")}</td><td>${esc(item.bulkHomepage||"-")}</td><td>${esc(permitJudgementValidUntil(item))}</td></tr>`).join("");
+  return `<div class="item-summary"><table><thead><tr><th>#</th><th>국가</th><th>구매자</th><th>최종수하인</th><th>판정발급번호</th><th>HS</th><th>통제번호</th><th>물품명</th><th>모델명</th><th>최종사용자</th><th>최종사용용도</th><th>홈페이지</th><th>비고</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+function renderBulkPermitItemList(){
+  const list=$("#bulkPermitItemList");
+  if(!list) return;
+  const items=bulkPermitItems();
+  list.innerHTML=items.map((item,i)=>{
+    setBulkDefaults(item,i);
+    return `<div class="permit-item-card">
+      <div class="permit-item-head">
+        <div><b>${i+1}. ${esc(item.itemName||"-")} / ${esc(item.modelName||"-")}</b><br><span>통제번호 ${esc(item.ctrlNo||"-")} · 판정번호 ${esc(permitJudgementNo(item))} · HS ${esc(bulkPermitHs(item))}</span></div>
+        <span>거래처는 2단계 거래정보에서 추가한 법인을 기준으로 품목별 매칭합니다.</span>
+      </div>
+      <div class="bulk-permit-grid">
+        <div class="field"><label>구매자</label><input type="text" id="bulkBuyer-${item.id}" data-bulk-id="${item.id}" data-bulk-field="bulkBuyer" list="companyOptions" value="${esc(item.bulkBuyer)}" placeholder="구매자 선택 또는 입력"></div>
+        <div class="field"><label>최종수하인</label><input type="text" id="bulkConsignee-${item.id}" data-bulk-id="${item.id}" data-bulk-field="bulkConsignee" list="companyOptions" value="${esc(item.bulkConsignee)}" placeholder="최종수하인 선택 또는 입력"></div>
+        <div class="field"><label>최종사용자</label><input type="text" id="bulkEndUser-${item.id}" data-bulk-id="${item.id}" data-bulk-field="bulkEndUser" list="companyOptions" value="${esc(item.bulkEndUser)}" placeholder="최종사용자 선택 또는 입력"></div>
+        <div class="field span-2"><label>최종사용용도</label><input type="text" id="bulkEndUse-${item.id}" data-bulk-id="${item.id}" data-bulk-field="bulkEndUse" value="${esc(item.bulkEndUse)}" placeholder="예: 생산라인 유지보수, 내부 연구개발"></div>
+        <div class="field"><label>홈페이지</label><input type="text" id="bulkHomepage-${item.id}" data-bulk-id="${item.id}" data-bulk-field="bulkHomepage" value="${esc(item.bulkHomepage)}" placeholder="예: https://example.com"></div>
+      </div>
+    </div>`;
+  }).join("");
+  $$("#bulkPermitItemList input[data-bulk-id]").forEach(input=>input.addEventListener("input",()=>{
+    const item=state.items.find(x=>x.id===input.dataset.bulkId);
+    if(!item) return;
+    item[input.dataset.bulkField]=input.value.trim();
+    if($("#permitWarn")) $("#permitWarn").innerHTML="";
+    queueSaveDraft();
+  }));
+}
+function renderBulkPermitDetailBox(){
+  const box=$("#bulkPermitDetailBox");
+  const show=isBulkPermitApplication();
+  if(box) box.classList.toggle("hidden",!show);
+  if(!show) return;
+  renderBulkPermitItemList();
+}
+function syncPermitQtyFromDom(){
+  const el=$("#permitQtyInput");
+  if(el) state.permitQty=el.value.trim();
+}
+function syncPermitDetailFromDom(){
+  const port=$("#permitDestPortInput"), transport=$("#permitTransportSelect"), other=$("#permitTransportOtherInput"), manufacturer=$("#permitManufacturerInput");
+  if(port) state.permitDestPort=port.value.trim();
+  if(transport) state.permitTransport=transport.value.trim();
+  if(other) state.permitTransportOther=other.value.trim();
+  if(manufacturer) state.permitManufacturer=manufacturer.value.trim();
+  state.items.forEach(item=>{
+    const unit=$("#permitUnit-"+item.id), qty=$("#permitItemQty-"+item.id), weight=$("#permitWeight-"+item.id);
+    if(unit) item.permitUnitPriceUsd=unit.value.trim();
+    if(qty) item.permitQty=qty.value.trim();
+    if(weight) item.permitWeightKg=weight.value.trim();
+    item.permitAmountUsd=calcPermitExportAmount(item);
+  });
+  state.permitQty=permitTotalQty();
+}
+function syncPermitAllFromDom(){
+  syncPermitQtyFromDom();
+  syncPermitDetailFromDom();
+  syncBulkPermitInfoFromDom();
+}
+function renderPermitItemInfoList(){
+  const list=$("#permitItemInfoList");
+  if(!list) return;
+  const items=individualPermitItems();
+  list.innerHTML=items.map((item,i)=>{
+    const amount=permitAmountText(item);
+    return `<div class="permit-item-card">
+      <div class="permit-item-head">
+        <div><b>${i+1}. ${esc(item.itemName||"-")} / ${esc(item.modelName||"-")}</b><br><span>통제번호 ${esc(item.ctrlNo||"-")} · 판정번호 ${esc(permitJudgementNo(item))}</span></div>
+        <span>수출액은 단가 × 수량으로 자동 계산됩니다.</span>
+      </div>
+      <div class="permit-item-grid">
+        <div class="field"><label>단가(USD)</label><input type="number" min="0" step="0.01" id="permitUnit-${item.id}" data-permit-id="${item.id}" data-permit-field="permitUnitPriceUsd" value="${esc(item.permitUnitPriceUsd)}" placeholder="예: 1250"></div>
+        <div class="field"><label>수량</label><input type="number" min="1" step="1" id="permitItemQty-${item.id}" data-permit-id="${item.id}" data-permit-field="permitQty" value="${esc(item.permitQty)}" placeholder="예: 10"></div>
+        <div class="field"><label>중량(kg)</label><input type="number" min="0" step="0.001" id="permitWeight-${item.id}" data-permit-id="${item.id}" data-permit-field="permitWeightKg" value="${esc(item.permitWeightKg)}" placeholder="예: 12.5"></div>
+        <div class="field"><label>수출액(USD)</label><div class="ex-amount" id="permitAmount-${item.id}">${esc(amount)}</div></div>
+      </div>
+    </div>`;
+  }).join("");
+  $$("#permitItemInfoList input[data-permit-id]").forEach(input=>input.addEventListener("input",()=>{
+    const item=state.items.find(x=>x.id===input.dataset.permitId);
+    if(!item) return;
+    item[input.dataset.permitField]=input.value.trim();
+    item.permitAmountUsd=calcPermitExportAmount(item);
+    state.permitQty=permitTotalQty();
+    const amount=$("#permitAmount-"+item.id);
+    if(amount) amount.textContent=permitAmountText(item);
+    queueSaveDraft();
+  }));
+}
+function renderPermitDetailBox(){
+  const show=isIndividualPermitApplication();
+  const box=$("#permitDetailBox");
+  if(box) box.classList.toggle("hidden",!show);
+  if(!show) return;
+  const port=$("#permitDestPortInput"), transport=$("#permitTransportSelect"), other=$("#permitTransportOtherInput"), manufacturer=$("#permitManufacturerInput");
+  if(port&&port.value!==state.permitDestPort) port.value=state.permitDestPort||"";
+  if(transport&&transport.value!==state.permitTransport) transport.value=state.permitTransport||"";
+  if(other&&other.value!==state.permitTransportOther) other.value=state.permitTransportOther||"";
+  if(manufacturer&&manufacturer.value!==state.permitManufacturer) manufacturer.value=state.permitManufacturer||"";
+  $("#permitTransportOtherField")?.classList.toggle("hidden",state.permitTransport!=="기타");
+  renderPermitItemInfoList();
+}
+function updatePermitQtyUi(){
+  const box=$("#permitQtyBox");
+  const input=$("#permitQtyInput");
+  const next=$("#next3");
+  const show=isIndividualPermitApplication();
+  if(box) box.classList.add("hidden");
+  if(input&&input.value!==String(state.permitQty||"")) input.value=state.permitQty||"";
+  renderPermitDetailBox();
+  renderBulkPermitDetailBox();
+  if(next && show) next.disabled=false;
+}
 function existingPermitRowsHtml(review=existingPermitReview()){
   if(!review.rows.length) return "";
   return `<div class="item-summary"><table><thead><tr><th>#</th><th>모델명</th><th>통제번호</th><th>기존 허가 확인</th><th>허가번호</th></tr></thead><tbody>${review.rows.map((row,i)=>{
@@ -1409,6 +2047,12 @@ function existingPermitNoticeHtml(review=existingPermitReview()){
     return `<div class="notice warn"><b>일부 품목 변경허가 필요</b> &nbsp;전략물자 품목 ${review.matched.length}개는 기존 허가 활용 가능, ${review.unmatched.length}개는 기존 허가에 포함되지 않아 변경허가 검토가 필요합니다. 변경허가는 미허가 품목만 대상으로 품의에 반영합니다.${table}${expired}</div>`;
   }
   return `<div class="notice"><b>기존 허가 미매칭</b> &nbsp;입력한 모델명, 국가, 구매자, 최종수하인, 최종사용자가 동시에 일치하는 유효 허가가 없습니다. 아래에서 신규 허가 유형을 선택하세요.${table}${expired}</div>`;
+}
+function bulkPermitChangeNoticeHtml(){
+  const base=bulkPermitBaseForApplication();
+  if(!base || state.ptype!=="사용자포괄" || state.permitMode==="existing") return "";
+  const addItems=bulkPermitItems();
+  return `<div class="notice warn"><b>사용자포괄 변경허가 후보</b> &nbsp;${esc(state.country||"-")} 대상 유효 사용자포괄수출허가 ${esc(base.permitNo)}가 확인되었습니다. 기존 허가에 포함되지 않은 품목 ${addItems.length}개는 변경허가 신청 품의로 작성합니다.</div>`;
 }
 function renderExistingPermitReview(){
   const review=existingPermitReview();
@@ -1432,6 +2076,7 @@ function renderExistingPermitReview(){
       next.textContent="AI 검토결과 보기 →";
     }
   }
+  updatePermitQtyUi();
 }
 function hasUnresolvedDbChoice(){ return state.items.some(item=>item.needsDbChoice&&!(item.ctrlNo||"").trim()); }
 function updateNext1(){ const btn=$("#next1"); if(btn) btn.disabled=!hasAnyItemData()||hasUnresolvedDbChoice(); }
@@ -1443,12 +2088,15 @@ function saveHint(text){
   const h=$("#saveHint"); if(h) h.textContent=text;
 }
 function snapshot(){
-  syncItemsFromDom(); syncTxnFromDom();
+  syncItemsFromDom(); syncTxnFromDom(); syncPermitAllFromDom(); syncExemptionItemInfoFromDom();
   return {
       ts:Date.now(),
       state:{
         country:state.country,region:state.region,custom:state.custom,buyer:state.buyer,consignee:state.consignee,endUser:state.endUser,endUse:state.endUse,
-        items:state.items,exemptionSel:state.exemptionSel,ptype:state.ptype,permitMode:state.permitMode,permitBaseNo:state.permitBaseNo,path:state.path,redFlags:state.redFlags,flagAuto:state.flagAuto,screeningDone:state.screeningDone,draftNeeded:state.draftNeeded,defenseReview:state.defenseReview
+        buyers:state.buyers,consignees:state.consignees,endUsers:state.endUsers,
+        items:state.items,exemptionSel:state.exemptionSel,ptype:state.ptype,permitMode:state.permitMode,permitBaseNo:state.permitBaseNo,permitQty:state.permitQty,
+        permitDestPort:state.permitDestPort,permitTransport:state.permitTransport,permitTransportOther:state.permitTransportOther,permitManufacturer:state.permitManufacturer,
+        path:state.path,redFlags:state.redFlags,flagAuto:state.flagAuto,screeningDone:state.screeningDone,draftNeeded:state.draftNeeded,defenseReview:state.defenseReview
       },
     countryInput:$("#countryInput")?.value||"",
     bulkInput:$("#bulkInput")?.value||""
@@ -1480,11 +2128,22 @@ function restoreDraft(){
     state.consignee=s.consignee||"";
     state.endUser=s.endUser||"";
     state.endUse=s.endUse||"";
+    state.buyers=Array.isArray(s.buyers)?s.buyers.slice():(state.buyer?[state.buyer]:[]);
+    state.consignees=Array.isArray(s.consignees)?s.consignees.slice():(state.consignee?[state.consignee]:[]);
+    state.endUsers=Array.isArray(s.endUsers)?s.endUsers.slice():(state.endUser?[state.endUser]:[]);
+    state.buyer=cleanPartyList(state.buyers)[0]||state.buyer;
+    state.consignee=cleanPartyList(state.consignees)[0]||state.consignee;
+    state.endUser=cleanPartyList(state.endUsers)[0]||state.endUser;
     state.items=(Array.isArray(s.items)&&s.items.length?s.items:[makeItem()]).map(item=>makeItem(item));
     state.exemptionSel=s.exemptionSel||null;
     state.ptype=s.ptype||null;
     state.permitMode=s.permitMode||null;
     state.permitBaseNo=s.permitBaseNo||null;
+    state.permitQty=s.permitQty||"";
+    state.permitDestPort=s.permitDestPort||"";
+    state.permitTransport=s.permitTransport||"";
+    state.permitTransportOther=s.permitTransportOther||"";
+    state.permitManufacturer=s.permitManufacturer||"";
     state.path=s.path||null;
     state.redFlags=Array.isArray(s.redFlags)?s.redFlags:[];
     state.flagAuto=Array.isArray(s.flagAuto)?s.flagAuto:[];
@@ -1498,6 +2157,11 @@ function restoreDraft(){
     if($("#consigneeInput")) $("#consigneeInput").value=state.consignee||"";
     if($("#endUserInput")) $("#endUserInput").value=state.endUser||"";
     if($("#endUseInput")) $("#endUseInput").value=state.endUse||"";
+    renderAllPartyExtras();
+    if($("#permitDestPortInput")) $("#permitDestPortInput").value=state.permitDestPort||"";
+    if($("#permitTransportSelect")) $("#permitTransportSelect").value=state.permitTransport||"";
+    if($("#permitTransportOtherInput")) $("#permitTransportOtherInput").value=state.permitTransportOther||"";
+    if($("#permitManufacturerInput")) $("#permitManufacturerInput").value=state.permitManufacturer||"";
     if($("#sameParties")){
       const same=!!state.buyer&&state.buyer===state.consignee&&state.buyer===state.endUser;
       $("#sameParties").checked=same;
@@ -1570,6 +2234,7 @@ function renderItems(){
       <div class="field"><label>품목명</label><input id="name-${item.id}" data-id="${item.id}" data-field="itemName" value="${esc(item.itemName)}" placeholder="예: 스마트폰, Radio Unit" ${ro}></div>
       <div class="field"><label>통제번호 (ECCN) ${help("통제번호")}</label><input id="ctrl-${item.id}" data-id="${item.id}" data-field="ctrlNo" value="${esc(item.ctrlNo)}" placeholder="예: 5A002.a.2. 또는 비해당" autocomplete="off" ${ro}></div>
     </div>
+    ${renderClassificationExtra(item)}
     ${lockHint}
     ${renderDbLine(item)}
     <div id="risk-${item.id}">${renderRiskLine(item)}</div>
@@ -1581,6 +2246,8 @@ function renderItems(){
     item[input.dataset.field]=input.value;
     if(input.dataset.field==="modelName"){
       item.db=null; item.dbOptions=[]; item.needsDbChoice=false;
+      clearExemptionItemInfo(item);
+      clearPermitItemInfo(item);
       if(hadDbLock){
         item.itemName="";
         item.ctrlNo="";
@@ -1589,6 +2256,9 @@ function renderItems(){
         if(ctrl){ ctrl.value=""; ctrl.readOnly=false; ctrl.removeAttribute("aria-readonly"); }
       }
       scheduleModelLookup(item.id);
+    }
+    if(["modelName","itemName","ctrlNo"].includes(input.dataset.field)){
+      updateClassificationExtraState(item);
     }
     updateRiskLine(item);
     syncLegacy(); updateNext1();
@@ -1610,6 +2280,7 @@ function renderItems(){
     if(item&&db) applyDb(item,db);
     syncLegacy(); updateNext1(); renderItems();
   }));
+  wireHsButtons(list);
   $$("#itemList [data-del]").forEach(btn=>btn.addEventListener("click",()=>{
     syncItemsFromDom();
     state.items=state.items.filter(x=>x.id!==btn.dataset.del);
@@ -1636,18 +2307,57 @@ function ensureResultPath(){
     state.ptype=state.ptype||"개별";
   }
 }
+function requirePermitQtyBeforeResult(){
+  if(state.path==="permit"&&isIndividualPermitApplication()){
+    const {missing,itemMissing}=individualPermitInfoMissing();
+    if(!missing.length&&!itemMissing.length) return true;
+    if(state.permitMode==="new"){
+      $$("#panel3 .permit-card").forEach(x=>x.classList.toggle("sel",x.dataset.ptype==="개별"));
+      updatePermitQtyUi();
+      goStep(3);
+    } else {
+      toPermitStep();
+    }
+    const rows=[
+      ...missing.map(row=>`<li>${esc(row.label)}</li>`),
+      ...itemMissing.map(row=>`<li>${esc(itemLabel(row.item))}: ${row.fields.map(esc).join(", ")}</li>`)
+    ].join("");
+    const box=$("#permitWarn");
+    if(box) box.innerHTML=`<div class="notice warn"><b>개별수출허가 정보 입력 필요</b> &nbsp;검토결과를 보려면 아래 정보를 입력하세요.<ul style="margin:8px 0 0 18px">${rows}</ul></div>`;
+    return false;
+  }
+  if(state.path==="permit"&&isBulkPermitApplication()){
+    const missing=bulkPermitInfoMissing();
+    if(!missing.length) return true;
+    if(state.permitMode==="new"){
+      $$("#panel3 .permit-card").forEach(x=>x.classList.toggle("sel",x.dataset.ptype==="사용자포괄"));
+      updatePermitQtyUi();
+      goStep(3);
+    } else {
+      toPermitStep();
+    }
+    const rows=missing.map(row=>`<li>${esc(itemLabel(row.item))}: ${row.fields.map(esc).join(", ")}</li>`).join("");
+    const box=$("#permitWarn");
+    if(box) box.innerHTML=`<div class="notice warn"><b>사용자포괄수출허가 정보 입력 필요</b> &nbsp;품목별 구매자, 최종수하인, 최종사용자, 최종사용용도와 홈페이지를 모두 입력하세요.<ul style="margin:8px 0 0 18px">${rows}</ul></div>`;
+    return false;
+  }
+  return true;
+}
 function goFromPill(n){
   if(n===1) enterItemStep();
   else if(n===2) enterStep2(allItemsNonControlled()?"screening":"exempt");
   else if(n===3) toPermitStep();
   else if(n===4){
+    if(!requireExemptionItemInfo()) return;
     if(state.path==="permit"){ proceedPermitResult(); return; }
     if(allItemsNonControlled()&&(!state.country||transactionFieldsMissing().length)) enterStep2("screening");
     else enterScreening();
   }
-  else if(n===5) { ensureResultPath(); renderResult(); goStep(5); }
+  else if(n===5) { ensureResultPath(); if(!requireExemptionItemInfo()) return; if(!requirePermitQtyBeforeResult()) return; renderResult(); goStep(5); }
   else if(n===6) {
     ensureResultPath();
+    if(!requireExemptionItemInfo()) return;
+    if(!requirePermitQtyBeforeResult()) return;
     renderResult();
     if(hasDraftSupport()) enterDraftStep();
     else { showToast("이 결과 유형은 AI 품의작성 지원 대상이 아닙니다."); goStep(5); }
@@ -1716,7 +2426,7 @@ $("#addItem").addEventListener("click",()=>{ syncItemsFromDom(); state.items.pus
 $("#lookupAll").addEventListener("click",lookupAllItems);
 $("#applyBulk").addEventListener("click",parseBulk);
 $("#sampleBulk").addEventListener("click",()=>{
-  $("#bulkInput").value=["SM-G998N","CNC-9000","ENC-SW-01","INV-200"].join("\n");
+  $("#bulkInput").value=["SM-G998N","CNC-9000","THERMAL-X1","INV-200"].join("\n");
 });
 $("#next1").addEventListener("click",()=>{
   syncItemsFromDom();
@@ -1727,12 +2437,19 @@ $("#next1").addEventListener("click",()=>{
   state.ptype=null;
   state.permitMode=null;
   state.permitBaseNo=null;
+  state.permitQty="";
   state.draftNeeded=null;
   state.screeningDone=false;
   state.redFlags=[];
   state.flagAuto=[];
   state.defenseReview=null;
   if(unclassifiedItems().length){
+    const missing=classificationMissingDetails();
+    if(missing.length){
+      showClassificationMissing(missing);
+      return;
+    }
+    $("#ruWarn").innerHTML="";
     state.path="classification";
     renderResult();
     goStep(5);
@@ -1757,6 +2474,8 @@ function setExFlow(mode){
   if(badge) badge.textContent=exFlow==="screening"?"04":"02";
   const third=$("#exSubstepBar .substep-chip[data-substep='purpose']");
   if(third) third.innerHTML=exFlow==="screening"?`<span class="dot">3</span>의심징후 검토`:`<span class="dot">3</span>면제조항`;
+  const itemInfo=$("#exSubstepBar .substep-chip[data-substep='iteminfo']");
+  itemInfo?.classList.toggle("hidden",exFlow==="screening");
   const next=$("#nextTxn");
   if(next) next.textContent=exFlow==="screening"?"다음 → 의심징후 검토":"다음 → 허가면제 조항 확인";
 }
@@ -1764,19 +2483,21 @@ function setExSubstep(step){
   exStep=step;
   $("#exCountryStep")?.classList.toggle("hidden",step!=="country");
   $("#exTxnStep")?.classList.toggle("hidden",step!=="transaction");
-  $("#exPurposeStep")?.classList.toggle("hidden",!(step==="purpose"||step==="confirm"));
+  $("#exPurposeStep")?.classList.toggle("hidden",!(step==="purpose"||step==="confirm"||step==="iteminfo"));
   $$("#exSubstepBar .substep-chip").forEach(chip=>{
     const s=chip.dataset.substep;
-    const order={country:1,transaction:2,purpose:3};
-    const cur=order[step==="confirm"?"purpose":step]||1;
-    chip.classList.toggle("active",s===(step==="confirm"?"purpose":step));
+    const order={country:1,transaction:2,purpose:3,iteminfo:4};
+    const active=step==="confirm"?"purpose":step;
+    const cur=order[active]||1;
+    chip.classList.toggle("active",s===active);
     chip.classList.toggle("done",(order[s]||0)<cur);
   });
   const lead={
-    country:exFlow==="screening"?"의심징후 검토를 위해 먼저 수출국가를 입력하세요. 러시아·벨라루스는 다음 버튼을 누르면 곧바로 수출 불가 결과로 이동합니다.":"먼저 수출국가를 입력하세요. 러시아·벨라루스는 다음 버튼을 누르면 곧바로 수출 불가 결과로 이동합니다.",
+    country:exFlow==="screening"?"의심징후 검토를 위해 먼저 수출국가를 입력하세요. 러시아·벨라루스 제재에 따라 곧바로 AI 검토결과(수출 불가)로 이동합니다.":"먼저 수출국가를 입력하세요. 러시아·벨라루스 제재에 따라 곧바로 AI 검토결과(수출 불가)로 이동합니다.",
     transaction:"구매자, 최종수하인, 최종사용자와 최종사용용도를 확인하세요.",
     purpose:exFlow==="screening"?"국가와 거래정보 확인 후 의심징후 검토로 이동합니다.":"거래정보 확인 후 허가면제 조항 해당 여부를 순서대로 검토합니다.",
-    confirm:"선택하신 허가면제 조항의 요건을 확인합니다."
+    confirm:"선택하신 허가면제 조항의 요건을 확인합니다.",
+    iteminfo:"허가면제 사후거래보고 품의에 필요한 품목별 중량, 수량, 단가와 미국산 비중을 입력하세요."
   };
   $("#exLead").innerHTML=lead[step]||lead.country;
   if(step==="transaction") renderTxnMatches();
@@ -1828,8 +2549,12 @@ function syncSameParties(){
   state.defenseReview=null;
   cb.closest(".radio-chip")?.classList.toggle("on",cb.checked);
   if(!cb.checked||!buyer) return;
-  if(consignee) consignee.value=buyer.value;
-  if(endUser) endUser.value=buyer.value;
+  const vals=ensurePartyArray("buyer").slice();
+  if(consignee) consignee.value=vals[0]||buyer.value;
+  if(endUser) endUser.value=vals[0]||buyer.value;
+  state.consignees=vals.slice();
+  state.endUsers=vals.slice();
+  renderAllPartyExtras();
   syncTxnFromDom();
   renderTxnMatches();
 }
@@ -1849,6 +2574,7 @@ function blockToResult(){
   state.ptype=null;
   state.permitMode=null;
   state.permitBaseNo=null;
+  state.permitQty="";
   state.exemptionSel=null;
   state.screeningDone=false;
   state.draftNeeded=null;
@@ -1912,7 +2638,13 @@ function toPermitStep(){
     state.permitMode="new";
     state.permitBaseNo=null;
     showToast("나의2 지역은 개별수출허가 검토로 자동 진행합니다.");
-    proceedPermitResult("#txnWarn");
+    $("#permitTypeArea")?.classList.add("hidden");
+    $$("#panel3 .permit-card").forEach(x=>x.classList.toggle("sel",x.dataset.ptype==="개별"));
+    if($("#existingPermitBox")) $("#existingPermitBox").innerHTML=na2PermitNotice();
+    if($("#permitWarn")) $("#permitWarn").innerHTML="";
+    if($("#next3")) $("#next3").textContent="AI 검토결과 보기 →";
+    updatePermitQtyUi();
+    goStep(3);
     return;
   }
   state.ptype=null;
@@ -1925,6 +2657,7 @@ function toPermitStep(){
 }
 function proceedPermitResult(target="#permitWarn"){
   if(!ensureDefenseReviewReady(target)) return;
+  syncPermitAllFromDom();
   state.path="permit";
   state.exemptionSel="none";
   if(state.region==="나의2"){
@@ -1936,6 +2669,37 @@ function proceedPermitResult(target="#permitWarn"){
     if(!state.permitMode||state.permitMode==="none") setPermitModeFromReview(review);
     if(state.permitMode==="new") state.ptype=state.ptype||"개별";
   }
+  if(isIndividualPermitApplication()){
+    const {missing,itemMissing}=individualPermitInfoMissing();
+    if(missing.length||itemMissing.length){
+      const rows=[
+        ...missing.map(row=>`<li>${esc(row.label)}</li>`),
+        ...itemMissing.map(row=>`<li>${esc(itemLabel(row.item))}: ${row.fields.map(esc).join(", ")}</li>`)
+      ].join("");
+      const box=$(target)||$("#permitWarn");
+      if(box) box.innerHTML=`<div class="notice warn"><b>개별수출허가 정보 입력 필요</b> &nbsp;신청 상세정보와 품목별 금액 정보를 모두 입력하세요.<ul style="margin:8px 0 0 18px">${rows}</ul></div>`;
+      updatePermitQtyUi();
+      return;
+    }
+  }
+  if(isBulkPermitApplication()){
+    const itemMissing=bulkPermitInfoMissing();
+    if(itemMissing.length){
+      const rows=itemMissing.map(row=>`<li>${esc(itemLabel(row.item))}: ${row.fields.map(esc).join(", ")}</li>`).join("");
+      const box=$(target)||$("#permitWarn");
+      if(box) box.innerHTML=`<div class="notice warn"><b>사용자포괄수출허가 정보 입력 필요</b> &nbsp;허가신청 품목별 거래처 매칭 정보와 최종사용용도, 홈페이지를 입력하세요.<ul style="margin:8px 0 0 18px">${rows}</ul></div>`;
+      updatePermitQtyUi();
+      return;
+    }
+  }
+  if(state.ptype==="개별"&&state.permitMode!=="existing"&&!permitTotalQty()){
+    state.path=null;
+    const box=$(target)||$("#permitWarn");
+    if(box) box.innerHTML=`<div class="notice warn"><b>수량 입력 필요</b> &nbsp;개별수출허가는 허가 수량 제한이 있으므로 신청 수량을 1 EA 이상 입력하세요. 예상 출하량보다 넉넉하게 기입하는 것을 권장합니다.</div>`;
+    updatePermitQtyUi();
+    return;
+  }
+  state.permitQty=permitTotalQty()||normalizedPermitQty();
   state.screeningDone=false;
   state.redFlags=[];
   state.flagAuto=[];
@@ -1949,7 +2713,7 @@ function handleExPurposeSelection(k){
     return;
   }
   if(k==="none") toPermitStep();
-  else if(k==="9"){ state.exPurpose=k; state.exemptionSel=k; state.path="exempt"; state.ptype=null; state.permitMode=null; state.permitBaseNo=null; state.draftNeeded=null; enterScreening(); }
+  else if(k==="9"){ state.exPurpose=k; state.exemptionSel=k; state.path="exempt"; state.ptype=null; state.permitMode=null; state.permitBaseNo=null; state.permitQty=""; state.draftNeeded=null; renderExemptionItemInfo(); }
   else { state.exPurpose=k; renderExConfirm(k); }
 }
 function renderExPurpose(){
@@ -1993,7 +2757,7 @@ function renderExConfirm(k){
       </div>
       <div id="exNoMsg"></div>
     </div>`;
-  $("#exYes").addEventListener("click",()=>{ if(state.region==="나의2"){ toPermitStep(); return; } state.exemptionSel=k; state.path="exempt"; state.ptype=null; state.permitMode=null; state.permitBaseNo=null; state.draftNeeded=null; enterScreening(); });
+  $("#exYes").addEventListener("click",()=>{ if(state.region==="나의2"){ toPermitStep(); return; } state.exemptionSel=k; state.path="exempt"; state.ptype=null; state.permitMode=null; state.permitBaseNo=null; state.permitQty=""; state.draftNeeded=null; renderExemptionItemInfo(); });
   $("#exNo").addEventListener("click",()=>{
     $("#exNoMsg").innerHTML=`<div class="notice warn" style="margin-top:14px"><b>이 면제는 적용되지 않습니다</b> &nbsp;요건을 충족하지 못하면 제${e.n}호 면제를 적용할 수 없습니다. 다른 경우를 선택하거나, 수출허가 검토로 진행하세요.</div>
       <div class="dl-row" style="margin-top:12px"><button class="btn" id="exBack2">← 다른 경우 선택</button><button class="btn primary" id="exToPermit">해당사항 없음으로 진행 →</button></div>`;
@@ -2001,8 +2765,67 @@ function renderExConfirm(k){
     $("#exToPermit").addEventListener("click",toPermitStep);
   });
 }
+function renderExemptionItemInfo(message=""){
+  if(!state.exemptionSel||state.exemptionSel==="none"){ renderExPurpose(); return; }
+  setExSubstep("iteminfo");
+  const e=EXEMPTIONS[state.exemptionSel];
+  const items=controlledItems();
+  const rows=items.map((item,i)=>{
+    const amount=exemptionAmountText(item);
+    return `<div class="ex-value-card">
+      <div class="ex-value-head">
+        <div><b>${i+1}. ${esc(item.itemName||"-")} / ${esc(item.modelName||"-")}</b><br><span>통제번호 ${esc(item.ctrlNo||"-")}</span></div>
+        <span>수출액은 수량 × 단가로 자동 계산됩니다.</span>
+      </div>
+      <div class="ex-value-grid">
+        <div class="field"><label>중량(kg)</label><input type="number" min="0" step="0.001" id="exWeight-${item.id}" data-ex-id="${item.id}" data-ex-field="exWeightKg" value="${esc(item.exWeightKg)}" placeholder="예: 12.5"></div>
+        <div class="field"><label>수량(ea)</label><input type="number" min="1" step="1" id="exQty-${item.id}" data-ex-id="${item.id}" data-ex-field="exQty" value="${esc(item.exQty)}" placeholder="예: 10"></div>
+        <div class="field"><label>단가(USD)</label><input type="number" min="0" step="0.01" id="exUnit-${item.id}" data-ex-id="${item.id}" data-ex-field="exUnitPriceUsd" value="${esc(item.exUnitPriceUsd)}" placeholder="예: 1250"></div>
+        <div class="field"><label>수출액(USD)</label><div class="ex-amount" id="exAmount-${item.id}">${esc(amount)}</div></div>
+        <div class="field"><label>미국산 비중(%)</label><input type="number" min="0" max="100" step="0.01" id="exUs-${item.id}" data-ex-id="${item.id}" data-ex-field="exUsOriginPct" value="${esc(item.exUsOriginPct)}" placeholder="예: 0"><div class="hint">사업부 담당자에게 문의하여 확인하세요.</div></div>
+      </div>
+    </div>`;
+  }).join("");
+  $("#exemptBody").innerHTML=`<div class="region-banner rb-나의1"><div class="rb-ico">💵</div><div><h4 class="serif">제${e.n}호 · 품목별 사후거래보고 정보</h4><p>${e.t} 적용 품의와 사후거래보고에 필요한 모델별 금액 정보를 입력하세요.</p></div></div>
+    <div class="notice"><b>미국산 비중 확인</b> &nbsp;미국산 비중은 사업부 담당자에게 문의하여 확인한 값을 입력하세요.</div>
+    <div class="ex-value-list">${rows}</div>
+    <div id="exItemInfoMsg">${message}</div>
+    <div class="nav-row"><button class="btn" id="backExPurpose">← 면제조항 다시 선택</button><button class="btn primary" id="nextExItemInfo">다음 → 의심징후 검토</button></div>`;
+  $$("#exemptBody input[data-ex-id]").forEach(input=>input.addEventListener("input",()=>{
+    const item=state.items.find(x=>x.id===input.dataset.exId);
+    if(!item) return;
+    item[input.dataset.exField]=input.value.trim();
+    item.exAmountUsd=calcExportAmount(item);
+    const amount=$("#exAmount-"+item.id);
+    if(amount) amount.textContent=exemptionAmountText(item);
+    queueSaveDraft();
+  }));
+  $("#backExPurpose").addEventListener("click",renderExPurpose);
+  $("#nextExItemInfo").addEventListener("click",()=>{
+    if(!requireExemptionItemInfo()) return;
+    enterScreening();
+  });
+}
+function requireExemptionItemInfo(){
+  if(state.path!=="exempt") return true;
+  const missing=exemptionItemInfoMissing();
+  if(!missing.length) return true;
+  const rows=missing.map(row=>`<li>${esc(itemLabel(row.item))}: ${row.missing.map(esc).join(", ")}</li>`).join("");
+  const msg=`<div class="notice warn"><b>품목정보 입력 필요</b> &nbsp;허가면제 사후거래보고 품의에 필요한 정보를 모두 입력해야 합니다.<ul style="margin:8px 0 0 18px">${rows}</ul></div>`;
+  if(exStep!=="iteminfo"){
+    renderExemptionItemInfo(msg);
+    goStep(2);
+  } else {
+    const box=$("#exItemInfoMsg");
+    if(box) box.innerHTML=msg;
+  }
+  return false;
+}
 $("#sameParties").addEventListener("change",syncSameParties);
 $("#buyerInput").addEventListener("input",syncSameParties);
+$("#addBuyer")?.addEventListener("click",()=>addPartyRow("buyer"));
+$("#addConsignee")?.addEventListener("click",()=>addPartyRow("consignee"));
+$("#addEndUser")?.addEventListener("click",()=>addPartyRow("endUser"));
 ["buyerInput","consigneeInput","endUserInput","endUseInput"].forEach(id=>{
   $("#"+id)?.addEventListener("input",()=>{ state.screeningDone=false; state.defenseReview=null; if($("#txnWarn")) $("#txnWarn").innerHTML=""; renderTxnMatches(); });
 });
@@ -2076,6 +2899,7 @@ function enterScreening(){
     state.path=hasControl()?"permit":(unclassifiedItems().length?"classification":"notControlled");
     state.draftNeeded=null;
   }
+  if(state.path==="exempt"&&!requireExemptionItemInfo()) return;
   if(state.path==="permit"&&state.region==="나의2") state.ptype="개별";
   applyAutoRedFlags();
   renderScreening();
@@ -2117,11 +2941,27 @@ $$("#panel3 .permit-card").forEach(c=>c.addEventListener("click",e=>{
   if($("#permitWarn")) $("#permitWarn").innerHTML="";
   state.permitMode="new";
   state.permitBaseNo=null;
-  state.ptype=c.dataset.ptype; $("#next3").disabled=false;
+  state.ptype=c.dataset.ptype;
+  if(state.ptype!=="개별") state.permitQty="";
+  $("#next3").disabled=false;
   $("#next3").textContent="AI 검토결과 보기 →";
+  updatePermitQtyUi();
 }));
 $("#back3").addEventListener("click",()=>goStep(2));
 $("#next3").addEventListener("click",()=>proceedPermitResult());
+$("#permitQtyInput").addEventListener("input",()=>{
+  syncPermitQtyFromDom();
+  updatePermitQtyUi();
+});
+["permitDestPortInput","permitTransportOtherInput","permitManufacturerInput"].forEach(id=>{
+  $("#"+id)?.addEventListener("input",()=>{ syncPermitDetailFromDom(); if($("#permitWarn")) $("#permitWarn").innerHTML=""; queueSaveDraft(); });
+});
+$("#permitTransportSelect")?.addEventListener("change",()=>{
+  syncPermitDetailFromDom();
+  $("#permitTransportOtherField")?.classList.toggle("hidden",state.permitTransport!=="기타");
+  if($("#permitWarn")) $("#permitWarn").innerHTML="";
+  queueSaveDraft();
+});
 
 /* STEP 5 — AI 검토결과 */
 function dbText(item){
@@ -2136,30 +2976,38 @@ function blockTypeLabel(){
 }
 function metaHtml(){
   const permitReview=state.path==="permit"?existingPermitReview():null;
+  const bulkBase=state.path==="permit"&&state.ptype==="사용자포괄"?bulkPermitBaseForApplication():null;
   let typeLabel = state.path==="block"?blockTypeLabel():
     state.path==="exempt"?`허가면제 · 제${EXEMPTIONS[state.exemptionSel].n}호`:
     state.path==="classification"?"판정 요청 필요":
     state.path==="notControlled"?"전략물자 허가 대상 아님":
     state.path==="permit"&&state.permitMode==="existing"?"기존 수출허가 활용":
     state.path==="permit"&&state.permitMode==="change"?`기존 허가 변경허가 · ${permitBaseNo(permitReview)}`:
+    bulkBase?`사용자포괄 변경허가 · ${bulkBase.permitNo}`:
     (state.ptype==="사용자포괄"?"사용자포괄수출허가":"개별수출허가");
   const rows=state.items.map((item,i)=>{
     return `<tr><td>${i+1}</td><td>${esc(item.modelName||"-")}</td><td>${esc(item.itemName||"-")}</td><td>${esc(item.ctrlNo||"-")}</td><td>${esc(dbText(item))}</td></tr>`;
   }).join("");
   return `<div class="m">수출국가 <b>${esc(state.country||"-")}</b></div>
           <div class="m">수출지역 <b>${state.region?esc(state.region)+" 지역":"-"}</b></div>
-          ${state.buyer?`<div class="m">구매자 <b>${esc(state.buyer)}</b></div>`:""}
-          ${state.consignee?`<div class="m">최종수하인 <b>${esc(state.consignee)}</b></div>`:""}
-          ${state.endUser?`<div class="m">최종사용자 <b>${esc(state.endUser)}</b></div>`:""}
+          ${partyValues("buyers").length?`<div class="m">구매자 <b>${esc(partyListText(state.buyers))}</b></div>`:""}
+          ${partyValues("consignees").length?`<div class="m">최종수하인 <b>${esc(partyListText(state.consignees))}</b></div>`:""}
+          ${partyValues("endUsers").length?`<div class="m">최종사용자 <b>${esc(partyListText(state.endUsers))}</b></div>`:""}
           ${state.endUse?`<div class="m">최종사용용도 <b>${esc(state.endUse)}</b></div>`:""}
           <div class="m">품목 수 <b>${state.items.length}개</b></div>
           <div class="m">통제번호 <b>${ctrlSummary()}</b></div>
           <div class="m">구분 <b>${typeLabel}</b></div>
-          <div class="item-summary"><table><thead><tr><th>#</th><th>모델명</th><th>품목명</th><th>통제번호</th><th>DB 조회</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+          ${state.path==="permit"&&isIndividualPermitApplication()?`<div class="m">최종도착지항구(공항)명 <b>${esc(state.permitDestPort||"-")}</b></div><div class="m">운송방법 <b>${esc(permitTransportText())}</b></div><div class="m">제조자 <b>${esc(state.permitManufacturer||"-")}</b></div>`:""}
+          <div class="item-summary"><table><thead><tr><th>#</th><th>모델명</th><th>품목명</th><th>통제번호</th><th>DB 조회</th></tr></thead><tbody>${rows}</tbody></table></div>
+          ${state.path==="permit"&&isIndividualPermitApplication()?individualPermitInfoTableHtml(individualPermitItems()):""}
+          ${state.path==="permit"&&isBulkPermitApplication()?bulkPermitInfoTableHtml(bulkPermitItems()):""}`;
 }
 function renderResult(){
   syncItemsFromDom();
   syncTxnFromDom();
+  syncPermitDetailFromDom();
+  syncBulkPermitInfoFromDom();
+  syncExemptionItemInfoFromDom();
   if(state.path==="permit"){
     if(state.region==="나의2"){
       state.ptype="개별";
@@ -2245,6 +3093,7 @@ function nextStepsPermit(){
     ${state.region==="나의2"?na2PermitNotice():""}
     <ol class="steps">
       ${isChange?`<li><b>기존 허가 범위 확인</b><span>통상그룹 담당자가 ${permitBaseNo(review)} 허가의 국가, 구매자, 최종수하인, 최종사용자, 유효기간과 기존 허가 활용 품목을 확인합니다.</span></li>`:""}
+      ${isIndividualPermitApplication()?`<li><b>신청 상세정보 확인</b><span>통상그룹 담당자가 최종도착지항구(공항)명, 운송방법, 제조자와 품목별 단가·수량·중량·수출액을 확인합니다.</span></li>`:""}
       <li><b>판정 정보 확인</b><span>${judgementAuto?"통상그룹 담당자가 1단계 DB 판정 정보를 신청 정보에 반영합니다. 별도 판정서 파일 제출은 필요하지 않습니다.":"통상그룹 담당자가 통제번호("+ctrlSummary()+")가 기재된 판정서 확보 여부를 확인합니다. 자가판정서는 신청일 기준 최근 2년 이내인지 확인합니다."}</span></li>
       <li><b>${isChange?"변경허가 대상 서류 취합":"제출 서류 취합"}</b><span>통상그룹 담당자가 제출서류 목록을 기준으로 거래부서에 필요한 자료를 요청하고 신청 전에 취합합니다.${isChange?" 기존 허가에 포함되지 않은 품목만 변경허가 대상으로 반영합니다.":""}</span></li>
       <li><b>품의 승인 확인</b><span>통상그룹 담당자가 판정 정보, 거래정보, 제출서류와 허가 가능성을 확인한 뒤 품의 승인 여부를 결정합니다.</span></li>
@@ -2314,6 +3163,11 @@ function renderExemption(){
     <div class="doc-note" style="margin-top:10px"><b>증빙 요건</b><ul style="margin:6px 0 0 18px">${proof}</ul></div>
     ${disposalNote}
     ${dl?`<div class="dl-row">${dl}</div>`:""}
+  </div>
+  <div class="doc">
+    <div class="doc-top"><div class="doc-name"><span class="seq">품목</span>사후거래보고 대상 품목 정보</div><span class="status st-conditional">입력값 확인</span></div>
+    <div class="doc-note">수출액은 수량(ea) × 단가(USD)로 자동 계산했습니다. 미국산 비중은 사업부 담당자 확인값 기준입니다.</div>
+    ${exemptionItemInfoTableHtml(controlledItems())}
   </div>`;
   const flagResolution=hits.length?`<div class="notice warn"><b>의심징후 해소 필요</b> &nbsp;허가면제 조항에 해당하더라도 의심징후가 ${hits.length}건 체크되었습니다. 면제 진행 시 의심징후가 해소되었음을 설명하는 증빙자료를 추가로 제출·보관하세요. 증빙자료 제출이 어렵거나 의심징후가 해소되지 않으면 허가면제를 적용하지 말고 개별수출허가 절차로 진행하세요.</div>`:"";
   $("#docExtra").innerHTML=approvalNoticeHtml()+defenseReviewNoticeHtml()+screeningNoticeHtml()+flagResolution+riskNoticeHtml()+`<div class="notice"><b>면제 시 절차</b> &nbsp;개별수출허가가 면제되더라도, 수출통제 담당자 승인 후 수출 전 <b>사전신고서(별지 제1호의4)</b> 또는 수출 후 7일 이내 <b>사후거래보고서(별지 제16호 서식)</b>를 허가기관에 제출해야 합니다. 기술 수출은 본 면제(제1항) 대상이 아닙니다.</div>`;
@@ -2345,7 +3199,9 @@ function renderDocs(){
     if(d.example && d.status!=="na") row+=dlBtn("작성 예시",d.example,true);
     return `<div class="doc ${dim}"><div class="doc-top"><div class="doc-name"><span class="seq">${String(i+1).padStart(2,"0")}</span>${d.label}${help(DOC_HELP[d.id]||"")}</div><span class="status st-${d.status}">${ST_LABEL[d.status]}</span></div>${d.note?`<div class="doc-note">${d.note}</div>`:""}${row?`<div class="dl-row">${row}</div>`:""}</div>`;
   }).join("");
-  let ex=approvalNoticeHtml()+defenseReviewNoticeHtml()+(state.path==="permit"&&state.region==="나의2"?na2PermitNotice():"")+(state.permitMode==="change"?existingPermitNoticeHtml(existingPermitReview()):"")+screeningNoticeHtml()+riskNoticeHtml()+(extra||"");
+  let ex=approvalNoticeHtml()+defenseReviewNoticeHtml()+(state.path==="permit"&&state.region==="나의2"?na2PermitNotice():"")+(state.permitMode==="change"?existingPermitNoticeHtml(existingPermitReview()):"")+bulkPermitChangeNoticeHtml()+screeningNoticeHtml()+riskNoticeHtml()+(extra||"");
+  if(isIndividualPermitApplication()) ex+=`<div class="notice"><b>개별수출허가 신청 상세정보</b> &nbsp;최종도착지항구(공항)명 ${esc(state.permitDestPort||"-")}, 운송방법 ${esc(permitTransportText())}, 제조자 ${esc(state.permitManufacturer||"-")} 기준으로 검토합니다. 품목별 수출액은 단가 × 수량으로 자동 계산했습니다.</div>${individualPermitInfoTableHtml(individualPermitItems())}`;
+  if(isBulkPermitApplication()) ex+=`<div class="notice"><b>사용자포괄수출허가 신청 정보</b> &nbsp;품목별 구매자, 최종수하인, 최종사용자, 최종사용용도와 홈페이지를 기준으로 신청 정보를 구성합니다.</div>${bulkPermitInfoTableHtml(bulkPermitItems())}`;
   if(usedSt.includes("postsubmit")) ex+=`<div class="notice"><b>“추후 사후 제출 필요” ${help("사후제출")}</b> &nbsp;신청 시점에는 제출이 생략되는 서류라도, 내부 기준에 따라 추후 사후 제출이 필요합니다. 위 다운로드 양식을 미리 준비해 두세요.</div>`;
   if(state.ptype==="사용자포괄") ex+=`<div class="notice"><b>자율준수무역거래자(CP) ${help("자율준수무역거래자")} 한정</b> &nbsp;사용자포괄수출허가는 자율준수무역거래자로 지정된 수출자만 신청할 수 있습니다.</div>`;
   $("#docExtra").innerHTML=ex;
@@ -2395,6 +3251,23 @@ function itemTablePlain(items=state.items){
     return `${i+1}. 모델명: ${item.modelName||"-"} / 품목명: ${item.itemName||"-"} / 통제번호: ${item.ctrlNo||"-"} / DB: ${dbText(item)}${risk?` / 고위험군: ${risk}`:""}`;
   }).join("\n");
 }
+function classificationRequestLine(item,i){
+  const note=(item.note||"").trim();
+  return `${i+1}. ${item.hsCode||"-"}, ${item.itemName||"-"}, ${item.modelName||"-"}, ${item.spec||"-"}, ${item.usage||"-"}${note?` (${note})`:""}`;
+}
+function classificationRequestText(items=unclassifiedItems()){
+  return items.map(classificationRequestLine).join("\n");
+}
+function classificationRequestTableHtml(items=unclassifiedItems()){
+  if(!items.length) return "";
+  const rows=items.map((item,i)=>`<tr><td>${i+1}</td><td>${esc(item.hsCode||"-")}</td><td>${esc(item.itemName||"-")}</td><td>${esc(item.modelName||"-")}</td><td>${esc(item.spec||"-")}</td><td>${esc(item.usage||"-")}</td><td>${esc(item.note||"-")}</td></tr>`).join("");
+  return `<div class="item-summary"><table><thead><tr><th>#</th><th>HS 번호</th><th>품목명</th><th>모델명</th><th>규격</th><th>용도</th><th>비고</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+function classificationMailAttachments(){
+  return `#1. 결과보고서(.html) 1부
+#2. 제품별 사전분류시 첨부한 품목 사양서 또는 카탈로그 각 1부
+#3. 제품별 설문지 각 1부`;
+}
 function attachmentLines(kind){
   const lines=["붙임 1. 결과보고서(.html) 1부"];
   if(kind==="classification"){
@@ -2434,68 +3307,140 @@ function draftCard(kind,title,body,lead){
 function classificationDraft(){
   const items=unclassifiedItems();
   if(!items.length) return null;
-  const riskBlock=riskSummaryText(items);
-  const title=`전략물자 판정 요청 품의 (${items[0].modelName||items[0].itemName||"품목"}${items.length>1?` 등 ${items.length}건`:""})`;
-  const body=`전략물자 해당 여부 및 통제번호 확인을 위해 아래 품목의 판정 진행에 대한 통상그룹 담당자 검토·승인을 요청하고자 합니다.
+  const title=`전략물자 전문판정 요청 (${items[0].modelName||items[0].itemName||"품목"}${items.length>1?` 등 ${items.length}건`:""})`;
+  const body=`전략물자 해당 여부 및 통제번호 확인을 위해 아래 품목에 대한 판정을 요청드립니다.
 
-1. 거래 정보
-- 수출국가: ${state.country||"-"} (${state.region||"-"} 지역)
-- 구매자: ${state.buyer||"-"}
-- 최종수하인: ${state.consignee||"-"}
-- 최종사용자: ${state.endUser||"-"}
-- 최종사용용도: ${state.endUse||"-"}
+판정요청품목
+${classificationRequestText(items)}
 
-2. 판정 요청 품목
-${itemTablePlain(items)}
-${riskBlock?`
-
-[고위험군 경고]
-${riskBlock}`:""}
-
-3. 요청 사유
-- 현재 입력 정보 기준 통제번호가 확인되지 않았거나 테스트 DB에서 유효한 판정이 확인되지 않았습니다.
-- 판정 결과에 따라 전략물자 수출허가, 허가면제, 상황허가 검토 여부를 통상그룹 담당자 승인 절차로 확정할 예정입니다.
-
-4. 붙임
-${attachmentLines("classification")}
-
-${draftEndLine()}`;
-  return {kind:"classification",title,body,lead:"판정 요청 품의 초안"};
+별첨
+${classificationMailAttachments()}`;
+  return {kind:"classification",title,body,lead:"판정 요청 메일 초안"};
+}
+function exemptionProofDraftLine(e){
+  if(e?.reimport) return "  * 수출 후 1년 이내에 재수입하거나 해외 현지에서 폐기할 예정이며, 재수입/폐기 즉시 통상그룹에 증빙을 제공할 예정임";
+  return "";
+}
+function exemptionScreeningDraftText(){
+  const hits=flagHits();
+  if(!state.screeningDone) return "- 의심징후 검토 결과 미확정";
+  if(!hits.length) return "- 해당 사항 없음";
+  return hits.map(hit=>`- #${hit.no} ${hit.text}`).join("\n");
+}
+function exemptionDraftAttachments(){
+  const lines=["#1 결과보고서(.html) 1부"];
+  if(state.exemptionSel==="5") lines.push("#2 허가면제 제5호 요건 증빙자료(수입신고필증 등) 1부");
+  return lines.join("\n");
 }
 function exemptionDraft(){
   if(state.path!=="exempt"||state.region==="나의2") return null;
   const e=EXEMPTIONS[state.exemptionSel];
-  const riskBlock=riskSummaryText();
-  const title=`전략물자 허가면제 적용 및 신고 품의 (제${e.n}호)`;
-  const body=`아래 수출 건에 대해 전략물자수출입고시 제26조제1항 제${e.n}호 허가면제 적용 여부와 신고 절차 진행에 대한 통상그룹 담당자 검토·승인을 요청하고자 합니다.
+  const title=`전략물자 허가면제 적용에 따른 사후거래보고 품의 (${state.endUser||"-"})`;
+  const body=`전략물자 수출입고시 제26조 및 자율준수무역거래자 등급별 특례에 의거 수출허가 면제를 받은 사항에 대하여 동 조항에 따라 사후거래보고 제도를 이용하여 수출하고자 합니다.
 
-1. 거래 정보
-- 수출국가: ${state.country||"-"} (${state.region||"-"} 지역)
-- 구매자: ${state.buyer||"-"}
-- 최종수하인: ${state.consignee||"-"}
-- 최종사용자: ${state.endUser||"-"}
-- 최종사용용도: ${state.endUse||"-"}
+1. 거래정보
+ - 수출국가: ${state.country||"-"} (${state.region||"-"} 지역)
+ - 구매자: ${partyListText(state.buyers)}
+ - 최종수하인: ${partyListText(state.consignees)}
+ - 최종사용자: ${partyListText(state.endUsers)}
+ - 최종사용용도: ${state.endUse||"-"}
 
-2. 대상 품목
-${itemTablePlain(controlledItems())}
-${riskBlock?`
+2. 면제근거
+ - 제${e.n}호: ${e.t}
+ - 요건 요약: ${stripTags(e.d)}
+${exemptionProofDraftLine(e)}
 
-[고위험군 경고]
-${riskBlock}`:""}
+3. 대상 품목
+${exemptionItemLines(controlledItems())}
 
-3. 면제 근거
-- 제${e.n}호: ${e.t}
-- 요건 요약: ${stripTags(e.d)}
+4. 의심징후
+${exemptionScreeningDraftText()}
 
-4. 증빙 및 후속 절차
-${e.proof.map(p=>"- "+stripTags(p)).join("\n")}
-- 통상그룹 담당자 승인 후 수출 전 사전신고서 또는 수출 후 7일 이내 사후거래보고서 제출 필요 여부를 확인합니다.
+5. 유의사항
+ - 품의서에 작성된 사실과 다르게 수출할 경우 대외무역법 등에 의한 형사처벌 및 행정제재를 받을 수 있습니다. (변경사항 발생 시 재품의 필요, 품의1건 = 수출1건)
+ - 허가면제에 따른 사후거래보고 운영 절차를 준수하고 면제받은 전략물자가 사용용도에 맞지 않게 사용되거나 상기 구매자, 최종수하인, 최종사용자 외의 수요자에게 전달되지 않도록 해야 합니다.
+ - 사후거래보고 운영 절차를 미준수 할 경우 신청 부서 전체에 대해 1년간 사후거래보고서 이용을 금지하는 규정에 동의합니다.
 
-5. 붙임
-${attachmentLines("exemption")}
+별첨
+${exemptionDraftAttachments()}
 
 ${draftEndLine()}`;
   return {kind:"exemption",title,body,lead:"허가면제 요청 품의 초안"};
+}
+function individualPermitDraft(items){
+  const title=`개별수출허가 신청 품의 (${state.country||"-"}, ${items[0]?.modelName||items[0]?.itemName||"전략물자"}${items.length>1?` 등 ${items.length}건`:""})`;
+  const companyLines=endUserCompanyDraftLines();
+  const body=`아래 전략물자 수출 건에 대해 ${state.country||"-"} 개별수출허가 신청을 요청드립니다.
+
+1. 거래 상세정보
+ - 최종목적지국가: ${state.country||"-"} (${state.region||"-"} 지역)
+ - 최종도착지항구(공항)명: ${state.permitDestPort||"-"}
+ - 운송방법: ${permitTransportText()}
+
+2. 거래자 정보
+ - 구매자: ${partyListText(state.buyers)}
+ - 최종수하인: ${partyListText(state.consignees)}
+ - 최종사용자: ${partyListText(state.endUsers)}
+${companyLines?companyLines:""}
+ - 제조자: ${state.permitManufacturer||"-"}
+
+3. 품목정보
+${individualPermitDraftItemLines(items)}
+
+붙임
+ #1 결과보고서(.html) 1부
+ #2 수출자 서약서 1부
+ #3 최종수하인 진술서 1부 (구매자, 최종수하인, 최종사용자가 동일한 법인인 경우 불필요)
+ #4 ${endUserPledgeAttachmentLabel()}
+ #5 최종사용자 등의 관련 서류(영업증명서 또는 납세증명서) 1부
+
+${draftEndLine()}`;
+  return {kind:"permit",title,body,lead:"개별수출허가 신청 품의 초안"};
+}
+function uniqueText(values){
+  return [...new Set(cleanPartyList(values))];
+}
+function bulkPermitDraftItems(){
+  return bulkPermitItems();
+}
+function bulkPermitDraftLine(item,i){
+  return `${i+1}. ${state.country||"-"} ${item.bulkBuyer||"-"} ${item.bulkConsignee||"-"} ${permitJudgementNo(item)} ${bulkPermitHs(item)} ${item.ctrlNo||"-"} ${item.itemName||"-"} ${item.modelName||"-"} ${item.bulkEndUser||"-"} ${item.bulkEndUse||"-"} ${item.bulkHomepage||"-"} ${permitJudgementValidUntil(item)}`;
+}
+function bulkPermitDraftItemLines(items=bulkPermitDraftItems()){
+  return items.map(bulkPermitDraftLine).join("\n");
+}
+function bulkPermitDraft(items){
+  syncBulkPermitInfoFromDom();
+  const base=bulkPermitBaseForApplication();
+  const changeSuffix=base?` (변경허가 ${base.permitNo})`:"";
+  const modelPart=`${items[0]?.modelName||items[0]?.itemName||"전략물자"}${items.length>1?` 등 ${items.length}건`:""}`;
+  const endUses=uniqueText(items.map(item=>item.bulkEndUse)).join(", ")||"-";
+  const buyers=uniqueText(items.map(item=>item.bulkBuyer)).join(", ")||"-";
+  const consignees=uniqueText(items.map(item=>item.bulkConsignee)).join(", ")||"-";
+  const endUsers=uniqueText(items.map(item=>item.bulkEndUser)).join(", ")||"-";
+  const title=`사용자포괄허가신청 품의 (${state.country||"-"}, ${modelPart})${changeSuffix}`;
+  const body=`아래 전략물자 수출 건에 대해 ${state.country||"-"} 사용자포괄수출허가 신청${changeSuffix}을 요청드립니다.
+
+1. 주요 신청서 정보
+ - 대상물품명세서: ${endUses}
+ - 자율준수무역거래자 AA/AAA 등급 지정
+ - 최종목적지국가: ${state.country||"-"}
+ - 구매자: ${buyers}
+ - 최종수하인: ${consignees}
+ - 주요거래선: ${endUsers}
+
+2. 품목정보
+${bulkPermitDraftItemLines(items)}
+
+별첨
+ #1 결과보고서(.html) 1부
+ #2 수출자서약서 1부
+ #3 최종수하인진술서 1부 (구매자, 최종수하인, 최종사용자가 동일할 경우 불필요)
+ #4 최종사용자서약서 1부
+ #5 최종사용자 관련 증빙(영업증명서 또는 납세증명서) 1부
+
+${draftEndLine()}`;
+  return {kind:"permit",title,body,lead:"사용자포괄수출허가 신청 품의 초안"};
 }
 function permitDraft(){
   if(state.path!=="permit") return null;
@@ -2505,16 +3450,19 @@ function permitDraft(){
   const targetItems=permitTargetItems();
   if(!targetItems.length) return null;
   const isChange=state.permitMode==="change";
+  if(state.ptype==="사용자포괄") return bulkPermitDraft(bulkPermitDraftItems());
+  if(state.ptype==="개별"&&!isChange) return individualPermitDraft(targetItems);
   const riskBlock=riskSummaryText(targetItems);
   const title=isChange?changePermitTitle(review):`${type} 신청 품의 (${targetItems[0]?.modelName||targetItems[0]?.itemName||"전략물자"}${targetItems.length>1?` 등 ${targetItems.length}건`:""})`;
   const body=`아래 전략물자 수출 건에 대해 ${isChange?"기존 사용자포괄수출허가 변경허가":type+" 신청"} 진행을 위한 통상그룹 담당자 검토·승인을 요청하고자 합니다.
 
 1. 거래 정보
 - 수출국가: ${state.country||"-"} (${state.region||"-"} 지역)
-- 구매자: ${state.buyer||"-"}
-- 최종수하인: ${state.consignee||"-"}
-- 최종사용자: ${state.endUser||"-"}
+- 구매자: ${partyListText(state.buyers)}
+- 최종수하인: ${partyListText(state.consignees)}
+- 최종사용자: ${partyListText(state.endUsers)}
 - 최종사용용도: ${state.endUse||"-"}
+${state.ptype==="개별"&&state.permitMode!=="existing"?`- 개별수출허가 신청 수량: ${permitQtyText()} (허가 수량 초과 선적 방지를 위해 예상 출하량보다 넉넉하게 기입)`:""}
 
 ${isChange?`2. 기존 허가 정보
 - 허가번호: ${permitBaseNo(review)||"-"}
@@ -2543,9 +3491,9 @@ function blockDraft(){
 
 1. 거래 정보
 - 수출국가: ${state.country||"-"}
-- 구매자: ${state.buyer||"-"}
-- 최종수하인: ${state.consignee||"-"}
-- 최종사용자: ${state.endUser||"-"}
+- 구매자: ${partyListText(state.buyers)}
+- 최종수하인: ${partyListText(state.consignees)}
+- 최종사용자: ${partyListText(state.endUsers)}
 - 최종사용용도: ${state.endUse||"-"}
 
 2. 대상 품목
@@ -2570,7 +3518,10 @@ function draftSupportHtml(){
   const drafts=[classificationDraft(),exemptionDraft(),permitDraft(),blockDraft()].filter(Boolean);
   if(state.path==="notControlled") return "";
   if(!drafts.length) return "";
-  return `<div class="action-card"><h4>AI 품의작성 지원</h4><div class="doc-note">아래 제목과 본문은 통상그룹 담당자 검토·승인을 요청하기 위한 내부 품의 초안입니다. 실제 상신 전 최신 고시, 판정서, 거래 서류와 대조하세요.</div><div class="draft-stack">${drafts.map(d=>draftCard(d.kind,d.title,d.body,d.lead)).join("")}</div></div>`;
+  const note=state.path==="classification"
+    ? "아래 제목과 본문은 전문판정 요청용 메일 초안입니다. 실제 발송 전 품목 사양서, 설문지, 결과보고서 첨부 여부를 확인하세요."
+    : "아래 제목과 본문은 통상그룹 담당자 검토·승인을 요청하기 위한 내부 품의 초안입니다. 실제 상신 전 최신 고시, 판정서, 거래 서류와 대조하세요.";
+  return `<div class="action-card"><h4>AI 품의작성 지원</h4><div class="doc-note">${note}</div><div class="draft-stack">${drafts.map(d=>draftCard(d.kind,d.title,d.body,d.lead)).join("")}</div></div>`;
 }
 function hasDraftSupport(){
   return !!draftSupportHtml();
@@ -2578,8 +3529,8 @@ function hasDraftSupport(){
 function classificationGuideHtml(){
   return `<div class="action-card"><h4>통상그룹 진행 안내</h4>
     <ol class="steps">
-      <li><b>판정 요청 접수</b><span>통상그룹 담당자가 미판정 품목의 모델명, 품목명, 사양서 또는 카탈로그를 확인합니다.</span></li>
-      <li><b>자가판정 또는 전문판정 진행</b><span>품목 난이도와 내부 기준에 따라 통상그룹 담당자가 자가판정 또는 전문판정 요청을 대행합니다.</span></li>
+      <li><b>판정 요청 메일 확인</b><span>통상그룹 담당자가 미판정 품목의 HS번호, 품목명, 모델명, 규격, 용도, 사전분류 차수와 첨부자료를 확인합니다.</span></li>
+      <li><b>전문판정 요청 진행</b><span>품목 난이도와 내부 기준에 따라 통상그룹 담당자가 전문판정 요청 메일을 보완하거나 발송합니다.</span></li>
       <li><b>통상그룹 담당자 확인</b><span>판정 결과 전략물자 해당이면 통제번호를 반영해 허가·면제 품의 검토를 이어가고, 비해당이면 상황허가 검토 필요 여부를 통상그룹 담당자가 확인합니다.</span></li>
     </ol></div>`;
 }
@@ -2595,7 +3546,10 @@ function renderResultNextAction(){
   const hasSupport=hasDraftSupport();
   if(btn) btn.classList.toggle("hidden",!hasSupport);
   const hint=$("#downloadAttachHint");
-  if(hint) hint.classList.toggle("hidden",!hasSupport);
+  if(hint){
+    hint.textContent=state.path==="classification"?"(메일에 첨부 필요)":"(품의에 첨부 필요)";
+    hint.classList.toggle("hidden",!hasSupport);
+  }
 }
 function enterDraftStep(){
   const html=draftSupportHtml();
@@ -2605,6 +3559,13 @@ function enterDraftStep(){
     goStep(5);
     return;
   }
+  const isMail=state.path==="classification";
+  const tab=$("#draftTabLabel");
+  if(tab) tab.textContent=isMail?"메일 초안":"품의 초안";
+  const lead=$("#draftLead");
+  if(lead) lead.textContent=isMail
+    ? "5단계 AI 검토결과를 바탕으로 전문판정 요청 메일 초안을 작성합니다. 실제 발송 전 결과보고서, 제품별 사양서 또는 카탈로그, 제품별 설문지 첨부 여부를 확인하세요."
+    : "5단계 AI 검토결과를 바탕으로 통상그룹 담당자 검토·승인을 요청하는 내부 품의 초안을 작성합니다. 실제 상신 전 최신 고시, 판정서, 거래 서류와 대조하세요.";
   $("#draftSupport").innerHTML=html;
   $("#tradeGuide").innerHTML=tradeGroupGuideHtml();
   setDraftTab("draft");
@@ -2622,7 +3583,7 @@ function wireDraftButtons(){
     const el=$("#"+btn.dataset.copyDraft);
     if(!el) return;
     const text=el.value||el.textContent||"";
-    const done=()=>showToast("품의 초안이 복사되었습니다");
+    const done=()=>showToast("초안이 복사되었습니다");
     if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done));
     else fallbackCopy(text,done);
   }));
@@ -2631,9 +3592,9 @@ function renderNoPermitResult(){
   const unknown=unclassifiedItems();
   if(unknown.length){
     $("#resultTitle").textContent="AI 검토결과 — 판정 요청 필요";
-    $("#docList").innerHTML=`<div class="doc"><div class="doc-top"><div class="doc-name"><span class="seq">판정</span>통제번호 확인 필요</div><span class="status st-conditional">품의 작성 대상</span></div><div class="doc-note">입력 품목 중 유효한 판정 정보 또는 통제번호가 확인되지 않은 품목이 있습니다. 전략물자 해당 여부를 먼저 판정한 뒤 수출통제 담당자 품의로 허가 또는 면제 절차를 확정합니다.</div></div>`;
-    $("#docExtra").innerHTML=approvalNoticeHtml()+riskNoticeHtml()+`<div class="notice"><b>다음 단계</b> &nbsp;하단의 “다음 → AI 품의작성 지원”을 선택해 수출통제 담당자 판정 요청 품의 초안을 활용하세요. 판정 결과 전략물자 해당이면 이 도구로 돌아와 통제번호를 입력해 허가/면제 품의 검토를 이어가면 됩니다.</div>`;
-    $("#footerNote").innerHTML=`※ 판정 전에는 전략물자 해당 여부가 확정되지 않습니다. 수출 전 판정 결과와 수출통제 담당자 승인을 확인하세요.`;
+    $("#docList").innerHTML=`<div class="doc"><div class="doc-top"><div class="doc-name"><span class="seq">판정</span>통제번호 확인 필요</div><span class="status st-conditional">메일 작성 대상</span></div><div class="doc-note">입력 품목 중 유효한 판정 정보 또는 통제번호가 확인되지 않은 품목이 있습니다. 전략물자 해당 여부를 먼저 판정한 뒤 판정 결과에 따라 허가 또는 면제 절차를 확정합니다.</div>${classificationRequestTableHtml(unknown)}</div>`;
+    $("#docExtra").innerHTML=riskNoticeHtml()+`<div class="notice"><b>다음 단계</b> &nbsp;하단의 “다음 → AI 품의작성 지원”을 선택해 전문판정 요청 메일 초안을 활용하세요. 판정 결과 전략물자 해당이면 이 도구로 돌아와 통제번호를 입력해 허가/면제 검토를 이어가면 됩니다.</div>`;
+    $("#footerNote").innerHTML=`※ 판정 전에는 전략물자 해당 여부가 확정되지 않습니다. 수출 전 판정 결과와 통상그룹 담당자 확인을 거쳐 진행하세요.`;
     return;
   }
   $("#resultTitle").textContent="AI 검토결과 — 전략물자 수출허가 대상 아님";
@@ -2655,12 +3616,16 @@ $("#back6").addEventListener("click",()=>{ renderResult(); goStep(5); });
 $("#restart6").addEventListener("click",()=>$("#restart").click());
 $$(".support-tab").forEach(btn=>btn.addEventListener("click",()=>setDraftTab(btn.dataset.draftTab)));
 $("#restart").addEventListener("click",()=>{
-  state={country:null,region:null,custom:false,buyer:"",consignee:"",endUser:"",endUse:"",items:[makeItem()],itemName:"",modelName:"",ctrlNo:"",exemptionSel:null,ptype:null,permitMode:null,permitBaseNo:null,path:null,redFlags:[],flagAuto:[],screeningDone:false,draftNeeded:null,defenseReview:null};
+  state=initialState();
   $$(".opt-card").forEach(x=>x.classList.remove("sel"));
   $$(".permit-card").forEach(x=>x.classList.remove("sel"));
-  input.value=""; $("#bulkInput").value=""; $("#buyerInput").value=""; $("#consigneeInput").value=""; $("#endUserInput").value=""; $("#endUseInput").value=""; $("#sameParties").checked=false; $("#sameParties").closest(".radio-chip")?.classList.remove("on"); renderItems();
+  input.value=""; $("#bulkInput").value=""; $("#buyerInput").value=""; $("#consigneeInput").value=""; $("#endUserInput").value=""; $("#endUseInput").value=""; $("#permitQtyInput").value="";
+  $("#permitDestPortInput").value=""; $("#permitTransportSelect").value=""; $("#permitTransportOtherInput").value=""; $("#permitManufacturerInput").value="";
+  $("#sameParties").checked=false; $("#sameParties").closest(".radio-chip")?.classList.remove("on"); renderItems();
   $("#next1").disabled=true; $("#next3").disabled=true;
   $("#regionResult").classList.remove("show"); $("#regionResult").innerHTML=""; $("#ruWarn").innerHTML="";
+  renderAllPartyExtras();
+  updatePermitQtyUi();
   renderTxnMatches();
   try{localStorage.removeItem(DRAFT_KEY);}catch(e){}
   saveHint("입력 내용은 이 브라우저에 자동 임시저장됩니다.");
@@ -2672,16 +3637,24 @@ function stripTags(s){ return String(s).replace(/<[^>]+>/g,""); }
 function buildSummary(){
   syncItemsFromDom();
   syncTxnFromDom();
+  syncPermitDetailFromDom();
+  syncBulkPermitInfoFromDom();
+  syncExemptionItemInfoFromDom();
   const now=new Date();
   const dt=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")} ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;
   const L=[];
   L.push("[전략물자 수출허가 AI 검토결과]");
   L.push("작성일시: "+dt);
   L.push("수출국가: "+state.country+" ("+state.region+" 지역)");
-  if(state.buyer) L.push("구매자: "+state.buyer);
-  if(state.consignee) L.push("최종수하인: "+state.consignee);
-  if(state.endUser) L.push("최종사용자: "+state.endUser);
+  if(partyValues("buyers").length) L.push("구매자: "+partyListText(state.buyers));
+  if(partyValues("consignees").length) L.push("최종수하인: "+partyListText(state.consignees));
+  if(partyValues("endUsers").length) L.push("최종사용자: "+partyListText(state.endUsers));
   if(state.endUse) L.push("최종사용용도: "+state.endUse);
+  if(state.path==="permit"&&isIndividualPermitApplication()){
+    L.push("최종도착지항구(공항)명: "+(state.permitDestPort||"-"));
+    L.push("운송방법: "+permitTransportText());
+    L.push("제조자: "+(state.permitManufacturer||"-"));
+  }
   const defenseSummary=defenseReviewSummaryText();
   if(defenseSummary){
     L.push("");
@@ -2693,7 +3666,8 @@ function buildSummary(){
   state.items.forEach((item,i)=>{
     const db=item.db?`${item.db.type} ${item.db.number} / ${item.db.valid?"유효":"만료"}(${item.db.validUntil})`:"미조회/미매칭";
     const risk=riskBrief(item);
-    L.push((i+1)+". 모델명: "+(item.modelName||"-")+" / 품목명: "+(item.itemName||"-")+" / 통제번호: "+(item.ctrlNo||"-")+" / DB: "+db+(risk?" / 고위험군: "+risk:""));
+    const classInfo=needsClassificationInfo(item)?` / HS번호: ${item.hsCode||"-"} / 규격: ${item.spec||"-"} / 용도: ${item.usage||"-"} / 비고: ${item.note||"-"}`:"";
+    L.push((i+1)+". 모델명: "+(item.modelName||"-")+" / 품목명: "+(item.itemName||"-")+" / 통제번호: "+(item.ctrlNo||"-")+" / DB: "+db+classInfo+(risk?" / 고위험군: "+risk:""));
   });
   const riskSummary=riskSummaryText();
   if(riskSummary){
@@ -2732,13 +3706,19 @@ function buildSummary(){
       L.push(""); L.push("[증빙 요건]");
       e.proof.forEach(p=>L.push("· "+stripTags(p)));
       L.push("");
+      L.push("[사후거래보고 대상 품목 정보]");
+      exemptionItemLines(controlledItems()).split("\n").forEach(line=>L.push(line));
+      L.push("");
       L.push("· 후속 신고·보고 및 증빙 관리는 수출통제 담당자 승인 후 통상그룹 진행 안내에 따라 관리합니다.");
     }
   } else if(state.path==="classification"){
     L.push("구분: 판정 요청 필요");
     L.push("");
     L.push("· 통제번호 또는 유효 판정정보가 확인되지 않은 품목이 있습니다.");
-    L.push("· 판정 요청 품의 승인 후 자가판정 또는 전문판정을 진행합니다.");
+    L.push("· 전문판정 요청 메일 발송 후 판정 결과를 확인합니다.");
+    L.push("");
+    L.push("[판정 요청 품목]");
+    classificationRequestText(unclassifiedItems()).split("\n").forEach(line=>L.push(line));
   } else if(state.path==="notControlled"){
     L.push("구분: 전략물자 수출허가 대상 아님");
     L.push("");
@@ -2766,7 +3746,23 @@ function buildSummary(){
     }
     if(state.permitMode!=="existing"){
       const {list}=getDocuments(); const a=authority();
-      if(state.permitMode!=="change") L.push("구분: "+(state.ptype==="사용자포괄"?"사용자포괄수출허가":"개별수출허가"));
+      const bulkBase=state.ptype==="사용자포괄"?bulkPermitBaseForApplication():null;
+      if(state.permitMode!=="change") L.push("구분: "+(bulkBase?`사용자포괄수출허가 변경허가 후보 (${bulkBase.permitNo})`:(state.ptype==="사용자포괄"?"사용자포괄수출허가":"개별수출허가")));
+      if(isIndividualPermitApplication()){
+        L.push("");
+        L.push("[개별수출허가 신청 상세정보]");
+        L.push("최종도착지항구(공항)명: "+(state.permitDestPort||"-"));
+        L.push("운송방법: "+permitTransportText());
+        L.push("제조자: "+(state.permitManufacturer||"-"));
+        L.push("");
+        L.push("[개별수출허가 품목정보]");
+        individualPermitDraftItemLines(individualPermitItems()).split("\n").forEach(line=>L.push(line));
+      }
+      if(isBulkPermitApplication()){
+        L.push("");
+        L.push("[사용자포괄수출허가 품목별 신청정보]");
+        bulkPermitDraftItemLines(bulkPermitItems()).split("\n").forEach(line=>L.push(line));
+      }
       L.push("");
       if(state.region==="나의2"){
         L.push("· 나의2 지역은 허가면제가 적용되지 않아 개별수출허가로 자동 검토합니다.");
@@ -2791,15 +3787,33 @@ function buildSummary(){
     if(v===true || v===false) L.push(`· #${i+1}: ${v?"예":"아니오"} / ${text} / 입력 근거: ${screeningInputSource(i)}`);
   });
   L.push("");
-  L.push("※ "+approvalText());
-  L.push("※ 신청 전 최신 고시와 허가기관 안내를 수출통제 담당자가 반드시 확인해야 합니다.");
+  if(state.path==="classification"){
+    L.push("※ 본 검토결과는 전문판정 요청 메일 작성을 위한 보조자료입니다.");
+    L.push("※ 판정 결과 수령 후 전략물자 해당 여부와 통제번호를 다시 확인해야 합니다.");
+  } else {
+    L.push("※ "+approvalText());
+    L.push("※ 신청 전 최신 고시와 허가기관 안내를 수출통제 담당자가 반드시 확인해야 합니다.");
+  }
   return L.join("\n");
 }
 function reportHTML(){
-  syncItemsFromDom(); syncTxnFromDom();
-  const rows=state.items.map((item,i)=>`<tr><td>${i+1}</td><td>${esc(item.modelName||"-")}</td><td>${esc(item.itemName||"-")}</td><td>${esc(item.ctrlNo||"-")}</td><td>${esc(dbText(item))}</td></tr>`).join("");
+  syncItemsFromDom(); syncTxnFromDom(); syncPermitDetailFromDom(); syncBulkPermitInfoFromDom(); syncExemptionItemInfoFromDom();
+  const hasClassRows=unclassifiedItems().length>0;
+  const hasExRows=state.path==="exempt";
+  const hasPermitRows=state.path==="permit"&&isIndividualPermitApplication();
+  const hasBulkRows=state.path==="permit"&&isBulkPermitApplication();
+  const extraHead=hasClassRows?"<th>HS 번호</th><th>규격</th><th>용도</th><th>비고</th>":hasExRows?"<th>중량</th><th>수량</th><th>단가</th><th>수출액</th><th>미국산 비중</th>":hasPermitRows?"<th>판정번호</th><th>단가</th><th>수량</th><th>중량</th><th>수출액</th><th>판정 유효기간</th>":hasBulkRows?"<th>판정번호</th><th>HS</th><th>구매자</th><th>최종수하인</th><th>최종사용자</th><th>최종사용용도</th><th>홈페이지</th><th>비고</th>":"";
+  const rows=state.items.map((item,i)=>`<tr><td>${i+1}</td><td>${esc(item.modelName||"-")}</td><td>${esc(item.itemName||"-")}</td><td>${esc(item.ctrlNo||"-")}</td><td>${esc(dbText(item))}</td>${hasClassRows?`<td>${esc(item.hsCode||"-")}</td><td>${esc(item.spec||"-")}</td><td>${esc(item.usage||"-")}</td><td>${esc(item.note||"-")}</td>`:hasExRows?`<td>${esc(exemptionWeightText(item))}</td><td>${esc(exemptionQtyText(item))}</td><td>${esc(exemptionUnitText(item))}</td><td>${esc(exemptionAmountText(item))}</td><td>${esc(exemptionUsText(item))}</td>`:hasPermitRows?`<td>${esc(permitJudgementNo(item))}</td><td>${esc(permitUnitText(item))}</td><td>${esc(permitItemQtyText(item))}</td><td>${esc(permitWeightText(item))}</td><td>${esc(permitAmountText(item))}</td><td>${esc(permitJudgementValidUntil(item))}</td>`:hasBulkRows?`<td>${esc(permitJudgementNo(item))}</td><td>${esc(bulkPermitHs(item))}</td><td>${esc(item.bulkBuyer||"-")}</td><td>${esc(item.bulkConsignee||"-")}</td><td>${esc(item.bulkEndUser||"-")}</td><td>${esc(item.bulkEndUse||"-")}</td><td>${esc(item.bulkHomepage||"-")}</td><td>${esc(permitJudgementValidUntil(item))}</td>`:""}</tr>`).join("");
+  const itemHead=`<tr><th>#</th><th>모델명</th><th>품목명</th><th>통제번호</th><th>DB 조회</th>${extraHead}</tr>`;
   const screenHtml=[$("#docList")?.innerHTML,$("#docExtra")?.innerHTML,$("#footerNote")?.innerHTML].filter(Boolean).join("\n");
   const title=$("#resultTitle")?.textContent||"전략물자 수출허가 AI 검토결과";
+  const isClassificationReport=state.path==="classification";
+  const reportLead=isClassificationReport
+    ? "생성일: "+nowStamp()+" · 본 자료는 전문판정 요청 메일 첨부용 보조자료입니다. 판정 결과를 확정하지 않습니다."
+    : "생성일: "+nowStamp()+" · 본 자료는 수출통제 담당자 품의 보조자료입니다. 수출 가능 여부를 확정하지 않습니다.";
+  const reportNotice=isClassificationReport
+    ? `<div class="notice"><b>전문판정 요청 자료</b> &nbsp;미판정 품목의 전략물자 해당 여부와 통제번호 확인을 위해 작성된 보조자료입니다.</div>`
+    : `<div class="notice"><b>수출통제 담당자 품의 필요</b> &nbsp;${esc(approvalText())}</div>`;
   return `<!doctype html>
 <html lang="ko">
 <head>
@@ -2819,18 +3833,19 @@ pre{white-space:pre-wrap;background:#faf8f2;border:1px solid #d9d2c2;border-radi
 </head>
 <body>
 <h1>${esc(title)}</h1>
-<p class="muted">생성일: ${nowStamp()} · 본 자료는 수출통제 담당자 품의 보조자료입니다. 수출 가능 여부를 확정하지 않습니다.</p>
-<div class="notice"><b>수출통제 담당자 품의 필요</b> &nbsp;${esc(approvalText())}</div>
+<p class="muted">${esc(reportLead)}</p>
+${reportNotice}
 <div class="meta">
   <div><b>수출국가</b><br>${esc(state.country||"-")} (${esc(state.region||"-")} 지역)</div>
   <div><b>품목 수</b><br>${state.items.length}개</div>
-  <div><b>구매자</b><br>${esc(state.buyer||"-")}</div>
-  <div><b>최종수하인</b><br>${esc(state.consignee||"-")}</div>
-  <div><b>최종사용자</b><br>${esc(state.endUser||"-")}</div>
+  <div><b>구매자</b><br>${esc(partyListText(state.buyers))}</div>
+  <div><b>최종수하인</b><br>${esc(partyListText(state.consignees))}</div>
+  <div><b>최종사용자</b><br>${esc(partyListText(state.endUsers))}</div>
   <div><b>최종사용용도</b><br>${esc(state.endUse||"-")}</div>
+  ${hasPermitRows?`<div><b>최종도착지항구(공항)명</b><br>${esc(state.permitDestPort||"-")}</div><div><b>운송방법</b><br>${esc(permitTransportText())}</div><div><b>제조자</b><br>${esc(state.permitManufacturer||"-")}</div>`:""}
 </div>
 <h2>수출 품목</h2>
-<table><thead><tr><th>#</th><th>모델명</th><th>품목명</th><th>통제번호</th><th>DB 조회</th></tr></thead><tbody>${rows}</tbody></table>
+<table><thead>${itemHead}</thead><tbody>${rows}</tbody></table>
 <h2>요약</h2>
 <pre>${esc(buildSummary())}</pre>
 ${screenHtml?`<h2>화면 안내</h2>${screenHtml}`:""}
@@ -2905,8 +3920,10 @@ renderModelOptions();
 renderCompanyOptions();
 renderDbStatus();
 restoreDraft();
+renderAllPartyExtras();
 renderTxnMatches();
 renderItems();
+updatePermitQtyUi();
 updateNext1();
 
 </script>
